@@ -41,7 +41,6 @@ Container {
             },
             ListScrollStateHandler {
                 onFirstVisibleItemChanged: {
-                    timer.start();
                     lv.change(firstVisibleItem);
                     lv.activeIndex = firstVisibleItem;
                 }
@@ -154,7 +153,6 @@ Container {
             dm.clear(); // 初始化
             dm.insert(0, images);
             
-            timer.stop(); // 初始化
             timer.start();
             
             if(lv.tipObjs) { // 初始化
@@ -182,7 +180,6 @@ Container {
         }
         
         function nextTo(index) {
-            timer.stop();
             lv.scrollToItem([index]);
         }
         
