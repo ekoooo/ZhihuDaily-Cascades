@@ -34,9 +34,9 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     Application app(argc, argv);
     DevelopmentSupport::install();
 
+    qmlRegisterType<QTimer>("tech.lwl", 1, 0, "QTimer");
     qmlRegisterType<WebImageView>("tech.lwl", 1, 0, "WebImageView");
     qmlRegisterType<Requester>("tech.lwl", 1, 0, "Requester");
-    qmlRegisterType<QTimer>("tech.lwl", 1, 0, "QTimer");
 
     ApplicationUI appui;
 
