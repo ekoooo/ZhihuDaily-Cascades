@@ -36,7 +36,10 @@ simulator {
 
 config_pri_assets {
     OTHER_FILES += \
+        $$quote($$BASEDIR/assets/api.js) \
+        $$quote($$BASEDIR/assets/common/Common.qml) \
         $$quote($$BASEDIR/assets/components/Carousel.qml) \
+        $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
         $$quote($$BASEDIR/assets/images/bb10/ic_home.png) \
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
         $$quote($$BASEDIR/assets/main.qml) \
@@ -87,6 +90,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/*.qml) \
         $$quote($$BASEDIR/../assets/*.js) \
         $$quote($$BASEDIR/../assets/*.qs) \
+        $$quote($$BASEDIR/../assets/common/*.qml) \
+        $$quote($$BASEDIR/../assets/common/*.js) \
+        $$quote($$BASEDIR/../assets/common/*.qs) \
         $$quote($$BASEDIR/../assets/components/*.qml) \
         $$quote($$BASEDIR/../assets/components/*.js) \
         $$quote($$BASEDIR/../assets/components/*.qs) \
