@@ -74,6 +74,9 @@ QUrl WebImageView::url() const {
 
 void WebImageView::replyFinished() {
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
+    QVariant fromCache = reply->attribute(QNetworkRequest::SourceIsFromCacheAttribute);
+
+//    qDebug() << "Http:" << reply->url() << "fromCache:" << fromCache.toBool();
 
     if(reply->error() == QNetworkReply::NoError) {
         imageData = reply->readAll();
