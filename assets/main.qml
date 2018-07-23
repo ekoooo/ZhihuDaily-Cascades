@@ -15,9 +15,13 @@
  */
 
 import bb.cascades 1.4
+import "asset:///common"
+import "asset:///api.js" as Api
 
 TabbedPane {
     property variant nav: activeTab.tabNav // 所以页面可用导航
+    property variant api: Api.Api
+    
     activeTab: indexTab // 默认 activeTab 为 主页
     tabs: [
         Tab {
@@ -43,6 +47,11 @@ TabbedPane {
                     page.destroy();
                 }
             }
+        }
+    ]
+    attachedObjects: [
+        Common {
+            id: common
         }
     ]
 }
