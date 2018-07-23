@@ -14,8 +14,12 @@
 #include <bb/system/InvokeRequest>
 #include <bb/system/InvokeTargetReply>
 #include <bb/system/InvokeManager>
+#include <bb/system/SystemToast>
+#include <bb/system/SystemUiPosition>
 
 using namespace bb::system;
+
+SystemToast *Misc::toast = new SystemToast();
 
 Misc::Misc(): QObject() {
 
@@ -34,4 +38,14 @@ void Misc::invokeViewIamge(QString path) {
 void Misc::clearCache() {
     WebImageView().clearCache();
     Requester().clearCache();
+}
+
+void Misc::showToast(QString msg) {
+    this->showToast(msg, SystemUiPosition::BottomCenter);
+}
+
+void Misc::showToast(QString msg, SystemUiPosition::Type pos) {
+    toast->setBody(msg);
+    toast->setPosition(pos);
+    toast->show();
 }
