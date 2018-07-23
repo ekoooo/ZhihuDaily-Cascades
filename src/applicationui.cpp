@@ -15,6 +15,7 @@
  */
 
 #include "applicationui.hpp"
+#include "Misc/Misc.hpp"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -43,6 +44,8 @@ ApplicationUI::ApplicationUI() :
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+
+    qml->setContextProperty("_misc", new Misc());
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
