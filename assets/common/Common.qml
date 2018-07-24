@@ -25,7 +25,6 @@ QtObject {
         return info.join(splitStr);
     }
     
-    
     /**
      * 格式化，20180723 -> 星期X
      */

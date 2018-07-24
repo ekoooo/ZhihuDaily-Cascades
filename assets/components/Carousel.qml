@@ -4,12 +4,16 @@ import tech.lwl 1.0
 
 Container {
     id: lvContainer
+    property variant index: 0
+    property variant lastClickTime
+    property variant lastIsMove
     property variant dH: displayInfo.pixelSize.height
-    property variant dW: displayInfo.pixelSize.width
-    property variant height: dH === dW ? dH / 2.5 : dH / 3
+    property variant height: dH / 3 
     
     property variant listData: [] // 数据（item key => image, title, id）
-    property int itvTime: 5000 // 时间间隔
+    property int itvTime: 8000 // 时间间隔
+    
+    signal click(variant index);
     
     layout: DockLayout {
     
@@ -22,6 +26,20 @@ Container {
             id: displayInfo
         }
     ]
+    
+    onTouch: {
+        if(event.isDown()) {
+            lvContainer.lastClickTime = +new Date();
+            lvContainer.lastIsMove = false;
+        }else if(event.isCancel()) {
+            // 如果时间间隔小于 * 值，而且没有移动。则为点击，发出信号
+            if(+new Date() - lvContainer.lastClickTime <= 300 && !lvContainer.lastIsMove) {
+                click(lvContainer.index);
+            }
+        }else if(event.isMove()) {
+            lvContainer.lastIsMove = true;
+        }
+    }
     
     ListView {
         id: lv
@@ -44,6 +62,14 @@ Container {
                     lv.change(firstVisibleItem);
                     lv.activeIndex = firstVisibleItem;
                 }
+                onScrollingChanged: {
+                    if(!scrolling) {
+                        // 由于 onFirstVisibleItemChanged 异步延迟，用此方法最快更新 index
+                        // 避免点击前 index 未更新，跳转到其他文章的问题
+                        // 在翻页时也会更新此 index
+                        lvContainer.index = firstVisibleItem[0] || 0;
+                    }
+                }
             },
             QTimer{
                 id: timer
@@ -58,7 +84,6 @@ Container {
                     id: iv
                     property variant opacityParam: 0.5
                     property variant index
-                    signal click(variant index)
                     
                     imageSource: "asset:///images/carousel/round_white.png"
                     preferredWidth: ui.du(2.5)
@@ -74,11 +99,6 @@ Container {
                             opacityParam = 1;
                         }else {
                             opacityParam = 0.5;
-                        }
-                    }
-                    onTouch: {
-                        if(event.isDown()) {
-                            click(index);
                         }
                     }
                 }
@@ -173,13 +193,13 @@ Container {
                 
                 tipsBox.add(tipObj);
                 lv.change.connect(tipObj.change);
-                tipObj.click.connect(lv.nextTo);
                 tipObjArr.push(tipObj);
             }
             lv.tipObjs = tipObjArr;
         }
         
         function nextTo(index) {
+            lvContainer.index = index;
             lv.scrollToItem([index]);
         }
         

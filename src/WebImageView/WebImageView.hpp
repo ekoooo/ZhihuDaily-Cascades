@@ -57,6 +57,7 @@ class WebImageView: public bb::cascades::ImageView {
         void failImageSourceChanged();
         void progressed(qint64 bytesReceived, qint64 bytesTotal);
         void loaded();
+        void invokeViewImaged();
 };
 
 #endif /* WEBIMAGEVIEW_HPP_ */

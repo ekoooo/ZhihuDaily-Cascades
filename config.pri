@@ -43,7 +43,11 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_home.png) \
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
         $$quote($$BASEDIR/assets/main.qml) \
-        $$quote($$BASEDIR/assets/pages/index.qml)
+        $$quote($$BASEDIR/assets/pages/index.qml) \
+        $$quote($$BASEDIR/assets/pages/news.qml) \
+        $$quote($$BASEDIR/assets/source/newsInjector.js) \
+        $$quote($$BASEDIR/assets/source/news_qa.min.css) \
+        $$quote($$BASEDIR/assets/source/zepto.min.js)
 }
 
 config_pri_source_group1 {
@@ -110,7 +114,10 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/pages/*.qs) \
         $$quote($$BASEDIR/../assets/sheets/*.qml) \
         $$quote($$BASEDIR/../assets/sheets/*.js) \
-        $$quote($$BASEDIR/../assets/sheets/*.qs)
+        $$quote($$BASEDIR/../assets/sheets/*.qs) \
+        $$quote($$BASEDIR/../assets/source/*.qml) \
+        $$quote($$BASEDIR/../assets/source/*.js) \
+        $$quote($$BASEDIR/../assets/source/*.qs)
 
     HEADERS += \
         $$quote($$BASEDIR/../src/*.h) \

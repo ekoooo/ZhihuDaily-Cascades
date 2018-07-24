@@ -125,8 +125,9 @@ void WebImageView::invokeViewImage() {
         Misc().invokeViewIamge(filePath);
     }else {
         qDebug() << "WebImageView invokeViewImage open file fail";
-        return;
     }
+
+    emit invokeViewImaged();
 }
 
 void WebImageView::setFailImageSource(const QUrl url) {

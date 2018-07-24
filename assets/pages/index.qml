@@ -13,6 +13,8 @@ Page {
     Container {
         ListView {
             property variant common_: common
+            property variant dm_: dm
+            property alias root_: root
             
             attachedObjects: [
                 ListScrollStateHandler {
@@ -40,12 +42,33 @@ Page {
                 return data.__type || "story";
             }
             
+            onTriggered: {
+                if(indexPath.length === 1) {
+                    var itemData = dm.data(indexPath);
+                    if(!itemData['__type']) {
+                        if(itemData['type'] === 0) {
+                            root_.pushToNewsPage(itemData['id']);
+                        }else {
+                            _misc.showToast(qsTr("未知文章类型"));
+                        }
+                    }
+                }
+            }
+            
             listItemComponents: [
                 ListItemComponent {
                     type: "carousel"
                     Carousel {
                         id: carousel
                         listData: ListItemData['top_stories']
+                        onClick: {
+                            var story = ListItem.view.dm_.data([0])['top_stories'][index];
+                            if(story['type'] === 0) {
+                                ListItem.view.root_.pushToNewsPage(story['id']);
+                            }else {
+                                _misc.showToast(qsTr("未知文章类型"));
+                            }
+                        }
                     }
                 },
                 ListItemComponent {
@@ -123,6 +146,7 @@ Page {
                 if(dm.size() && topStories && topStories.length) {
                     dm.clear();
                     refreshHeader.endRefresh();
+                    _misc.showToast(qsTr("刷新成功"));
                 }
 
                 // 重新封装数据
@@ -146,6 +170,17 @@ Page {
             onError: {
                 _misc.showToast(error);
             }
+        },
+        ComponentDefinition {
+            id: newsPage
+            source: "asset:///pages/news.qml"
         }
     ]
+    
+    function pushToNewsPage(newsId) {
+        var page = newsPage.createObject();
+        page.newsId = newsId;
+        
+        nav.push(page);
+    }
 }
