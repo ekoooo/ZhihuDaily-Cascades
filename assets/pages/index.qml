@@ -16,6 +16,8 @@ Page {
             property variant dm_: dm
             property alias root_: root
             
+            scrollRole: ScrollRole.Main
+            
             attachedObjects: [
                 ListScrollStateHandler {
                     onAtEndChanged: {
@@ -120,6 +122,14 @@ Page {
             onTouch: {
                 refreshHeader.onListViewTouch(event);
             }
+            
+            eventHandlers: [
+                TouchKeyboardHandler {
+                    onTouch: {
+                        refreshHeader.onListViewTouch(event);
+                    }
+                }
+            ]
         }
     }
     

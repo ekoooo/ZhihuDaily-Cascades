@@ -4,18 +4,18 @@
 <context>
     <name>index</name>
     <message>
-        <location filename="../assets/pages/index.qml" line="52"/>
-        <location filename="../assets/pages/index.qml" line="69"/>
+        <location filename="../assets/pages/index.qml" line="54"/>
+        <location filename="../assets/pages/index.qml" line="71"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="141"/>
+        <location filename="../assets/pages/index.qml" line="151"/>
         <source>加载失败，请重新加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="149"/>
+        <location filename="../assets/pages/index.qml" line="159"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -36,7 +36,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="71"/>
+        <location filename="../assets/pages/news.qml" line="73"/>
         <source>文章数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>

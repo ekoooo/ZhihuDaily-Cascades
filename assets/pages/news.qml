@@ -30,6 +30,8 @@ Page {
         }
         
         ScrollView {
+            scrollRole: ScrollRole.Main
+            
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
             
