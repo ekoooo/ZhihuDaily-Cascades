@@ -22,7 +22,7 @@ using namespace bb::system;
 SystemToast *Misc::toast = new SystemToast();
 
 Misc::Misc(): QObject() {
-
+    this->invokeManager = new InvokeManager(this);
 }
 
 void Misc::invokeViewIamge(QString path) {
@@ -31,8 +31,12 @@ void Misc::invokeViewIamge(QString path) {
     request.setTarget("sys.pictures.card.previewer");
     request.setAction("bb.action.VIEW");
 
-    InvokeTargetReply *invokeTargetReply = (new InvokeManager(this))->invoke(request);
+    InvokeTargetReply *invokeTargetReply = invokeManager->invoke(request);
     Q_UNUSED(invokeTargetReply);
+}
+
+QByteArray Misc::toUtf8(QString text) {
+    return text.toUtf8();
 }
 
 void Misc::clearCache() {
