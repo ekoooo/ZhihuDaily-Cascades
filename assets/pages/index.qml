@@ -86,33 +86,30 @@ Page {
                     type: "story"
                     CustomListItem {
                         dividerVisible: true
-                        highlightAppearance: HighlightAppearance.Default
-                        
+
                         Container {
-                            Container {
-                                layout: StackLayout {
-                                    orientation: LayoutOrientation.LeftToRight
+                            layout: StackLayout {
+                                orientation: LayoutOrientation.LeftToRight
+                            }
+                            topPadding: ui.du(2)
+                            bottomPadding: topPadding
+                            leftPadding: ui.du(2)
+                            rightPadding: leftPadding
+
+                            Label {
+                                text: ListItemData.title
+                                multiline: true
+                                layoutProperties: StackLayoutProperties {
+                                    spaceQuota: 1
                                 }
-                                topPadding: ui.du(2)
-                                bottomPadding: topPadding
-                                leftPadding: ui.du(2)
-                                rightPadding: leftPadding
-                                
-                                Label {
-                                    text: ListItemData.title
-                                    multiline: true
-                                    layoutProperties: StackLayoutProperties {
-                                        spaceQuota: 1
-                                    }
-                                }
-                                
-                                WebImageView {
-                                    url: ListItemData.images[0]
-                                    preferredWidth: ui.du(15)
-                                    preferredHeight: preferredWidth
-                                    scalingMethod: ScalingMethod.AspectFit
-                                    implicitLayoutAnimationsEnabled: false
-                                }
+                            }
+
+                            WebImageView {
+                                url: ListItemData.images[0]
+                                preferredWidth: ui.du(15)
+                                preferredHeight: preferredWidth
+                                scalingMethod: ScalingMethod.AspectFit
+                                implicitLayoutAnimationsEnabled: false
                             }
                         }
                     }
@@ -181,6 +178,7 @@ Page {
             }
             onError: {
                 _misc.showToast(error);
+                root.dataLoading = false;
             }
         },
         ComponentDefinition {
