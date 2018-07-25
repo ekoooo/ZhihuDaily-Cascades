@@ -10,6 +10,8 @@ Page {
     property variant currentDate // 最后请求日报日期
     property bool dataLoading: false // 是否正在加载数据
     
+    actionBarVisibility: ChromeVisibility.Compact
+    
     Container {
         ListView {
             property variant common_: common

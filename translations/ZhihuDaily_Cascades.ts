@@ -23,8 +23,13 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="32"/>
+        <location filename="../assets/main.qml" line="31"/>
         <source>主页</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/main.qml" line="47"/>
+        <source>今日热门</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
