@@ -8,6 +8,7 @@ import tech.lwl 1.0
 Page {
     id: root
     property variant newsId // 文章ID（传入）
+    property variant nextNewsId // 下一篇文章ID（传入）
     property variant newsData; // 文章内容（从接口中获取）
     
     property variant dH: displayInfo.pixelSize.height
@@ -18,6 +19,27 @@ Page {
     actionBarVisibility: ChromeVisibility.Overlay
     
     actions: [
+        ActionItem {
+            title: qsTr("评论")
+            ActionBar.placement: ActionBarPlacement.OnBar
+            imageSource: "asset:///images/bb10/ic_textmessage_dk.png"
+            onTriggered: {
+                var page = commentsPage.createObject();
+                page.newsId = newsId;
+                nav.push(page);
+            }
+        },
+        ActionItem {
+            title: qsTr("下篇")
+            ActionBar.placement: ActionBarPlacement.OnBar
+            imageSource: "asset:///images/bb10/ic_sort.png"
+            onTriggered: {
+                // nextNewsId
+                if(!nextNewsId) {
+                    _misc.showToast(qsTr("已经是最后一篇啦"));
+                }
+            }
+        },
         InvokeActionItem {
             title: qsTr("分享")
             ActionBar.placement: ActionBarPlacement.Signature
@@ -199,7 +221,11 @@ Page {
                     }
                 }
             }
-        } // containerDelegate end
+        }, // containerDelegate end
+        ComponentDefinition {
+            id: commentsPage
+            source: "asset:///pages/comments.qml"
+        }
     ]
     
     // 拉取文章信息
