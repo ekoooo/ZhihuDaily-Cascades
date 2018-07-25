@@ -18,9 +18,18 @@ Page {
     actionBarVisibility: ChromeVisibility.Overlay
     
     actions: [
-        ActionItem {
+        InvokeActionItem {
             title: qsTr("分享")
             ActionBar.placement: ActionBarPlacement.Signature
+            query {
+                mimeType: "text/plain"
+                invokeActionId: "bb.action.SHARE"
+            }
+            onTriggered: {
+                var shareText = qsTr('%1（分享自 @知乎日报）%2');
+                
+                data = _misc.toUtf8(shareText.arg(newsData['title']).arg(newsData['share_url']));
+            }
         }
     ]
     
