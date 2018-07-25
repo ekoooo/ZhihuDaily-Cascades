@@ -89,7 +89,7 @@ void Requester::send(QUrl url) {
     QMapIterator<QString, QVariant> headersIt(headers);
     while(headersIt.hasNext()) {
         headersIt.next();
-        request.setRawHeader(headersIt.key().toAscii(), headersIt.value().toByteArray());
+        request.setRawHeader(headersIt.key().toUtf8(), headersIt.value().toByteArray());
     }
 
     QNetworkReply *reply;
@@ -104,7 +104,7 @@ void Requester::send(QUrl url) {
         // QT Object convert to JSON string
         jda.saveToBuffer(params, &paramsStr);
 
-        reply = qNetworkAccessManager->post(request, paramsStr.toAscii());
+        reply = qNetworkAccessManager->post(request, paramsStr.toUtf8());
     }
 
     connect(reply, SIGNAL(finished()), this, SLOT(replyFinished()));
