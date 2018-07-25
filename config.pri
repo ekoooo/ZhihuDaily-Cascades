@@ -50,9 +50,15 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_search.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_settings.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_share.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_sort.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_textmessage_dk.png) \
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
+        $$quote($$BASEDIR/assets/images/comment_empty.png) \
+        $$quote($$BASEDIR/assets/images/comment_vote.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/before.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CommentList.qml) \
+        $$quote($$BASEDIR/assets/pages/comments.qml) \
         $$quote($$BASEDIR/assets/pages/hot.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
         $$quote($$BASEDIR/assets/pages/news.qml) \
@@ -125,6 +131,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/pages/*.qml) \
         $$quote($$BASEDIR/../assets/pages/*.js) \
         $$quote($$BASEDIR/../assets/pages/*.qs) \
+        $$quote($$BASEDIR/../assets/pages/child/*.qml) \
+        $$quote($$BASEDIR/../assets/pages/child/*.js) \
+        $$quote($$BASEDIR/../assets/pages/child/*.qs) \
         $$quote($$BASEDIR/../assets/sheets/*.qml) \
         $$quote($$BASEDIR/../assets/sheets/*.js) \
         $$quote($$BASEDIR/../assets/sheets/*.qs) \
