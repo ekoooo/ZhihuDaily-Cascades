@@ -26,6 +26,35 @@ TabbedPane {
     showTabsOnActionBar: false
     activeTab: indexTab // 默认 activeTab 为 主页
 
+    Menu.definition: MenuDefinition {
+        helpAction: HelpActionItem {
+            onTriggered: {
+                
+            }
+        }
+        settingsAction: SettingsActionItem {
+            onTriggered: {
+            
+            }
+        }
+        actions: [
+            ActionItem {
+                title: qsTr("赞助")
+                imageSource: "asset:///images/bb10/ic_contact.png"
+                onTriggered: {
+                    
+                }
+            },
+            ActionItem {
+                title: qsTr("关于")
+                imageSource: "asset:///images/bb10/ic_info.png"
+                onTriggered: {
+                    
+                }
+            }
+        ]
+    }
+
     tabs: [
         Tab {
             id: indexTab
@@ -64,7 +93,6 @@ TabbedPane {
                     }
                 }
             ]
-            
             NavigationPane {
                 id: hotNav
                 Page.hot {}

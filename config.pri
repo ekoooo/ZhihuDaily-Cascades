@@ -40,6 +40,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/common/Common.qml) \
         $$quote($$BASEDIR/assets/components/Carousel.qml) \
         $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_contact.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_deselect_all.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_diagnostics.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_favorite.png) \
