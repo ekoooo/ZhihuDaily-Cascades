@@ -101,6 +101,7 @@ Page {
                 dm.clear();
                 dm.insert(0, recent);
                 if(isRefresh) {
+                    isRefresh = false;
                     refreshHeader.endRefresh();
                     _misc.showToast(qsTr("刷新成功"));
                 }
