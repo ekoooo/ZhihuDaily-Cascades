@@ -3,15 +3,11 @@ import tech.lwl 1.0
 
 Container {
     property bool refreshing: false
-    property int refreshThreshold: 200
+    property int refreshThreshold: 170
     property variant lastY: 0
     
     horizontalAlignment: HorizontalAlignment.Fill
     visible: refreshing
-    
-    layout: DockLayout {
-        
-    }
 
     signal refreshTriggered()
 
@@ -42,7 +38,7 @@ Container {
             id: refreshHandler
 
             onLayoutFrameChanged: {
-                if(!refreshing && layoutFrame.y >= 0 && layoutFrame.y > lastY) {
+                if(!refreshing && layoutFrame.y >= -30 && layoutFrame.y > lastY) {
                     refreshing = true;
                 }
                 
