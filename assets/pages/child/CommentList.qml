@@ -39,6 +39,7 @@ ListView {
                         preferredHeight: ui.du(8)
 
                         url: ListItemData['avatar']
+                        loadingImageSource: "asset:///images/account_avatar.png"
                         failImageSource: "asset:///images/account_avatar.png"
                     }
                     Container {

@@ -69,6 +69,8 @@ Page {
                                 preferredHeight: preferredWidth
                                 scalingMethod: ScalingMethod.AspectFit
                                 implicitLayoutAnimationsEnabled: false
+                                loadingImageSource: "asset:///images/image_small_default.png"
+                                failImageSource: "asset:///images/image_small_default.png"
                             }
                         }
                     }

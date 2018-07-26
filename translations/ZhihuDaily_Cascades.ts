@@ -4,31 +4,72 @@
 <context>
     <name>CommentList</name>
     <message>
-        <location filename="../assets/pages/child/CommentList.qml" line="167"/>
+        <location filename="../assets/pages/child/CommentList.qml" line="168"/>
         <source>评论数据格式转换失败</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>before</name>
+    <message>
+        <location filename="../assets/pages/before.qml" line="48"/>
+        <source>请选择日期</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/before.qml" line="63"/>
+        <source>上一天</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/before.qml" line="71"/>
+        <source>下一天</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/before.qml" line="101"/>
+        <source>未知文章类型</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/before.qml" line="188"/>
+        <source>正在加载数据，别急</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>comments</name>
     <message>
-        <location filename="../assets/pages/comments.qml" line="24"/>
+        <location filename="../assets/pages/comments.qml" line="20"/>
         <source>长评</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/comments.qml" line="28"/>
+        <location filename="../assets/pages/comments.qml" line="24"/>
         <source>短评</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/comments.qml" line="85"/>
+        <location filename="../assets/pages/comments.qml" line="86"/>
         <source>深度长评虚位以待</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/comments.qml" line="85"/>
+        <location filename="../assets/pages/comments.qml" line="86"/>
         <source>短评虚位以待</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>hot</name>
+    <message>
+        <location filename="../assets/pages/hot.qml" line="11"/>
+        <source>今日热门</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/hot.qml" line="108"/>
+        <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -41,12 +82,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="150"/>
+        <location filename="../assets/pages/index.qml" line="152"/>
         <source>加载失败，请重新加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="158"/>
+        <location filename="../assets/pages/index.qml" line="160"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>

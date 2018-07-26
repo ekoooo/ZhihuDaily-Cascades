@@ -127,14 +127,8 @@ Page {
                 WebImageView {
                     id: invokeImage
                     visible: false
-                    onUrlChanged: {
-                        // root.loading = true;
-                    }
                     onLoaded: {
                         invokeViewImage();
-                    }
-                    onInvokeViewImaged: {
-                        // root.loading = false;
                     }
                 }
                 Container {
@@ -150,6 +144,8 @@ Page {
                         verticalAlignment: VerticalAlignment.Fill
                         horizontalAlignment: HorizontalAlignment.Fill
                         implicitLayoutAnimationsEnabled: false
+                        loadingImageSource: "asset:///images/image_top_default.png"
+                        failImageSource: "asset:///images/image_top_default.png"
                         onTouch: {
                             if(event.isUp()) {
                                 invokeViewImage();

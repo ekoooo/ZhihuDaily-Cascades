@@ -139,6 +139,8 @@ Container {
                         verticalAlignment: VerticalAlignment.Fill
                         horizontalAlignment: HorizontalAlignment.Fill
                         implicitLayoutAnimationsEnabled: false
+                        loadingImageSource: "asset:///images/image_top_default.png"
+                        failImageSource: "asset:///images/image_top_default.png"
                     }
                     Container {
                         horizontalAlignment: HorizontalAlignment.Center

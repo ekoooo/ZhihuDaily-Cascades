@@ -9,7 +9,6 @@ Page {
     actionBarVisibility: ChromeVisibility.Overlay
     property variant currentDate: Qt.formatDate(dateTimePicker.value, "yyyy/MM/dd")
     property bool dataLoading: false
-    property bool isChangeDateRequest: false
     
     titleBar: TitleBar {
         scrollBehavior: TitleBarScrollBehavior.NonSticky
@@ -132,6 +131,8 @@ Page {
                                 preferredHeight: preferredWidth
                                 scalingMethod: ScalingMethod.AspectFit
                                 implicitLayoutAnimationsEnabled: false
+                                loadingImageSource: "asset:///images/image_small_default.png"
+                                failImageSource: "asset:///images/image_small_default.png"
                             }
                         }
                     }
@@ -141,9 +142,8 @@ Page {
                 listRequester.send(qsTr(api.newsBefore).arg(common.getPreDateStr(root.currentDate)));
             }
             onCrtDateChanged: {
-                if(api) {
-                    listRequester.send(qsTr(api.newsBefore).arg(common.getPreDateStr(lv.crtDate)));
-                }
+                if(!api) { return }
+                listRequester.send(qsTr(api.newsBefore).arg(common.getPreDateStr(lv.crtDate)));
             }
         }
     }
@@ -159,11 +159,6 @@ Page {
                 var recent = rs['stories'];
                 dm.clear();
                 dm.insert(0, recent);
-                
-                if(isChangeDateRequest) {
-                    _misc.showToast("加载成功");
-                    isChangeDateRequest = false;
-                }
                 
                 root.dataLoading = false;
             }
