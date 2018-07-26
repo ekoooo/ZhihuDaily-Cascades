@@ -25,7 +25,7 @@ Page {
     
     ScrollView {
         Container {
-            bottomPadding: ui.du(10)
+            bottomPadding: ui.du(12)
             // 视觉设置
             Container {
                 Header {
