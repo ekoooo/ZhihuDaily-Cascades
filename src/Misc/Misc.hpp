@@ -22,11 +22,21 @@ class Misc : public QObject {
         Misc();
         virtual ~Misc() {};
 
+        Q_INVOKABLE static void setConfig(const QString &key, const QString &val);
+        Q_INVOKABLE static QString getConfig(const QString &key, const QString &defaultVal);
+        Q_INVOKABLE static void setTheme(QString type);
+        Q_INVOKABLE static void reset();
+        Q_INVOKABLE static void clearCache();
+        Q_INVOKABLE static void showToast(QString msg);
+        Q_INVOKABLE static void showToast(QString msg, SystemUiPosition::Type pos);
+
+        Q_INVOKABLE static qint64 dirSize(QString dirPath);
+        Q_INVOKABLE static QString formatSize(qint64 size);
+        Q_INVOKABLE static QString webImageViewCacheSize();
+        Q_INVOKABLE static QString requesterCacheSize();
+
         Q_INVOKABLE void invokeViewIamge(QString path);
         Q_INVOKABLE QByteArray toUtf8(QString text);
-        Q_INVOKABLE void clearCache();
-        Q_INVOKABLE void showToast(QString msg);
-        Q_INVOKABLE void showToast(QString msg, SystemUiPosition::Type pos);
 
     private:
         static SystemToast *toast;
