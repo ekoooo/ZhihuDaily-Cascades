@@ -19,7 +19,7 @@ var Api = {
     // 栏目具体消息查看, e.g. http://news-at.zhihu.com/api/3/section/#{id}
     "section": "http://news-at.zhihu.com/api/3/section/%1",
     // 新闻额外信息, e.g. http://news-at.zhihu.com/api/4/story-extra/#{id}
-    "storyExtra": "http://news-at.zhihu.com/api/4/story-extra/%1",
+    "storyExtra": "http://news-at.zhihu.com/api/7/story-extra/%1",
     // 新闻的推荐者, e.g. http://news-at.zhihu.com/api/4/story/#{id}/recommenders
     "storyRecommenders": "http://news-at.zhihu.com/api/4/story/%1/recommenders",
     // 新闻对应长评论查看, e.g. http://news-at.zhihu.com/api/4/story/#{id}/long-comments
