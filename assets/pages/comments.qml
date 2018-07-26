@@ -12,26 +12,27 @@ Page {
     
     actionBarVisibility: ChromeVisibility.Compact
     
+    titleBar: TitleBar {
+        scrollBehavior: TitleBarScrollBehavior.Sticky
+        kind: TitleBarKind.Segmented
+        options: [
+            Option {
+                text: qsTr("长评") + (longCommentsCount == 0 ? "" : " - " + longCommentsCount)
+                value: "long"
+            },
+            Option {
+                text: qsTr("短评") + (shortCommentsCount == 0 ? "" : " - " + shortCommentsCount)
+                value: "short"
+            }
+        ]
+        onSelectedValueChanged: {
+            root.selectedValue = selectedValue;
+        }
+    }
+    
     Container {
         layout: StackLayout {
             
-        }
-        topPadding: ui.du(1)
-        
-        SegmentedControl {
-            options: [
-                Option {
-                    text: qsTr("长评") + (longCommentsCount == 0 ? "" : " - " + longCommentsCount)
-                    value: "long"
-                },
-                Option {
-                    text: qsTr("短评") + (shortCommentsCount == 0 ? "" : " - " + shortCommentsCount)
-                    value: "short"
-                }
-            ]
-            onSelectedValueChanged: {
-                root.selectedValue = selectedValue;
-            }
         }
         
         Container {
