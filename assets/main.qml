@@ -28,13 +28,15 @@ TabbedPane {
 
     Menu.definition: MenuDefinition {
         helpAction: HelpActionItem {
+            title: qsTr("帮助")
             onTriggered: {
-                
+                console.log('帮助');
             }
         }
         settingsAction: SettingsActionItem {
+            title: qsTr("设置")
             onTriggered: {
-            
+                nav.push(settingsPage.createObject());
             }
         }
         actions: [
@@ -42,14 +44,14 @@ TabbedPane {
                 title: qsTr("赞助")
                 imageSource: "asset:///images/bb10/ic_contact.png"
                 onTriggered: {
-                    
+                    console.log('赞助');
                 }
             },
             ActionItem {
                 title: qsTr("关于")
                 imageSource: "asset:///images/bb10/ic_info.png"
                 onTriggered: {
-                    
+                    console.log('关于');
                 }
             }
         ]
@@ -176,16 +178,14 @@ TabbedPane {
     attachedObjects: [
         Common {
             id: common
+        },
+        ComponentDefinition {
+            id: settingsPage
+            source: "asset:///pages/settings.qml"
         }
     ]
     
     onCreationCompleted: {
-        /**
-         * @TODO
-         * 根据设置初始化
-         */
-        if(Application.themeSupport.theme.colorTheme.style !== VisualStyle.Bright) {
-            Application.themeSupport.setVisualStyle(VisualStyle.Bright);
-        }
+         _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
     }
 }

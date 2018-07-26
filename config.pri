@@ -40,9 +40,12 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/common/Common.qml) \
         $$quote($$BASEDIR/assets/components/Carousel.qml) \
         $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
+        $$quote($$BASEDIR/assets/images/account_avatar.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_contact.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_deselect_all.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_diagnostics.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_disable.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_enable.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_help.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_home.png) \
@@ -58,11 +61,13 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/before.qml) \
         $$quote($$BASEDIR/assets/pages/child/CommentList.qml) \
+        $$quote($$BASEDIR/assets/pages/child/SettingsItemContainer.qml) \
         $$quote($$BASEDIR/assets/pages/comments.qml) \
         $$quote($$BASEDIR/assets/pages/hot.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
         $$quote($$BASEDIR/assets/pages/news.qml) \
         $$quote($$BASEDIR/assets/pages/sections.qml) \
+        $$quote($$BASEDIR/assets/pages/settings.qml) \
         $$quote($$BASEDIR/assets/pages/themes.qml) \
         $$quote($$BASEDIR/assets/source/newsInjector.js) \
         $$quote($$BASEDIR/assets/source/news_qa.min.css) \

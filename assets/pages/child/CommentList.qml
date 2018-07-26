@@ -5,16 +5,15 @@ import "asset:///components"
 ListView {
     id: lv
     property variant common_: common
-    property variant commentsApi;
-    property variant commentsBeforeApi;
-    property variant newsId;
-    property bool isActive;
+    property variant commentsApi
+    property variant commentsBeforeApi
+    property variant newsId
+    property bool isActive
     
     property variant lastCommentId // 最后一个评论ID（用于加载下一页）
+    property int count: 0 // 总数
     property bool commentsLoadEnd: false // 是否全部加载完毕
     property bool commentsLoading: false
-    
-    signal appendData();
     
     dataModel: ArrayDataModel {
         id: dm
@@ -40,6 +39,7 @@ ListView {
                         preferredHeight: ui.du(8)
 
                         url: ListItemData['avatar']
+                        failImageSource: "asset:///images/account_avatar.png"
                     }
                     Container {
                         topPadding: ui.du(2)
@@ -92,17 +92,43 @@ ListView {
                         Container {
                             id: replyContainer
                             property variant replyInfo: ListItemData['reply_to'] || new Object()
-
+                            horizontalAlignment: HorizontalAlignment.Fill
+                            
                             visible: !!ListItemData['reply_to']
-                            Label {
-                                text: "@" + replyContainer.replyInfo['author'] + "："
-                                textStyle {
-                                    fontWeight: FontWeight.Bold
+                            Container {
+                                visible: replyContainer.replyInfo['status'] == 0
+                                Label {
+                                    text: "@" + replyContainer.replyInfo['author'] + "："
+                                    textStyle {
+                                        fontWeight: FontWeight.Bold
+                                    }
+                                }
+                                Label {
+                                    text: "　　" + replyContainer.replyInfo['content']
+                                    multiline: true
+                                    autoSize.maxLineCount: 2
+                                    onTouch: {
+                                        if(event.isUp()) {
+                                            autoSize.maxLineCount = -1
+                                        }
+                                    }
                                 }
                             }
-                            Label {
-                                text: "　　" + replyContainer.replyInfo['content']
-                                multiline: true
+                            Container {
+                                visible: replyContainer.replyInfo['status'] != 0
+                                horizontalAlignment: HorizontalAlignment.Fill
+                                
+                                topPadding: ui.du(1)
+                                bottomPadding: ui.du(1)
+                                leftPadding:  ui.du(1)
+                                background: Color.create("#eeeeee")
+                                
+                                Label {
+                                    visible: replyContainer.replyInfo['status'] != 0
+                                    text: replyContainer.replyInfo['error_msg']
+                                    textStyle.color: Color.Gray
+                                    textStyle.base: SystemDefaults.TextStyles.SubtitleText
+                                }
                             }
                         }
                         Label {
@@ -136,7 +162,6 @@ ListView {
                         dm.append(comments);
                         // 保存最后一个ID
                         lastCommentId = comments[comments.length - 1]['id'];
-                        appendData();
                     }
                 }catch(e) {
                     _misc.showToast(qsTr("评论数据格式转换失败"));
@@ -149,7 +174,9 @@ ListView {
         },
         ListScrollStateHandler {
              onAtEndChanged: {
-                 
+                 if(atEnd && !commentsLoadEnd && !dm.isEmpty() && !commentsLoading) {
+                     commentsRequester.send(qsTr(commentsBeforeApi).arg(newsId.toString()).arg(lastCommentId.toString()));
+                 }
              }
         }
     ]
