@@ -29,10 +29,12 @@ class WebImageView: public bb::cascades::ImageView {
         WebImageView();
         virtual ~WebImageView() {};
 
+        static QString CACHE_DIR;
+
         QUrl url() const;
         QUrl failImageSource() const;
 
-        Q_INVOKABLE void clearCache();
+        Q_INVOKABLE static void clearCache();
         Q_INVOKABLE void invokeViewImage(); // 在设备中预览图片
 
     public slots:
@@ -42,7 +44,6 @@ class WebImageView: public bb::cascades::ImageView {
     private:
         static QNetworkAccessManager *qNetworkAccessManager;
         static QNetworkDiskCache *qNetworkDiskCache;
-        static QString CACHE_DIR;
         static qint64 CACHE_SIZE;
         QUrl mUrl;
         QUrl mFailImageSource;
