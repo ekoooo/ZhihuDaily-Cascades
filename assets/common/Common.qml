@@ -1,6 +1,16 @@
 import bb.cascades 1.4
 
 QtObject {
+    // 设置 key
+    property variant settingsKey: {
+        // 主题
+        "theme": "theme",
+        // 文章大字体
+        "newsLargeFont": "newsLargeFont",
+        // 文章护眼模式
+        "newsEyeProtectionModel":"newsEyeProtectionModel"
+    }
+    
     /**
      * 验证 20180723 格式
      */
