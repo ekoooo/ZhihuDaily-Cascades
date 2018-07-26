@@ -24,6 +24,10 @@ class WebImageView: public bb::cascades::ImageView {
      * 图片加载失败图片（只能为本地图片）
      */
     Q_PROPERTY(QUrl failImageSource READ failImageSource WRITE setFailImageSource NOTIFY failImageSourceChanged);
+    /**
+     * 正在加载时显示图片
+     */
+    Q_PROPERTY(QUrl loadingImageSource READ loadingImageSource WRITE setLoadingImageSource NOTIFY loadingImageSourceChanged);
 
     public:
         WebImageView();
@@ -33,6 +37,7 @@ class WebImageView: public bb::cascades::ImageView {
 
         QUrl url() const;
         QUrl failImageSource() const;
+        QUrl loadingImageSource() const;
 
         Q_INVOKABLE static void clearCache();
         Q_INVOKABLE void invokeViewImage(); // 在设备中预览图片
@@ -40,6 +45,7 @@ class WebImageView: public bb::cascades::ImageView {
     public slots:
         void setUrl(const QUrl url);
         void setFailImageSource(const QUrl url);
+        void setLoadingImageSource(const QUrl url);
 
     private:
         static QNetworkAccessManager *qNetworkAccessManager;
@@ -47,6 +53,8 @@ class WebImageView: public bb::cascades::ImageView {
         static qint64 CACHE_SIZE;
         QUrl mUrl;
         QUrl mFailImageSource;
+        QUrl mLoadingImageSource;
+
         QByteArray imageData; // 存储当前图片数据，用于预览
 
     private slots:
@@ -56,6 +64,8 @@ class WebImageView: public bb::cascades::ImageView {
     signals:
         void urlChanged();
         void failImageSourceChanged();
+        void loadingImageSourceChanged();
+
         void progressed(qint64 bytesReceived, qint64 bytesTotal);
         void loaded();
         void invokeViewImaged();

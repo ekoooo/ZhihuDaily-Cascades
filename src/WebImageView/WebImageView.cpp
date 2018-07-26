@@ -43,6 +43,11 @@ void WebImageView::setUrl(const QUrl url) {
 
     emit urlChanged();
 
+    // 显示 LoadingImage
+    if(!this->mLoadingImageSource.isEmpty()) {
+        this->setImageSource(this->mLoadingImageSource);
+    }
+
     QString scheme = url.scheme().toLower();
 
     if(scheme == "") {
@@ -76,13 +81,13 @@ void WebImageView::replyFinished() {
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
     QVariant fromCache = reply->attribute(QNetworkRequest::SourceIsFromCacheAttribute);
 
-//    qDebug() << "Http:" << reply->url() << "fromCache:" << fromCache.toBool();
-
     if(reply->error() == QNetworkReply::NoError) {
         imageData = reply->readAll();
         setImage(Image(imageData));
     }else {
-        this->setImageSource(this->mFailImageSource);
+        if(!this->mFailImageSource.isEmpty()) {
+            this->setImageSource(this->mFailImageSource);
+        }
         qDebug() << "WebImageView reply on error:" << reply->errorString();
     }
 
@@ -137,4 +142,13 @@ void WebImageView::setFailImageSource(const QUrl url) {
 
 QUrl WebImageView::failImageSource() const {
     return this->mFailImageSource;
+}
+
+void WebImageView::setLoadingImageSource(const QUrl url) {
+    this->mLoadingImageSource = url;
+    emit loadingImageSourceChanged();
+}
+
+QUrl WebImageView::loadingImageSource() const {
+    return this->mLoadingImageSource;
 }
