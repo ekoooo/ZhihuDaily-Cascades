@@ -8,12 +8,13 @@ import tech.lwl 1.0
 Page {
     id: root
     property variant newsId // 文章ID（传入）
-    property variant nextNewsId // 下一篇文章ID（传入）
     property variant newsData; // 文章内容（从接口中获取）
     
     property variant dH: displayInfo.pixelSize.height
     property variant imageHeight: dH / 3 
     property bool loading: false
+    property bool isNewsEyeProtectionModel: _misc.getConfig(common.settingsKey.newsEyeProtectionModel, "0") == "1"
+    property bool isNewsLargeFont: _misc.getConfig(common.settingsKey.newsLargeFont, "0") == "1"
     
     actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
     actionBarVisibility: ChromeVisibility.Overlay
@@ -23,6 +24,7 @@ Page {
             title: qsTr("评论")
             ActionBar.placement: ActionBarPlacement.OnBar
             imageSource: "asset:///images/bb10/ic_textmessage_dk.png"
+            
             onTriggered: {
                 var page = commentsPage.createObject();
                 page.newsId = newsId;
@@ -30,13 +32,16 @@ Page {
             }
         },
         ActionItem {
-            title: qsTr("下篇")
+            title: qsTr("护眼")
             ActionBar.placement: ActionBarPlacement.OnBar
-            imageSource: "asset:///images/bb10/ic_sort.png"
+            imageSource: isNewsEyeProtectionModel ? "asset:///images/bb10/ic_enable.png" : "asset:///images/bb10/ic_disable.png"
             onTriggered: {
-                // nextNewsId
-                if(!nextNewsId) {
-                    _misc.showToast(qsTr("已经是最后一篇啦"));
+                if(isNewsEyeProtectionModel) {
+                    _misc.setConfig(common.settingsKey.newsEyeProtectionModel, "0");
+                    isNewsEyeProtectionModel = false;
+                }else {
+                    _misc.setConfig(common.settingsKey.newsEyeProtectionModel, "1");
+                    isNewsEyeProtectionModel = true;
                 }
             }
         },
@@ -192,6 +197,8 @@ Page {
                 }
                 
                 WebView {
+                    id: webView
+                    property variant eyeProtectionModel: root.isNewsEyeProtectionModel
                     property variant templateHtml: '<html>
                         <head id="head">
                             <meta charset="utf-8">
@@ -205,10 +212,13 @@ Page {
                         </body>
                     </html>';
                     
-                    id: webView
-                    html: qsTr(templateHtml).arg(root.newsData['body']).arg('')
+                    html: qsTr(templateHtml)
+                            .arg(root.newsData['body'])
+                            .arg(isNewsLargeFont ? 'large' : '')
                     onLoadingChanged: {
-                        if(loadRequest.status === WebLoadStatus.Succeeded) {
+                        if(loadRequest.status === WebLoadStatus.Started) {
+                            webView.eyeProtectionModel && webView.evaluateJavaScript('setNightMode(true)');
+                        }else if(loadRequest.status === WebLoadStatus.Succeeded) {
                             root.loading = false;
                         }
                     }
@@ -218,6 +228,10 @@ Page {
                         if(msg.event === 'invokeImage') {
                             invokeImage.url = msg.url;
                         }
+                    }
+                    onEyeProtectionModelChanged: {
+                        // 切换护眼模式
+                        webView.evaluateJavaScript(webView.eyeProtectionModel ? 'setNightMode(true)' : 'setNightMode(false)');
                     }
                 }
             }
