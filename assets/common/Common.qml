@@ -77,6 +77,9 @@ QtObject {
      * 格式化时间戳
      * type: 
      *     1 e.g. 07-25 13:31
+     *     2 e.g. 2018-07-26 16:35:04
+     *     3 e.g. 20180726
+     *     4 e.g. 2018/07/26
      */
     function formaTtimestamp(timestamp, type) {
         if(typeof timestamp === 'string') {
@@ -92,6 +95,18 @@ QtObject {
             return info['month'] + '-' + info['day'] + ' ' + info['h'] + ':' + info['m'];
         }else if(type === 2) {
             return info['year'] + '-' +info['month'] + '-' + info['day'] + ' ' + info['h'] + ':' + info['m'] + ':' + info['s'];
+        }else if(type === 3) {
+            return info['year'] + '' +info['month'] + '' + info['day']
+        }else if(type === 4) {
+            return info['year'] + '/' +info['month'] + '/' + info['day']
         }
+    }
+    
+    /**
+     * 返回上一天日期字符串
+     * 2018/07/26 => 20180725
+     */
+    function getPreDateStr(currentDateStr) {
+        return formaTtimestamp(+new Date(currentDateStr) - 86400000, 3);
     }
 }
