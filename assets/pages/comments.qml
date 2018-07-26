@@ -6,8 +6,9 @@ Page {
     id: root
     property variant newsId // 文章ID（传入）
     property variant selectedValue: "long"
-    property bool longCommentsEmpty: true
-    property bool shortCommentsEmpty: true
+    property int longCommentsCount: 0
+    property int shortCommentsCount: 0
+    property int likesCount: 0
     
     actionBarVisibility: ChromeVisibility.Compact
     
@@ -20,11 +21,11 @@ Page {
         SegmentedControl {
             options: [
                 Option {
-                    text: qsTr("长评")
+                    text: qsTr("长评") + (longCommentsCount == 0 ? "" : " - " + longCommentsCount)
                     value: "long"
                 },
                 Option {
-                    text: qsTr("短评")
+                    text: qsTr("短评") + (shortCommentsCount == 0 ? "" : " - " + shortCommentsCount)
                     value: "short"
                 }
             ]
@@ -48,9 +49,7 @@ Page {
                     commentsApi: api.storyLongComments
                     commentsBeforeApi: api.storyNextLongComments
                     newsId: root.newsId
-                    onAppendData: {
-                        longCommentsEmpty = false;
-                    }
+                    count: root.longCommentsCount
                 }
             }
             
@@ -60,19 +59,17 @@ Page {
                 verticalAlignment: VerticalAlignment.Fill
                 
                 CommentList {
-                    isActive: selectedValue === "long"
+                    isActive: selectedValue === "short"
                     commentsApi: api.storyShortComments
                     commentsBeforeApi: api.storyNextShortComments
                     newsId: root.newsId
-                    onAppendData: {
-                        shortCommentsEmpty = false;
-                    }
+                    count: root.shortCommentsCount
                 }
             }
             
             Container {
                 id: tip
-                visible: selectedValue === "long" ? longCommentsEmpty : shortCommentsEmpty
+                visible: selectedValue === "long" ? longCommentsCount == 0 : shortCommentsCount == 0
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 
@@ -96,4 +93,24 @@ Page {
         }
     }
     
+    attachedObjects: [
+        Requester {
+            id: storyExtraRequester
+            onFinished: {
+                var rs = JSON.parse(data);
+                var count = rs.count;
+                
+                root.longCommentsCount = count['long_comments'];
+                root.shortCommentsCount = count['short_comments'];
+                root.likesCount = count['likes'];
+            }
+            onError: {
+                _misc.showToast(error);
+            }
+        }
+    ]
+    
+    onNewsIdChanged: {
+        storyExtraRequester.send(qsTr(api.storyExtra).arg(newsId.toString()));
+    }
 }
