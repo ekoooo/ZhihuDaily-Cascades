@@ -25,6 +25,15 @@ qint64 Requester::CACHE_SIZE = 100 * 1024 * 1024; // 100M
 
 Requester::Requester() : QObject() {
     this->mMethod = Get;
+
+    QFileInfo cacheDir(Requester::CACHE_DIR);
+    if(!cacheDir.exists()) {
+        QDir().mkdir(cacheDir.path());
+    }
+
+    qNetworkDiskCache->setCacheDirectory(Requester::CACHE_DIR);
+    qNetworkDiskCache->setMaximumCacheSize(Requester::CACHE_SIZE);
+    qNetworkAccessManager->setCache(qNetworkDiskCache);
 }
 
 QUrl Requester::url() const {

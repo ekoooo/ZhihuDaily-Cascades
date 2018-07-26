@@ -32,12 +32,14 @@ class Requester: public QObject {
             Post
         };
 
+        static QString CACHE_DIR;
+
         QUrl url() const;
         Method method() const;
         QVariant params() const;
         QVariant headers() const;
 
-        Q_INVOKABLE void clearCache();
+        Q_INVOKABLE static void clearCache();
         Q_INVOKABLE void send();
         Q_INVOKABLE void send(QUrl url);
 
@@ -51,7 +53,6 @@ class Requester: public QObject {
     private:
         static QNetworkAccessManager *qNetworkAccessManager;
         static QNetworkDiskCache *qNetworkDiskCache;
-        static QString CACHE_DIR;
         static qint64 CACHE_SIZE;
 
         QUrl mUrl;
