@@ -47,9 +47,13 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_disable.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_enable.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_favorite.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_help.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_home.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_info.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_next.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_previous.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_reply.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_search.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_settings.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_share.png) \
@@ -58,6 +62,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
         $$quote($$BASEDIR/assets/images/comment_empty.png) \
         $$quote($$BASEDIR/assets/images/comment_vote.png) \
+        $$quote($$BASEDIR/assets/images/image_small_default.png) \
+        $$quote($$BASEDIR/assets/images/image_top_default.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/before.qml) \
         $$quote($$BASEDIR/assets/pages/child/CommentList.qml) \
