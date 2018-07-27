@@ -66,6 +66,7 @@ Page {
         }
         
         ScrollView {
+            id: sv
             scrollRole: ScrollRole.Main
             
             horizontalAlignment: HorizontalAlignment.Fill
@@ -82,8 +83,7 @@ Page {
             layout: DockLayout {
             
             }
-            background: Color.Black
-            opacity: 0.5
+            background: Color.create(0, 0, 0, 0.2)
             
             ActivityIndicator {
                 running: true
@@ -132,6 +132,7 @@ Page {
                     }
                 }
                 Container {
+                    visible: !!newsData.image
                     layout: DockLayout {
 
                     }
@@ -139,7 +140,7 @@ Page {
                     preferredHeight: imageHeight
 
                     WebImageView {
-                        url: newsData.image
+                        url: newsData.image || "asset:///images/image_top_default.png"
                         scalingMethod: ScalingMethod.AspectFill
                         verticalAlignment: VerticalAlignment.Fill
                         horizontalAlignment: HorizontalAlignment.Fill
@@ -240,6 +241,6 @@ Page {
     
     // 拉取文章信息
     onNewsIdChanged: {
-        newsRequester.send(qsTr(api.news).arg(newsId.toString()));
+        common.apiNews(newsRequester, newsId);
     }
 }

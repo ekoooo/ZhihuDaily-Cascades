@@ -3,17 +3,20 @@ import bb.system 1.2
 import bb.device 1.4
 import tech.lwl 1.0
 import "asset:///components"
+import "asset:///pages/child"
 
 Page {
     id: root
     actionBarVisibility: ChromeVisibility.Overlay
     property variant currentDate: Qt.formatDate(dateTimePicker.value, "yyyy/MM/dd")
-    property bool dataLoading: false
+    property variant maximumDate: new Date()
+    property variant minimumDate: new Date('2013/05/20')
     
     titleBar: TitleBar {
         scrollBehavior: TitleBarScrollBehavior.NonSticky
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
+            id: kindProperties
             expandableArea.indicatorVisibility: TitleBarExpandableAreaIndicatorVisibility.Visible
             Container {
                 layout: StackLayout {
@@ -22,7 +25,7 @@ Page {
                 leftPadding: ui.du(2)
                 
                 Label {
-                    text: Qt.formatDate(dateTimePicker.value, "yyyy/MM/dd")
+                    text: currentDate
                     verticalAlignment: VerticalAlignment.Center
                     textStyle.base: SystemDefaults.TextStyles.TitleText
                 }
@@ -43,10 +46,11 @@ Page {
                     DateTimePicker {
                         id: dateTimePicker
                         verticalAlignment: VerticalAlignment.Center
-                        
                         title: qsTr("请选择日期")
                         mode: DateTimePickerMode.Date
                         value: { new Date() }
+                        maximum: { maximumDate }
+                        minimum: { minimumDate }
                         expanded: true
                         onValueChanged: {
                             root.currentDate = Qt.formatDate(dateTimePicker.value, "yyyy/MM/dd");
@@ -63,6 +67,10 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             imageSource: "asset:///images/bb10/ic_reply.png"
             onTriggered: {
+                if(root.currentDate === common.formaTtimestamp(+minimumDate, 4)) {
+                    _misc.showToast(qsTr("上一天没有文章了"));
+                    return;
+                }
                 root.changeDate(-1);
             }
         },
@@ -71,6 +79,10 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             imageSource: "asset:///images/bb10/ic_forward.png"
             onTriggered: {
+                if(root.currentDate === common.formaTtimestamp(+maximumDate, 4)) {
+                    _misc.showToast(qsTr("下一天没有文章了"));
+                    return;
+                }
                 root.changeDate(1);
             }
         }
@@ -78,13 +90,12 @@ Page {
     
     Container {
         ListView {
-            id: lv
-            property variant common_: common
-            property variant dm_: dm
+            visible: !kindProperties.expandableArea.expanded
+            
             property variant root_: root
             property variant crtDate: root.currentDate
             
-            bottomPadding: ui.du(12)
+            bottomPadding: ui.du(14)
             scrollRole: ScrollRole.Main
             
             dataModel: ArrayDataModel {
@@ -105,45 +116,16 @@ Page {
             listItemComponents: [
                 ListItemComponent {
                     type: ""
-                    CustomListItem {
-                        dividerVisible: true
-                        
-                        Container {
-                            layout: StackLayout {
-                                orientation: LayoutOrientation.LeftToRight
-                            }
-                            topPadding: ui.du(2)
-                            bottomPadding: topPadding
-                            leftPadding: ui.du(2)
-                            rightPadding: leftPadding
-                            
-                            Label {
-                                text: ListItemData.title
-                                multiline: true
-                                layoutProperties: StackLayoutProperties {
-                                    spaceQuota: 1
-                                }
-                            }
-                            
-                            WebImageView {
-                                url: ListItemData.images[0]
-                                preferredWidth: ui.du(15)
-                                preferredHeight: preferredWidth
-                                scalingMethod: ScalingMethod.AspectFit
-                                implicitLayoutAnimationsEnabled: false
-                                loadingImageSource: "asset:///images/image_small_default.png"
-                                failImageSource: "asset:///images/image_small_default.png"
-                            }
-                        }
+                    NewsListItem {
+                        listItemData: ListItemData
                     }
                 }
             ]
             onCreationCompleted: {
-                listRequester.send(qsTr(api.newsBefore).arg(common.getPreDateStr(root.currentDate)));
+                common.apiNewsBefore(listRequester, root.currentDate);
             }
             onCrtDateChanged: {
-                if(!api) { return }
-                listRequester.send(qsTr(api.newsBefore).arg(common.getPreDateStr(lv.crtDate)));
+                common.apiNewsBefore(listRequester, root.currentDate);
             }
         }
     }
@@ -152,19 +134,16 @@ Page {
         Requester {
             id: listRequester
             onBeforeSend: {
-                root.dataLoading = true;
+                
             }
             onFinished: {
                 var rs = JSON.parse(data);
                 var recent = rs['stories'];
                 dm.clear();
                 dm.insert(0, recent);
-                
-                root.dataLoading = false;
             }
             onError: {
                 _misc.showToast(error);
-                root.dataLoading = false;
             }
         },
         ComponentDefinition {
@@ -177,10 +156,6 @@ Page {
     ]
     
     function changeDate(length) {
-        if(root.dataLoading) {
-            _misc.showToast(qsTr("正在加载数据，别急"));
-            return;
-        }
         dateTimePicker.value = common.formaTtimestamp(+new Date(root.currentDate) + (length * 86400000), 4);
     }
     

@@ -8,7 +8,7 @@ ListView {
     property variant commentsApi
     property variant commentsBeforeApi
     property variant newsId
-    property bool isActive
+    property bool isActive: false
     
     property variant lastCommentId // 最后一个评论ID（用于加载下一页）
     property int count: 0 // 总数
@@ -18,6 +18,7 @@ ListView {
     dataModel: ArrayDataModel {
         id: dm
     }
+    
     listItemComponents: [
         ListItemComponent {
             type: ""
@@ -176,15 +177,15 @@ ListView {
         ListScrollStateHandler {
              onAtEndChanged: {
                  if(atEnd && !commentsLoadEnd && !dm.isEmpty() && !commentsLoading) {
-                     commentsRequester.send(qsTr(commentsBeforeApi).arg(newsId.toString()).arg(lastCommentId.toString()));
+                     common.apiCommentsMore(commentsRequester, commentsBeforeApi, newsId, lastCommentId);
                  }
              }
         }
     ]
     onNewsIdChanged: {
         if(newsId) {
-            // 初始化长评论
-            commentsRequester.send(qsTr(commentsApi).arg(newsId.toString()));
+            // 初始化评论
+            common.apiComments(commentsRequester, commentsApi, newsId)
         }
     }
     onIsActiveChanged: {

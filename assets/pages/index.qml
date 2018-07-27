@@ -1,6 +1,7 @@
 import bb.cascades 1.4
 import tech.lwl 1.0
 import "asset:///components"
+import "asset:///pages/child"
 
 /**
  * 主页
@@ -14,9 +15,10 @@ Page {
     
     Container {
         ListView {
+            id: lv
             property variant common_: common
             property variant dm_: dm
-            property alias root_: root
+            property variant root_: root
             
             scrollRole: ScrollRole.Main
             
@@ -24,7 +26,7 @@ Page {
                 ListScrollStateHandler {
                     onAtEndChanged: {
                         if(atEnd && !dm.isEmpty() && !dataLoading) {
-                            listRequester.send(qsTr(api.newsBefore).arg(currentDate));
+                            common.apiNewsBefore(listRequester, currentDate);
                         }
                     }
                 }
@@ -33,7 +35,7 @@ Page {
             leadingVisual: RefreshHeader {
                 id: refreshHeader
                 onRefreshTriggered: {
-                    listRequester.send(api.newsLatest);
+                    common.apiNewsLatest(listRequester);
                 }
             }
             
@@ -67,6 +69,7 @@ Page {
                         listData: ListItemData['top_stories']
                         onClick: {
                             var story = ListItem.view.dm_.data([0])['top_stories'][index];
+                            
                             if(story['type'] === 0) {
                                 ListItem.view.root_.pushToNewsPage(story['id']);
                             }else {
@@ -84,41 +87,13 @@ Page {
                 },
                 ListItemComponent {
                     type: "story"
-                    CustomListItem {
-                        dividerVisible: true
-
-                        Container {
-                            layout: StackLayout {
-                                orientation: LayoutOrientation.LeftToRight
-                            }
-                            topPadding: ui.du(2)
-                            bottomPadding: topPadding
-                            leftPadding: ui.du(2)
-                            rightPadding: leftPadding
-
-                            Label {
-                                text: ListItemData.title
-                                multiline: true
-                                layoutProperties: StackLayoutProperties {
-                                    spaceQuota: 1
-                                }
-                            }
-
-                            WebImageView {
-                                url: ListItemData.images[0]
-                                preferredWidth: ui.du(15)
-                                preferredHeight: preferredWidth
-                                scalingMethod: ScalingMethod.AspectFit
-                                implicitLayoutAnimationsEnabled: false
-                                loadingImageSource: "asset:///images/image_small_default.png"
-                                failImageSource: "asset:///images/image_small_default.png"
-                            }
-                        }
+                    NewsListItem {
+                        listItemData: ListItemData
                     }
                 }
             ]
             onCreationCompleted: {
-                listRequester.send(api.newsLatest);
+                common.apiNewsLatest(listRequester);
             }
             onTouch: {
                 refreshHeader.onListViewTouch(event);
@@ -153,13 +128,6 @@ Page {
                     return;
                 }
                 
-                // 如果是刷新，则清空数据
-                if(dm.size() && topStories && topStories.length) {
-                    dm.clear();
-                    refreshHeader.endRefresh();
-                    _misc.showToast(qsTr("刷新成功"));
-                }
-
                 // 重新封装数据
                 stories.unshift({
                     "__type": "date",
@@ -168,6 +136,13 @@ Page {
                 
                 // 顶部放入轮播图数据
                 if (topStories && topStories.length) {
+                    if(dm.size()) {
+                        dm.clear();
+                        refreshHeader.endRefresh();
+                        _misc.showToast(qsTr("刷新成功"));
+                    }
+                    
+                    // 如果是刷新，则清空数据
                     stories.unshift({
                         "__type": "carousel",
                         "top_stories": topStories

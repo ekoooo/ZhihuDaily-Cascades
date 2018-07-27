@@ -1,6 +1,7 @@
 import bb.cascades 1.4
 import tech.lwl 1.0
 import "asset:///components"
+import "asset:///pages/child"
 
 Page {
     id: root
@@ -15,8 +16,6 @@ Page {
     Container {
         ListView {
             id: lv
-            property variant common_: common
-            property variant dm_: dm
             property variant root_: root
             
             scrollRole: ScrollRole.Main
@@ -26,7 +25,7 @@ Page {
                 refreshThreshold: 150
                 onRefreshTriggered: {
                     isRefresh = true;
-                    listRequester.send(api.newsHot);
+                    common.apiNewsHot(listRequester);
                 }
             }
             
@@ -43,41 +42,15 @@ Page {
             listItemComponents: [
                 ListItemComponent {
                     type: ""
-                    CustomListItem {
-                        dividerVisible: true
-                        
-                        Container {
-                            layout: StackLayout {
-                                orientation: LayoutOrientation.LeftToRight
-                            }
-                            topPadding: ui.du(2)
-                            bottomPadding: topPadding
-                            leftPadding: ui.du(2)
-                            rightPadding: leftPadding
-                            
-                            Label {
-                                text: ListItemData.title
-                                multiline: true
-                                layoutProperties: StackLayoutProperties {
-                                    spaceQuota: 1
-                                }
-                            }
-                            
-                            WebImageView {
-                                url: ListItemData.thumbnail
-                                preferredWidth: ui.du(15)
-                                preferredHeight: preferredWidth
-                                scalingMethod: ScalingMethod.AspectFit
-                                implicitLayoutAnimationsEnabled: false
-                                loadingImageSource: "asset:///images/image_small_default.png"
-                                failImageSource: "asset:///images/image_small_default.png"
-                            }
-                        }
+                    NewsListItem {
+                        listItemData: ListItemData
+                        imageKey: "thumbnail"
+                        isImageList: false
                     }
                 }
             ]
             onCreationCompleted: {
-                listRequester.send(api.newsHot);
+                common.apiNewsHot(listRequester);
             }
             onTouch: {
                 refreshHeader.onListViewTouch(event);
