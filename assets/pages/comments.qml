@@ -5,7 +5,7 @@ import "asset:///pages/child"
 Page {
     id: root
     property variant newsId // 文章ID（传入）
-    property variant selectedValue: "long"
+    property bool selecledLong: false
     property int longCommentsCount: 0
     property int shortCommentsCount: 0
     property int likesCount: 0
@@ -18,15 +18,16 @@ Page {
         options: [
             Option {
                 text: qsTr("长评") + (longCommentsCount == 0 ? "" : " - " + longCommentsCount)
-                value: "long"
+                value: true
             },
             Option {
                 text: qsTr("短评") + (shortCommentsCount == 0 ? "" : " - " + shortCommentsCount)
-                value: "short"
+                value: false
+                selected: true
             }
         ]
         onSelectedValueChanged: {
-            root.selectedValue = selectedValue;
+            root.selecledLong = selectedValue;
         }
     }
     
@@ -39,38 +40,38 @@ Page {
             layout: DockLayout {
                 
             }
-            
+
             Container {
-                visible: selectedValue === "long"
+                visible: !selecledLong
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 
                 CommentList {
-                    isActive: selectedValue === "long"
-                    commentsApi: api.storyLongComments
-                    commentsBeforeApi: api.storyNextLongComments
-                    newsId: root.newsId
-                    count: root.longCommentsCount
-                }
-            }
-            
-            Container {
-                visible: selectedValue === "short"
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-                
-                CommentList {
-                    isActive: selectedValue === "short"
-                    commentsApi: api.storyShortComments
-                    commentsBeforeApi: api.storyNextShortComments
+                    isActive: !selecledLong
+                    commentsApi: common.api.storyShortComments
+                    commentsBeforeApi: common.api.storyNextShortComments
                     newsId: root.newsId
                     count: root.shortCommentsCount
                 }
             }
             
             Container {
+                visible: selecledLong
+                horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Fill
+                
+                CommentList {
+                    isActive: selecledLong
+                    commentsApi: common.api.storyLongComments
+                    commentsBeforeApi: common.api.storyNextLongComments
+                    newsId: root.newsId
+                    count: root.longCommentsCount
+                }
+            }
+            
+            Container {
                 id: tip
-                visible: selectedValue === "long" ? longCommentsCount == 0 : shortCommentsCount == 0
+                visible: selecledLong ? longCommentsCount == 0 : shortCommentsCount == 0
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 
@@ -83,7 +84,7 @@ Page {
                     scalingMethod: ScalingMethod.AspectFit
                 }
                 Label {
-                    text: selectedValue === "long" ? qsTr("深度长评虚位以待") : qsTr("短评虚位以待")
+                    text: selecledLong ? qsTr("深度长评虚位以待") : qsTr("短评虚位以待")
                     horizontalAlignment: HorizontalAlignment.Center
                     textStyle {
                         color: Color.create("#e9e9e9")
@@ -112,6 +113,6 @@ Page {
     ]
     
     onNewsIdChanged: {
-        storyExtraRequester.send(qsTr(api.storyExtra).arg(newsId.toString()));
+        common.apiStoryExtra(storyExtraRequester, storyExtraRequester, newsId);
     }
 }
