@@ -1,6 +1,9 @@
 import bb.cascades 1.4
+import "asset:///api.js" as Api
 
 QtObject {
+    property variant api: Api.Api
+    
     // 设置 key
     property variant settingsKey: {
         // 主题
@@ -9,6 +12,15 @@ QtObject {
         "newsLargeFont": "newsLargeFont",
         // 文章护眼模式
         "newsEyeProtectionModel":"newsEyeProtectionModel"
+    }
+    
+    // 快捷键
+    property variant shortCutKey: {
+        "indexPage": "i", // 主页
+        "hotPage": "h", // 今日热门
+        "sectionsPage": "s", // 栏目分类
+        "themesPage": "t", // 主题日报
+        "beforePage": "b" // 过往文章
     }
     
     /**
@@ -109,4 +121,61 @@ QtObject {
     function getPreDateStr(currentDateStr) {
         return formaTtimestamp(+new Date(currentDateStr) - 86400000, 3);
     }
+    
+    
+    // ============ api start ============
+    // 主页列表
+    function apiNewsLatest(requester) {
+        requester.send(api.newsLatest);
+    }
+    // 主页列表加载更多
+    function apiNewsBefore(requester, currentDate) {
+        if(currentDate.indexOf('/') !== -1) {
+            currentDate = formaTtimestamp(+new Date(currentDate), 3);
+        }
+        
+        requester.send(qsTr(api.newsBefore).arg(currentDate));
+    }
+    // 文章内容
+    function apiNews(requester, newsId) {
+        requester.send(qsTr(api.news).arg(newsId.toString()));
+    }
+    // 文章额外信息
+    function apiStoryExtra(requester, storyExtraRequester, newsId) {
+        requester.send(qsTr(api.storyExtra).arg(newsId.toString()));
+    }
+    // 文章评论
+    function apiComments(requester, api, newsId) {
+        requester.send(qsTr(api).arg(newsId.toString()));
+    }
+    // 文章评论加载更多
+    function apiCommentsMore(requester, api, newsId, lastCommentId) {
+        requester.send(qsTr(api).arg(newsId.toString()).arg(lastCommentId.toString()));
+    }
+    // 栏目分类
+    function apiSections(requester) {
+        requester.send(api.sections);
+    }
+    // 栏目分类列表
+    function apiSectionMore(requester, sectionId, dateStr) {
+        var tsmp = +new Date(dateStr.indexOf('/') === -1 ? formatDateStr(dateStr) : dateStr) / 1000;
+        requester.send(qsTr(api.sectionMore).arg(sectionId.toString()).arg(tsmp.toString()));
+    }
+    // 主题日报
+    function apiThemes(requester) {
+        requester.send(api.themes);
+    }
+    // 主题日报列表
+    function apiThemeList(requester, themeId) {
+        requester.send(qsTr(api.theme).arg(themeId.toString()));
+    }
+    // 主题日报更多
+    function apiThemeListMore(requester, themeId, lastNewsId) {
+        requester.send(qsTr(api.themeMore).arg(themeId.toString()).arg(lastNewsId.toString()));
+    }
+    // 热门文章
+    function apiNewsHot(requester) {
+        requester.send(api.newsHot);
+    }
+    // ============ api end ============
 }
