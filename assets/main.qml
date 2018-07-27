@@ -17,11 +17,9 @@
 import bb.cascades 1.4
 import "asset:///common"
 import "asset:///pages" as Page
-import "asset:///api.js" as Api
 
 TabbedPane {
     property variant nav: activeTab.tabNav // 所以页面可用导航
-    property variant api: Api.Api
 
     showTabsOnActionBar: false
     activeTab: indexTab // 默认 activeTab 为 主页
@@ -65,7 +63,7 @@ TabbedPane {
             imageSource: "asset:///images/bb10/ic_home.png"
             shortcuts: [
                 Shortcut {
-                    key: "i"
+                    key: common.shortCutKey.indexPage
                     onTriggered: {
                         activeTab = indexTab;
                     }
@@ -89,7 +87,7 @@ TabbedPane {
             imageSource: "asset:///images/bb10/ic_diagnostics.png"
             shortcuts: [
                 Shortcut {
-                    key: "h"
+                    key: common.shortCutKey.hotPage
                     onTriggered: {
                         activeTab = hotTab;
                     }
@@ -112,7 +110,7 @@ TabbedPane {
             imageSource: "asset:///images/bb10/ic_deselect_all.png"
             shortcuts: [
                 Shortcut {
-                    key: "s"
+                    key: common.shortCutKey.sectionsPage
                     onTriggered: {
                         activeTab = sectionsTab;
                     }
@@ -136,7 +134,7 @@ TabbedPane {
             imageSource: "asset:///images/bb10/ic_favorite.png"
             shortcuts: [
                 Shortcut {
-                    key: "t"
+                    key: common.shortCutKey.themesPage
                     onTriggered: {
                         activeTab = themesTab;
                     }
@@ -159,7 +157,7 @@ TabbedPane {
             imageSource: "asset:///images/bb10/ic_search.png"
             shortcuts: [
                 Shortcut {
-                    key: "b"
+                    key: common.shortCutKey.beforePage
                     onTriggered: {
                         activeTab = beforeTab;
                     }
@@ -188,4 +186,14 @@ TabbedPane {
     onCreationCompleted: {
          _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
     }
+    
+    // 屏蔽 p 快捷键，影响列表刷新功能
+    shortcuts: [
+        Shortcut {
+            key: "p"
+            onTriggered: {
+                // _misc.showToast(qsTr("该快捷键已被屏蔽"))
+            }
+        }
+    ]
 }
