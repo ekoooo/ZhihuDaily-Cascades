@@ -186,14 +186,4 @@ TabbedPane {
     onCreationCompleted: {
          _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
     }
-    
-    // 屏蔽 p 快捷键，影响列表刷新功能
-    shortcuts: [
-        Shortcut {
-            key: "p"
-            onTriggered: {
-                // _misc.showToast(qsTr("该快捷键已被屏蔽"))
-            }
-        }
-    ]
 }

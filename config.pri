@@ -41,6 +41,16 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/components/Carousel.qml) \
         $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
         $$quote($$BASEDIR/assets/images/account_avatar.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_110x110.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_144x144.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_86x86.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_90x90.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_96x96.png) \
+        $$quote($$BASEDIR/assets/images/app/splash_1024x600.png) \
+        $$quote($$BASEDIR/assets/images/app/splash_1440x1440.png) \
+        $$quote($$BASEDIR/assets/images/app/splash_720x1280.png) \
+        $$quote($$BASEDIR/assets/images/app/splash_720x720.png) \
+        $$quote($$BASEDIR/assets/images/app/splash_768x1280.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_contact.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_deselect_all.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_diagnostics.png) \
@@ -99,6 +109,11 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/applicationui.hpp)
 }
 
+INCLUDEPATH += $$quote($$BASEDIR/src/Requester) \
+    $$quote($$BASEDIR/src/WebImageView) \
+    $$quote($$BASEDIR/src) \
+    $$quote($$BASEDIR/src/Misc)
+
 CONFIG += precompile_header
 
 PRECOMPILED_HEADER = $$quote($$BASEDIR/precompiled.h)
@@ -137,6 +152,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/images/*.qml) \
         $$quote($$BASEDIR/../assets/images/*.js) \
         $$quote($$BASEDIR/../assets/images/*.qs) \
+        $$quote($$BASEDIR/../assets/images/app/*.qml) \
+        $$quote($$BASEDIR/../assets/images/app/*.js) \
+        $$quote($$BASEDIR/../assets/images/app/*.qs) \
         $$quote($$BASEDIR/../assets/images/bb10/*.qml) \
         $$quote($$BASEDIR/../assets/images/bb10/*.js) \
         $$quote($$BASEDIR/../assets/images/bb10/*.qs) \
@@ -149,9 +167,6 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/pages/child/*.qml) \
         $$quote($$BASEDIR/../assets/pages/child/*.js) \
         $$quote($$BASEDIR/../assets/pages/child/*.qs) \
-        $$quote($$BASEDIR/../assets/sheets/*.qml) \
-        $$quote($$BASEDIR/../assets/sheets/*.js) \
-        $$quote($$BASEDIR/../assets/sheets/*.qs) \
         $$quote($$BASEDIR/../assets/source/*.qml) \
         $$quote($$BASEDIR/../assets/source/*.js) \
         $$quote($$BASEDIR/../assets/source/*.qs)

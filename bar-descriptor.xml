@@ -26,7 +26,7 @@
 
     <!-- A universally unique application identifier. Must be unique across all BlackBerry 10 applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>com.example.ZhihuDaily_Cascades</id>
+    <id>tech.lwl.zhihudaily</id>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/ZhihuDaily_Cascades" entry="true" type="Qnx/Elf">ZhihuDaily_Cascades</asset>
@@ -47,7 +47,6 @@
 
     <!-- The name that is displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>ZhihuDaily-Cascades</name>
 
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -56,6 +55,23 @@
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
+    <name>&#x77e5;&#x4e4e;&#x65e5;&#x62a5;</name>
+    <icon>
+       <image>logo_110x110.png</image>
+       <image>logo_144x144.png</image>
+       <image>logo_86x86.png</image>
+       <image>logo_90x90.png</image>
+       <image>logo_96x96.png</image>
+    </icon>
+    <splashScreens>
+       <image>splash_1024x600.png</image>
+       <image>splash_1440x1440.png</image>
+       <image>splash_720x1280.png</image>
+       <image>splash_768x1280.png</image>
+       <image>splash_720x720.png</image>
+    </splashScreens>
+    <category>core.media</category>
+    <description>&#x300a;&#x77e5;&#x4e4e;&#x65e5;&#x62a5;&#xb7;&#x539f;&#x751f;&#x7248;&#x300b;&#xff0c;&#x62d2;&#x7edd;&#x53d1;&#x70ed;&#xff0c;&#x62d2;&#x7edd;&#x5361;&#x987f;&#x3002;</description>
     <buildId>1</buildId>
 
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
@@ -63,13 +79,11 @@
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The ZhihuDaily-Cascades application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
-    <author>Example Inc.</author>
 
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->
@@ -80,20 +94,27 @@
     </initialWindow>
 
     <!--  The icon for the application, which should be 114x114. -->
-    <icon>
-        <image>icon.png</image>
-    </icon>
 
-    <asset path="icon.png">icon.png</asset>
     <asset path="assets">assets</asset>
 
     <!-- Locale support -->
     <asset path="translations" dest="qm">
         <include name="*.qm"/>
     </asset>
+    <asset path="assets/images/app/logo_110x110.png">logo_110x110.png</asset>
+    <asset path="assets/images/app/logo_144x144.png">logo_144x144.png</asset>
+    <asset path="assets/images/app/logo_86x86.png">logo_86x86.png</asset>
+    <asset path="assets/images/app/logo_90x90.png">logo_90x90.png</asset>
+    <asset path="assets/images/app/logo_96x96.png">logo_96x96.png</asset>
+    <asset path="assets/images/app/splash_1024x600.png">splash_1024x600.png</asset>
+    <asset path="assets/images/app/splash_1440x1440.png">splash_1440x1440.png</asset>
+    <asset path="assets/images/app/splash_720x1280.png">splash_720x1280.png</asset>
+    <asset path="assets/images/app/splash_720x720.png">splash_720x720.png</asset>
+    <asset path="assets/images/app/splash_768x1280.png">splash_768x1280.png</asset>
 
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
+    <env var="CASCADES_THEME" value="bright"/>
 
 </qnx>

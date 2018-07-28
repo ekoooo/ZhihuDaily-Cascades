@@ -81,18 +81,18 @@
 <context>
     <name>index</name>
     <message>
-        <location filename="../assets/pages/index.qml" line="57"/>
-        <location filename="../assets/pages/index.qml" line="75"/>
+        <location filename="../assets/pages/index.qml" line="58"/>
+        <location filename="../assets/pages/index.qml" line="76"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="126"/>
+        <location filename="../assets/pages/index.qml" line="127"/>
         <source>加载失败，请重新加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="141"/>
+        <location filename="../assets/pages/index.qml" line="142"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -168,27 +168,27 @@
 <context>
     <name>news</name>
     <message>
-        <location filename="../assets/pages/news.qml" line="45"/>
+        <location filename="../assets/pages/news.qml" line="24"/>
         <source>评论</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="56"/>
+        <location filename="../assets/pages/news.qml" line="35"/>
         <source>护眼</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="70"/>
+        <location filename="../assets/pages/news.qml" line="49"/>
         <source>分享</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="77"/>
+        <location filename="../assets/pages/news.qml" line="56"/>
         <source>%1（分享自 @知乎日报）%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="130"/>
+        <location filename="../assets/pages/news.qml" line="109"/>
         <source>文章数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>
