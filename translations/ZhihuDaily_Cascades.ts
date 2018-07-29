@@ -164,62 +164,57 @@
 <context>
     <name>help</name>
     <message>
-        <location filename="../assets/pages/help.qml" line="11"/>
-        <source>帮助</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/help.qml" line="19"/>
+        <location filename="../assets/pages/help.qml" line="14"/>
         <source>模块</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="26"/>
+        <location filename="../assets/pages/help.qml" line="21"/>
         <source>主页、今日热门、栏目分类、主题日报、过往文章。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="30"/>
+        <location filename="../assets/pages/help.qml" line="25"/>
         <source>文章阅读、评论查看。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="34"/>
+        <location filename="../assets/pages/help.qml" line="29"/>
         <source>帮助、赞助、关于、设置。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="40"/>
+        <location filename="../assets/pages/help.qml" line="35"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="47"/>
+        <location filename="../assets/pages/help.qml" line="42"/>
         <source>一、文章图片可点击预览，可保持到本地。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="51"/>
+        <location filename="../assets/pages/help.qml" line="46"/>
         <source>二、被回复长评默认显示两行，点击可显示全部。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="55"/>
+        <location filename="../assets/pages/help.qml" line="50"/>
         <source>三、部分列表可下拉刷新。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="59"/>
+        <location filename="../assets/pages/help.qml" line="54"/>
         <source>四、帮助、赞助、关于、设置 被禁止打开菜单。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="65"/>
+        <location filename="../assets/pages/help.qml" line="60"/>
         <source>快捷键</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="89"/>
+        <location filename="../assets/pages/help.qml" line="84"/>
         <source>为保证不与系统快自带捷键冲突，有的快捷键是根据拼音首字母指定的。</source>
         <translation type="unfinished"></translation>
     </message>
@@ -437,7 +432,7 @@
 <context>
     <name>sponsor</name>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="13"/>
+        <location filename="../assets/pages/sponsor.qml" line="14"/>
         <source>以下为赞助名单，感谢你们的支持！</source>
         <translation type="unfinished"></translation>
     </message>
