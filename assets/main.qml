@@ -24,6 +24,58 @@ TabbedPane {
     showTabsOnActionBar: false
     activeTab: indexTab // 默认 activeTab 为 主页
 
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.back
+            onTriggered: {
+                if(nav.count() !== 1) {
+                    nav.pop();
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.indexPage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = indexTab;
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.hotPage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = hotTab;
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.sectionsPage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = sectionsTab;
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.themesPage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = themesTab;
+                }
+                
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.beforePage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = beforeTab;
+                }
+            }
+        }
+    ]
+
     Menu.definition: MenuDefinition {
         helpAction: HelpActionItem {
             title: qsTr("帮助")
@@ -42,14 +94,14 @@ TabbedPane {
                 title: qsTr("赞助")
                 imageSource: "asset:///images/bb10/ic_contact.png"
                 onTriggered: {
-                    
+                    nav.push(sponsorPage.createObject());
                 }
             },
             ActionItem {
                 title: qsTr("关于")
                 imageSource: "asset:///images/bb10/ic_info.png"
                 onTriggered: {
-                    console.log('关于');
+                    nav.push(aboutPage.createObject());
                 }
             }
         ]
@@ -61,21 +113,11 @@ TabbedPane {
             property alias tabNav: indexNav
             title: qsTr("主页")
             imageSource: "asset:///images/bb10/ic_home.png"
-            shortcuts: [
-                Shortcut {
-                    key: common.shortCutKey.indexPage
-                    onTriggered: {
-                        activeTab = indexTab;
-                    }
-                }
-            ]
             NavigationPane {
                 id: indexNav
                 Page.index {}
-                
-                onPopTransitionEnded: {
-                    page.destroy();
-                }
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
             }
         },
         // 今日热门
@@ -85,20 +127,11 @@ TabbedPane {
             title: qsTr("今日热门")
             description: qsTr("每天更新的热门文章")
             imageSource: "asset:///images/bb10/ic_diagnostics.png"
-            shortcuts: [
-                Shortcut {
-                    key: common.shortCutKey.hotPage
-                    onTriggered: {
-                        activeTab = hotTab;
-                    }
-                }
-            ]
             NavigationPane {
                 id: hotNav
                 Page.hot {}
-                onPopTransitionEnded: {
-                    page.destroy();
-                }
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
             }
         },
         // 栏目分类
@@ -108,21 +141,11 @@ TabbedPane {
             title: qsTr("栏目分类")
             description: qsTr("一次性过瘾《瞎扯》等系列")
             imageSource: "asset:///images/bb10/ic_deselect_all.png"
-            shortcuts: [
-                Shortcut {
-                    key: common.shortCutKey.sectionsPage
-                    onTriggered: {
-                        activeTab = sectionsTab;
-                    }
-                }
-            ]
-            
             NavigationPane {
                 id: sectionsNav
                 Page.sections {}
-                onPopTransitionEnded: {
-                    page.destroy();
-                }
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
             }
         },
         // 主题日报
@@ -132,20 +155,11 @@ TabbedPane {
             title: qsTr("主题日报")
             description: qsTr("萝卜青菜各有所爱")
             imageSource: "asset:///images/bb10/ic_favorite.png"
-            shortcuts: [
-                Shortcut {
-                    key: common.shortCutKey.themesPage
-                    onTriggered: {
-                        activeTab = themesTab;
-                    }
-                }
-            ]
             NavigationPane {
                 id: themesNav
                 Page.themes {}
-                onPopTransitionEnded: {
-                    page.destroy();
-                }
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
             }
         },
         // 过往文章
@@ -155,24 +169,15 @@ TabbedPane {
             title: qsTr("过往文章")
             description: qsTr("按日期搜索文章")
             imageSource: "asset:///images/bb10/ic_search.png"
-            shortcuts: [
-                Shortcut {
-                    key: common.shortCutKey.beforePage
-                    onTriggered: {
-                        activeTab = beforeTab;
-                    }
-                }
-            ]
-            
             NavigationPane {
                 id: beforeNav
                 Page.before {}
-                onPopTransitionEnded: {
-                    page.destroy();
-                }
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
             }
         }
     ]
+    
     attachedObjects: [
         Common {
             id: common
@@ -184,6 +189,14 @@ TabbedPane {
         ComponentDefinition {
             id: helpPage
             source: "asset:///pages/help.qml"
+        },
+        ComponentDefinition {
+            id: sponsorPage
+            source: "asset:///pages/sponsor.qml"
+        },
+        ComponentDefinition {
+            id: aboutPage
+            source: "asset:///pages/about.qml"
         }
     ]
     
