@@ -16,11 +16,24 @@ QtObject {
     
     // 快捷键
     property variant shortCutKey: {
-        "indexPage": "i", // 主页
-        "hotPage": "h", // 今日热门
-        "sectionsPage": "s", // 栏目分类
-        "themesPage": "t", // 主题日报
-        "beforePage": "b" // 过往文章
+        "shortCutList": ['back', 'indexPage', 'hotPage', 'sectionsPage', 'themesPage', 'beforePage', 'commonPage', 'switchCommonType'],
+                
+         "back": "f",
+         "backLabel": qsTr("返回"),
+         "indexPage": "h",
+         "indexPageLabel": qsTr("主页"),
+         "hotPage": "r",
+         "hotPageLabel": qsTr("今日热门"),
+         "sectionsPage": "l",
+         "sectionsPageLabel": qsTr("栏目分类"),
+         "themesPage": "z",
+         "themesPageLabel": qsTr("主题日报"),
+         "beforePage": "g",
+         "beforePageLabel": qsTr("过往文章"),
+         "commonPage": "c",
+         "commonPageLabel": qsTr("进入评论页面"),
+         "switchCommonType": "c",
+         "switchCommonTypeLabel": qsTr("切换长短评")
     }
     
     /**
@@ -122,6 +135,18 @@ QtObject {
         return formaTtimestamp(+new Date(currentDateStr) - 86400000, 3);
     }
     
+    // ============ nav start ============
+    function onPopTransitionEnded(nav, page) {
+        page.destroy();
+        // 从任何页面 pop 都设置可打开 application menu
+        Application.menuEnabled = true;
+    }
+    
+    function onPushTransitionEnded(nav, page) {
+        // 帮助、赞助、关于、设置 页面禁止再打开 application menu
+        Application.menuEnabled = ['helpPage', 'sponsorPage', 'aboutPage', 'settingsPage'].indexOf(page.objectName) === -1;
+    }
+    // ============ nav end ============
     
     // ============ api start ============
     // 主页列表
