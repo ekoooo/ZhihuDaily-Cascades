@@ -19,6 +19,16 @@ Page {
     actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
     actionBarVisibility: ChromeVisibility.Overlay
     
+    
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.commonPage
+            onTriggered: {
+                root.goCommentsPage();
+            }
+        }
+    ]
+    
     actions: [
         ActionItem {
             title: qsTr("评论")
@@ -26,9 +36,7 @@ Page {
             imageSource: "asset:///images/bb10/ic_textmessage_dk.png"
             
             onTriggered: {
-                var page = commentsPage.createObject();
-                page.newsId = newsId;
-                nav.push(page);
+                root.goCommentsPage();
             }
         },
         ActionItem {
@@ -224,6 +232,8 @@ Page {
                         
                         if(msg.event === 'invokeImage') {
                             invokeImage.url = msg.url;
+                        }else if(msg.event === 'invokeLink') {
+                            _misc.invokeBrowser(msg.url);
                         }
                     }
                     onEyeProtectionModelChanged: {
@@ -242,5 +252,11 @@ Page {
     // 拉取文章信息
     onNewsIdChanged: {
         common.apiNews(newsRequester, newsId);
+    }
+    
+    function goCommentsPage() {
+        var page = commentsPage.createObject();
+        page.newsId = newsId;
+        nav.push(page);
     }
 }
