@@ -1,5 +1,4 @@
 import bb.cascades 1.4
-import tech.lwl 1.0
 
 Page {
     objectName: "sponsorPage"
@@ -19,30 +18,13 @@ Page {
             }
             
             onCreationCompleted: {
-                common.apiSponsor(dataRequester);
+                // common.api.sponsor
+                common.httpGetAsync("https://api.github.com/user", function(isOk, data) {
+                        _misc.showToast(isOk + ":::" + data);
+                });
             }
         }
     }
-    
-    attachedObjects: [
-        Requester {
-            id: dataRequester
-            onBeforeSend: {
-                isLoading = true;
-            }
-            onFinished: {
-                isLoading = false;
-                
-                dm.clear();
-                dm.insert(0, JSON.parse(data));
-            }
-            onError: {
-                isLoading = false;
-                _misc.showToast(error);
-                console.log(error);
-            }
-        }
-    ]
     
     onCreationCompleted: {
         
