@@ -202,5 +202,9 @@ QtObject {
     function apiNewsHot(requester) {
         requester.send(api.newsHot);
     }
+    // 赞助
+    function apiSponsor(requester) {
+        requester.send(api.sponsor);
+    }
     // ============ api end ============
 }

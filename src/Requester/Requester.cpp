@@ -13,6 +13,8 @@
 #include <QtCore/QUrl>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkDiskCache>
+#include <QtNetwork/QSslConfiguration>
+#include <QtNetwork/QSslSocket>
 #include <bb/data/JsonDataAccess>
 
 using namespace bb::data;
@@ -100,6 +102,11 @@ void Requester::send(QUrl url) {
         headersIt.next();
         request.setRawHeader(headersIt.key().toUtf8(), headersIt.value().toByteArray());
     }
+    // SSL handshake failed
+    QSslConfiguration config = request.sslConfiguration();
+    config.setPeerVerifyMode(QSslSocket::VerifyNone);
+    config.setProtocol(QSsl::TlsV1);
+    request.setSslConfiguration(config);
 
     QNetworkReply *reply;
 

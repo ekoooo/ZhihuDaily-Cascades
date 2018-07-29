@@ -175,17 +175,17 @@
     </message>
     <message>
         <location filename="../assets/pages/help.qml" line="26"/>
-        <source>主页、今日热门、栏目分类、主题日报、过往文章</source>
+        <source>主页、今日热门、栏目分类、主题日报、过往文章。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/pages/help.qml" line="30"/>
-        <source>文章阅读、评论查看</source>
+        <source>文章阅读、评论查看。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/pages/help.qml" line="34"/>
-        <source>帮助、赞助、关于、设置</source>
+        <source>帮助、赞助、关于、设置。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -216,6 +216,11 @@
     <message>
         <location filename="../assets/pages/help.qml" line="65"/>
         <source>快捷键</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/help.qml" line="89"/>
+        <source>为保证不与系统快自带捷键冲突，有的快捷键是根据拼音首字母指定的。</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -426,6 +431,14 @@
     <message>
         <location filename="../assets/pages/settings.qml" line="115"/>
         <source>应用缓存</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>sponsor</name>
+    <message>
+        <location filename="../assets/pages/sponsor.qml" line="13"/>
+        <source>以下为赞助名单，感谢你们的支持！</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -40,4 +40,6 @@ var Api = {
      http://news-at.zhihu.com/api/4/story/7809160/short-comments
      http://news-at.zhihu.com/api/4/story/7809160/short-comments/before/26354994
      */
+    // 赞助
+    "sponsor": "https://ekoooo.github.io/ZhihuDaily-Cascades/sponsor.json",
 };
