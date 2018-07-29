@@ -81,6 +81,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/child/SectionThemeItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/SettingsItemContainer.qml) \
         $$quote($$BASEDIR/assets/pages/comments.qml) \
+        $$quote($$BASEDIR/assets/pages/help.qml) \
         $$quote($$BASEDIR/assets/pages/hot.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
         $$quote($$BASEDIR/assets/pages/news.qml) \

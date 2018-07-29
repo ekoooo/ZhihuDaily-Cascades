@@ -28,7 +28,7 @@ TabbedPane {
         helpAction: HelpActionItem {
             title: qsTr("帮助")
             onTriggered: {
-                console.log('帮助');
+                nav.push(helpPage.createObject());
             }
         }
         settingsAction: SettingsActionItem {
@@ -42,7 +42,7 @@ TabbedPane {
                 title: qsTr("赞助")
                 imageSource: "asset:///images/bb10/ic_contact.png"
                 onTriggered: {
-                    console.log('赞助');
+                    
                 }
             },
             ActionItem {
@@ -180,6 +180,10 @@ TabbedPane {
         ComponentDefinition {
             id: settingsPage
             source: "asset:///pages/settings.qml"
+        },
+        ComponentDefinition {
+            id: helpPage
+            source: "asset:///pages/help.qml"
         }
     ]
     
