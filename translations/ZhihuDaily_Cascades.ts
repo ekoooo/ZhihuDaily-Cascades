@@ -432,7 +432,7 @@
 <context>
     <name>sponsor</name>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="14"/>
+        <location filename="../assets/pages/sponsor.qml" line="12"/>
         <source>以下为赞助名单，感谢你们的支持！</source>
         <translation type="unfinished"></translation>
     </message>
