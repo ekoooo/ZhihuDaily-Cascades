@@ -35,9 +35,11 @@ class Misc : public QObject {
         Q_INVOKABLE static QString webImageViewCacheSize();
         Q_INVOKABLE static QString requesterCacheSize();
 
-        Q_INVOKABLE void invokeViewIamge(QString path);
-        Q_INVOKABLE QByteArray toUtf8(QString text);
+        Q_INVOKABLE static QByteArray toUtf8(QString text);
 
+        Q_INVOKABLE void invokeViewIamge(QString path);
+        Q_INVOKABLE void invokeBrowser(QString url);
+        Q_INVOKABLE void invokeBBWorld(QString appurl);
     private:
         static SystemToast *toast;
         InvokeManager *invokeManager;

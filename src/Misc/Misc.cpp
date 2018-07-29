@@ -44,6 +44,29 @@ void Misc::invokeViewIamge(QString path) {
     Q_UNUSED(invokeTargetReply);
 }
 
+void Misc::invokeBrowser(QString url) {
+    InvokeRequest request;
+    request.setUri(url);
+    request.setTarget("sys.browser");
+    request.setAction("bb.action.OPEN");
+
+    InvokeTargetReply *invokeTargetReply = invokeManager->invoke(request);
+    Q_UNUSED(invokeTargetReply);
+}
+
+/**
+ * appurl e.g. appworld://content/???
+ */
+void Misc::invokeBBWorld(QString appurl) {
+    InvokeRequest request;
+    request.setUri(appurl);
+    request.setTarget("sys.appworld");
+    request.setAction("bb.action.OPEN");
+
+    InvokeTargetReply *invokeTargetReply = invokeManager->invoke(request);
+    Q_UNUSED(invokeTargetReply);
+}
+
 QByteArray Misc::toUtf8(QString text) {
     return text.toUtf8();
 }
