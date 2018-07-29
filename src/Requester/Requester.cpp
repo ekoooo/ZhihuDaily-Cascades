@@ -14,7 +14,7 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkDiskCache>
 #include <QtNetwork/QSslConfiguration>
-#include <QtNetwork/QSslSocket>
+#include <QtNetwork/QSsl>
 #include <bb/data/JsonDataAccess>
 
 using namespace bb::data;
@@ -102,11 +102,20 @@ void Requester::send(QUrl url) {
         headersIt.next();
         request.setRawHeader(headersIt.key().toUtf8(), headersIt.value().toByteArray());
     }
-    // SSL handshake failed
-    QSslConfiguration config = request.sslConfiguration();
-    config.setPeerVerifyMode(QSslSocket::VerifyNone);
-    config.setProtocol(QSsl::TlsV1);
-    request.setSslConfiguration(config);
+    /**
+     * @TODO: 请求 github https 出现 SSL handshake failed 错误。未解决
+     * QSsl::SslV3
+     * QSsl::SslV2
+     * QSsl::TlsV1
+     * QSsl::UnknownProtocol
+     * QSsl::AnyProtocol
+     * QSsl::TlsV1SslV3
+     * QSsl::SecureProtocols
+     */
+//    QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
+//    sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+//    sslConfig.setProtocol(QSsl::AnyProtocol);
+//    request.setSslConfiguration(sslConfig);
 
     QNetworkReply *reply;
 
