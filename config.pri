@@ -75,11 +75,12 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/image_small_default.png) \
         $$quote($$BASEDIR/assets/images/image_top_default.png) \
         $$quote($$BASEDIR/assets/main.qml) \
+        $$quote($$BASEDIR/assets/pages/about.qml) \
         $$quote($$BASEDIR/assets/pages/before.qml) \
         $$quote($$BASEDIR/assets/pages/child/CommentList.qml) \
+        $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
         $$quote($$BASEDIR/assets/pages/child/NewsListItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/SectionThemeItem.qml) \
-        $$quote($$BASEDIR/assets/pages/child/SettingsItemContainer.qml) \
         $$quote($$BASEDIR/assets/pages/comments.qml) \
         $$quote($$BASEDIR/assets/pages/help.qml) \
         $$quote($$BASEDIR/assets/pages/hot.qml) \
@@ -88,6 +89,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/sectionList.qml) \
         $$quote($$BASEDIR/assets/pages/sections.qml) \
         $$quote($$BASEDIR/assets/pages/settings.qml) \
+        $$quote($$BASEDIR/assets/pages/sponsor.qml) \
         $$quote($$BASEDIR/assets/pages/themeList.qml) \
         $$quote($$BASEDIR/assets/pages/themes.qml) \
         $$quote($$BASEDIR/assets/source/newsInjector.js) \
