@@ -33,12 +33,12 @@ var Api = {
     "storyShortComments": "http://news-at.zhihu.com/api/4/story/%1/short-comments",
     "storyNextShortComments": "http://news-at.zhihu.com/api/4/story/%1/short-comments/before/%2",
     /*
-     长评论翻页:
-     http://news-at.zhihu.com/api/4/story/7809160/long-comments
-     http://news-at.zhihu.com/api/4/story/7809160/long-comments/before/26092304
-     短评论翻页:
-     http://news-at.zhihu.com/api/4/story/7809160/short-comments
-     http://news-at.zhihu.com/api/4/story/7809160/short-comments/before/26354994
+     * 长评论翻页:
+     * http://news-at.zhihu.com/api/4/story/7809160/long-comments
+     * http://news-at.zhihu.com/api/4/story/7809160/long-comments/before/26092304
+     * 短评论翻页:
+     * http://news-at.zhihu.com/api/4/story/7809160/short-comments
+     * http://news-at.zhihu.com/api/4/story/7809160/short-comments/before/26354994
      */
     // 赞助
     "sponsor": "https://ekoooo.github.io/ZhihuDaily-Cascades/sponsor.json",
