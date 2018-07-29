@@ -32,6 +32,13 @@ using namespace bb::cascades;
 Q_DECL_EXPORT int main(int argc, char **argv)
 {
     Application app(argc, argv);
+    /**
+     * To use this feature, you must enable sending QML files to a device.
+     * In the Momentics IDE, in Window > Preferences > BlackBerry,
+     * select Send QML files to device on save,
+     * the application must be built in debug mode
+     * and the development support must be installed in valid application instance.
+     */
     DevelopmentSupport::install();
 
     qmlRegisterType<QTimer>("tech.lwl", 1, 0, "QTimer");
