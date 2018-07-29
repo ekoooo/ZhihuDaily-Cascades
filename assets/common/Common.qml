@@ -207,4 +207,18 @@ QtObject {
         requester.send(api.sponsor);
     }
     // ============ api end ============
+    function httpGetAsync(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() { 
+            if(xmlHttp.readyState == 4) {
+                if(xmlHttp.status == 200) {
+                    callback(true, xmlHttp.responseText);
+                }else {
+                    callback(false, xmlHttp.statusText);
+                }
+            }
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        xmlHttp.send(null);
+    }
 }
