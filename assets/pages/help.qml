@@ -7,11 +7,6 @@ Page {
     
     actionBarVisibility: ChromeVisibility.Compact
     
-    titleBar: TitleBar {
-        title: qsTr("帮助")
-        scrollBehavior: TitleBarScrollBehavior.NonSticky
-    }
-    
     ScrollView {
         Container {
             bottomPadding: ui.du(14)
