@@ -5,7 +5,7 @@ import "asset:///pages/child"
 Page {
     id: root
     property variant newsId // 文章ID（传入）
-    property bool selecledLong: false
+    property bool selectedLong: false
     property int longCommentsCount: 0
     property int shortCommentsCount: 0
     property int likesCount: 0
@@ -27,7 +27,7 @@ Page {
             }
         ]
         onSelectedValueChanged: {
-            root.selecledLong = selectedValue;
+            root.selectedLong = selectedValue;
         }
     }
     
@@ -42,12 +42,12 @@ Page {
             }
 
             Container {
-                visible: !selecledLong
+                visible: !selectedLong
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 
                 CommentList {
-                    isActive: !selecledLong
+                    isActive: !selectedLong
                     commentsApi: common.api.storyShortComments
                     commentsBeforeApi: common.api.storyNextShortComments
                     newsId: root.newsId
@@ -56,12 +56,12 @@ Page {
             }
             
             Container {
-                visible: selecledLong
+                visible: selectedLong
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 
                 CommentList {
-                    isActive: selecledLong
+                    isActive: selectedLong
                     commentsApi: common.api.storyLongComments
                     commentsBeforeApi: common.api.storyNextLongComments
                     newsId: root.newsId
@@ -71,7 +71,7 @@ Page {
             
             Container {
                 id: tip
-                visible: selecledLong ? longCommentsCount == 0 : shortCommentsCount == 0
+                visible: selectedLong ? longCommentsCount == 0 : shortCommentsCount == 0
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 
@@ -84,7 +84,7 @@ Page {
                     scalingMethod: ScalingMethod.AspectFit
                 }
                 Label {
-                    text: selecledLong ? qsTr("深度长评虚位以待") : qsTr("短评虚位以待")
+                    text: selectedLong ? qsTr("深度长评虚位以待") : qsTr("短评虚位以待")
                     horizontalAlignment: HorizontalAlignment.Center
                     textStyle {
                         color: Color.create("#e9e9e9")
