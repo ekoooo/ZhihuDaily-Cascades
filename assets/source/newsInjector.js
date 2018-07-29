@@ -1,6 +1,8 @@
 $(function() {
     // 图片 invoke
     setInvokeImage();
+    // 链接 invoke
+    setInvokeLink();
 });
 
 function setInvokeImage() {
@@ -9,6 +11,21 @@ function setInvokeImage() {
             event: 'invokeImage',
             url: e.currentTarget.src
         }));
+    });
+}
+
+function setInvokeLink() {
+    $('.content-wrap a').on('click', function(e) {
+        var url = e.currentTarget.href;
+
+        if(url.indexOf('http') === 0) {
+            e.preventDefault();
+            
+            navigator.cascades.postMessage(JSON.stringify({
+                event: 'invokeLink',
+                url: url
+            }));
+        }
     });
 }
 
