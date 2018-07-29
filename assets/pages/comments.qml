@@ -13,6 +13,7 @@ Page {
     actionBarVisibility: ChromeVisibility.Compact
     
     titleBar: TitleBar {
+        id: titleBar
         scrollBehavior: TitleBarScrollBehavior.Sticky
         kind: TitleBarKind.Segmented
         options: [
@@ -30,6 +31,15 @@ Page {
             root.selectedLong = selectedValue;
         }
     }
+    
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.switchCommonType
+            onTriggered: {
+                titleBar.setSelectedIndex(root.selectedLong ? 1 : 0);
+            }
+        }
+    ]
     
     Container {
         layout: StackLayout {
