@@ -3,6 +3,8 @@ import tech.lwl 1.0
 import "asset:///pages/child"
 
 Page {
+    objectName: "settingsPage"
+    
     actionBarVisibility: ChromeVisibility.Compact
     
     property bool isLargeFont: false;
@@ -31,7 +33,7 @@ Page {
                 Header {
                     title: qsTr("视觉设置")
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         verticalAlignment: VerticalAlignment.Center
                         layoutProperties: StackLayoutProperties {
@@ -54,7 +56,7 @@ Page {
                         }
                     }
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         text: qsTr("与文章护眼模式相互独立，护眼模式直接在文章页中可设置")
                         textStyle {
@@ -72,7 +74,7 @@ Page {
                 Header {
                     title: qsTr("文章字体")
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         verticalAlignment: VerticalAlignment.Center
                         layoutProperties: StackLayoutProperties {
@@ -94,7 +96,7 @@ Page {
                         }
                     }
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         text: qsTr("重新进入文章页面生效，如需调整全局字体大小，请前往系统 设置/显示屏/字体大小 处进行设置")
                         textStyle {
@@ -112,7 +114,7 @@ Page {
                 Header {
                     title: qsTr("应用缓存")
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         verticalAlignment: VerticalAlignment.Bottom
                         layoutProperties: StackLayoutProperties {
@@ -130,7 +132,7 @@ Page {
                         }
                     }
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         verticalAlignment: VerticalAlignment.Bottom
                         layoutProperties: StackLayoutProperties {
@@ -147,7 +149,7 @@ Page {
                         }
                     }
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         text: qsTr("图片最大缓存：100MB。数据最大缓存：100MB")
                         textStyle {
@@ -157,7 +159,7 @@ Page {
                         multiline: true
                     }
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     layout_: DockLayout {
                     
                     }
@@ -183,7 +185,7 @@ Page {
                 Header {
                     title: qsTr("重置应用")
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     Label {
                         text: qsTr("重置应用将恢复默认设置，以及清空缓存")
                         textStyle {
@@ -193,7 +195,7 @@ Page {
                         multiline: true
                     }
                 }
-                SettingsItemContainer {
+                ItemContainer {
                     layout_: DockLayout {
                         
                     }
