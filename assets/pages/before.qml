@@ -13,7 +13,7 @@ Page {
     property variant minimumDate: new Date('2013/05/20')
     
     titleBar: TitleBar {
-        scrollBehavior: TitleBarScrollBehavior.NonSticky
+        scrollBehavior: TitleBarScrollBehavior.Sticky
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
             id: kindProperties
