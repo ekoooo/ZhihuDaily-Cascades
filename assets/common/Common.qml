@@ -3,6 +3,8 @@ import "asset:///api.js" as Api
 
 QtObject {
     property variant api: Api.Api
+    property variant bbwAddr: "appworld://content/12345"
+    property variant developerEmail: "954408050@qq.com"
     
     // 设置 key
     property variant settingsKey: {
@@ -138,13 +140,17 @@ QtObject {
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();
-        // 从任何页面 pop 都设置可打开 application menu
-        Application.menuEnabled = true;
+        
+        if(page.objectName === 'sponsorInfoPage') {
+            Application.menuEnabled = false;
+        }else {
+            Application.menuEnabled = true;
+        }
     }
     
     function onPushTransitionEnded(nav, page) {
         // 帮助、赞助、关于、设置 页面禁止再打开 application menu
-        Application.menuEnabled = ['helpPage', 'sponsorPage', 'aboutPage', 'settingsPage'].indexOf(page.objectName) === -1;
+        Application.menuEnabled = ['helpPage', 'sponsorPage', 'aboutPage', 'settingsPage', 'sponsorInfoPage'].indexOf(page.objectName) === -1;
     }
     // ============ nav end ============
     
@@ -204,7 +210,7 @@ QtObject {
     }
     // 赞助
     function apiSponsor(requester) {
-        requester.send(api.sponsor);
+        requester.send(qsTr(api.sponsor).arg((+new Date()).toString()));
     }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {
