@@ -3,7 +3,7 @@ import "asset:///api.js" as Api
 
 QtObject {
     property variant api: Api.Api
-    property variant bbwAddr: "appworld://content/12345"
+    property variant bbwAddr: "appworld://content/60017887"
     property variant developerEmail: "954408050@qq.com"
     
     // 设置 key
