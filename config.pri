@@ -55,6 +55,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_deselect_all.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_diagnostics.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_disable.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_edit_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_enable.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_favorite.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
@@ -74,6 +75,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/comment_vote.png) \
         $$quote($$BASEDIR/assets/images/image_small_default.png) \
         $$quote($$BASEDIR/assets/images/image_top_default.png) \
+        $$quote($$BASEDIR/assets/images/qr_alipay.png) \
+        $$quote($$BASEDIR/assets/images/qr_wxpay.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/about.qml) \
         $$quote($$BASEDIR/assets/pages/before.qml) \
@@ -90,6 +93,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/sections.qml) \
         $$quote($$BASEDIR/assets/pages/settings.qml) \
         $$quote($$BASEDIR/assets/pages/sponsor.qml) \
+        $$quote($$BASEDIR/assets/pages/sponsorInfo.qml) \
         $$quote($$BASEDIR/assets/pages/themeList.qml) \
         $$quote($$BASEDIR/assets/pages/themes.qml) \
         $$quote($$BASEDIR/assets/source/newsInjector.js) \
@@ -111,11 +115,6 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/WebImageView/WebImageView.hpp) \
         $$quote($$BASEDIR/src/applicationui.hpp)
 }
-
-INCLUDEPATH += $$quote($$BASEDIR/src/Requester) \
-    $$quote($$BASEDIR/src/WebImageView) \
-    $$quote($$BASEDIR/src) \
-    $$quote($$BASEDIR/src/Misc)
 
 CONFIG += precompile_header
 
@@ -170,6 +169,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/pages/child/*.qml) \
         $$quote($$BASEDIR/../assets/pages/child/*.js) \
         $$quote($$BASEDIR/../assets/pages/child/*.qs) \
+        $$quote($$BASEDIR/../assets/sheets/*.qml) \
+        $$quote($$BASEDIR/../assets/sheets/*.js) \
+        $$quote($$BASEDIR/../assets/sheets/*.qs) \
         $$quote($$BASEDIR/../assets/source/*.qml) \
         $$quote($$BASEDIR/../assets/source/*.js) \
         $$quote($$BASEDIR/../assets/source/*.qs)
