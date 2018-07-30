@@ -224,6 +224,8 @@ Page {
                         if(loadRequest.status === WebLoadStatus.Started) {
                             webView.eyeProtectionModel && webView.evaluateJavaScript('setNightMode(true)');
                         }else if(loadRequest.status === WebLoadStatus.Succeeded) {
+                            // 继续设置（防止上面未执行成功）
+                            webView.eyeProtectionModel && webView.evaluateJavaScript('setNightMode(true)');
                             root.loading = false;
                         }
                     }
