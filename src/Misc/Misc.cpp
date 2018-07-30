@@ -67,6 +67,16 @@ void Misc::invokeBBWorld(QString appurl) {
     Q_UNUSED(invokeTargetReply);
 }
 
+void Misc::invokeMail(QString emailTo, QString subject, QString body) {
+    InvokeRequest request;
+    request.setUri("mailto:" + emailTo + "?subject=" + subject.replace(" ", "%20") + "&body=" + body.replace(" ", "%20"));
+    request.setTarget("sys.pim.uib.email.hybridcomposer");
+    request.setAction("bb.action.SENDEMAIL");
+
+    InvokeTargetReply *invokeTargetReply = invokeManager->invoke(request);
+    Q_UNUSED(invokeTargetReply);
+}
+
 QByteArray Misc::toUtf8(QString text) {
     return text.toUtf8();
 }

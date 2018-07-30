@@ -40,6 +40,7 @@ class Misc : public QObject {
         Q_INVOKABLE void invokeViewIamge(QString path);
         Q_INVOKABLE void invokeBrowser(QString url);
         Q_INVOKABLE void invokeBBWorld(QString appurl);
+        Q_INVOKABLE void invokeMail(QString emailTo, QString subject, QString body);
     private:
         static SystemToast *toast;
         InvokeManager *invokeManager;
