@@ -60,7 +60,7 @@ Page {
                 title: qsTr("快捷键")
             }
             Container {
-                id: c
+                id: shortCutKeyContainer
                 
                 onCreationCompleted: {
                     var shortCutKey = common.shortCutKey;
@@ -75,7 +75,7 @@ Page {
                         item.key = key;
                         item.label = label;
                         
-                        c.add(item);
+                        shortCutKeyContainer.add(item);
                     }
                 }
             }
