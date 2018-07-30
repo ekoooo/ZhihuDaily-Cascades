@@ -98,6 +98,13 @@ TabbedPane {
                 }
             },
             ActionItem {
+                title: qsTr("评价")
+                imageSource: "asset:///images/bb10/ic_edit_bookmarks.png"
+                onTriggered: {
+                    _misc.invokeBBWorld(common.bbwAddr);
+                }
+            },
+            ActionItem {
                 title: qsTr("关于")
                 imageSource: "asset:///images/bb10/ic_info.png"
                 onTriggered: {
