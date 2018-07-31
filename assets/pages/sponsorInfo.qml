@@ -19,11 +19,12 @@ Page {
                 horizontalAlignment: HorizontalAlignment.Center
                 onClicked: {
                     var bodyArr = [
-                        '赞助人：\n\n',
-                        '金额：\n\n',
-                        '网址（可选）：\n\n',
-                        '备注（可选）：\n\n',
-                        '凭证（建议直接截图）：\n\n'
+                        '　　带 * 为必填项，凭证可截图或流水号等，可备注是否在 APP 赞助人列表中不显示赞助金额。\n\n ',
+                        '赞助人*：\n\n',
+                        '凭证*：\n\n',
+                        '金额*：\n\n',
+                        '网址：\n\n',
+                        '备注：\n\n'
                     ];
                     
                     _misc.invokeMail(common.developerEmail, '《知乎日报》赞助支持', bodyArr.join(''));

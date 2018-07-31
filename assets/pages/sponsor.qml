@@ -7,7 +7,6 @@ Page {
     objectName: "sponsorPage"
     
     property bool isLoading: false
-    property bool isEmpty: true
     property variant version: ''
     
     actionBarVisibility: ChromeVisibility.Compact
@@ -36,27 +35,6 @@ Page {
                 preferredWidth: ui.du(10)
             }
             
-            Container {
-                visible: isEmpty
-                horizontalAlignment: HorizontalAlignment.Center
-                verticalAlignment: VerticalAlignment.Bottom
-                margin.bottomOffset: ui.du(14)
-                
-                WebImageView {
-                    url: "asset:///images/comment_empty.png"
-                    preferredWidth: ui.du(30)
-                    scalingMethod: ScalingMethod.AspectFit
-                }
-                Label {
-                    text: qsTr("暂无赞助莓友")
-                    horizontalAlignment: HorizontalAlignment.Center
-                    textStyle {
-                        color: Color.create("#e9e9e9")
-                        base: SystemDefaults.TextStyles.SubtitleText
-                    }
-                }
-            }
-            
             ListView {
                 bottomPadding: ui.du(14)
                 
@@ -79,6 +57,32 @@ Page {
                                 }
                             }
                             Divider {}
+                        }
+                    },
+                    ListItemComponent {
+                        type: "placeholder"
+                        CustomListItem {
+                            visible: ListItemData['isEmpty']
+                            dividerVisible: false
+                            
+                            Container {
+                                horizontalAlignment: HorizontalAlignment.Center
+                                topPadding: ui.du(10)
+                                
+                                WebImageView {
+                                    url: "asset:///images/comment_empty.png"
+                                    preferredWidth: ui.du(30)
+                                    scalingMethod: ScalingMethod.AspectFit
+                                }
+                                Label {
+                                    text: qsTr("暂无赞助莓友")
+                                    horizontalAlignment: HorizontalAlignment.Center
+                                    textStyle {
+                                        color: Color.create("#e9e9e9")
+                                        base: SystemDefaults.TextStyles.SubtitleText
+                                    }
+                                }
+                            }
                         }
                     },
                     ListItemComponent {
@@ -169,15 +173,17 @@ Page {
             id: dataRequester
             onBeforeSend: {
                 root.isLoading = true;
-                root.isEmpty = false;
             }
             onFinished: {
                 root.isLoading = false;
                 
                 var rs = JSON.parse(data);
                 var list = rs['list'];
-                root.isEmpty = !list.length;
                 
+                list.unshift({
+                    "__type": "placeholder",
+                    "isEmpty": !list.length
+                });
                 list.unshift({
                     "__type": "message",
                     "message": rs['developer_message']
@@ -190,7 +196,6 @@ Page {
             onError: {
                 _misc.showToast(qsTr("赞助名单正在更新，马上就好"));
                 root.isLoading = false;
-                root.isEmpty = true;
             }
         },
         ComponentDefinition {
