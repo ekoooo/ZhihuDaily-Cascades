@@ -46,4 +46,20 @@
 希望添加的功能可以通过issue告知，有空将会更新上去。该项目直接 clone 构建就能运行。
 
 ## 截图
-...本人很懒，不截了。
+![image](http://file.lwl.tech/zhihudaily_00.png)
+![image](http://file.lwl.tech/zhihudaily_01.png)
+![image](http://file.lwl.tech/zhihudaily_02.png)
+![image](http://file.lwl.tech/zhihudaily_03.png)
+![image](http://file.lwl.tech/zhihudaily_04.png)
+![image](http://file.lwl.tech/zhihudaily_05.png)
+![image](http://file.lwl.tech/zhihudaily_06.png)
+![image](http://file.lwl.tech/zhihudaily_07.png)
+![image](http://file.lwl.tech/zhihudaily_08.png)
+![image](http://file.lwl.tech/zhihudaily_09.png)
+![image](http://file.lwl.tech/zhihudaily_10.png)
+![image](http://file.lwl.tech/zhihudaily_11.png)
+![image](http://file.lwl.tech/zhihudaily_12.png)
+![image](http://file.lwl.tech/zhihudaily_13.png)
+![image](http://file.lwl.tech/zhihudaily_14.png)
+![image](http://file.lwl.tech/zhihudaily_15.png)
+![image](http://file.lwl.tech/zhihudaily_16.png)
