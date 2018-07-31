@@ -122,10 +122,12 @@ Page {
                 }
             ]
             onCreationCompleted: {
-                common.apiNewsBefore(listRequester, root.currentDate);
+                // 应该+1天才是获取当前天的日报
+                common.apiNewsBefore(listRequester, common.getNextDateStr(root.currentDate));
             }
             onCrtDateChanged: {
-                common.apiNewsBefore(listRequester, root.currentDate);
+                // 应该+1天才是获取当前天的日报
+                common.apiNewsBefore(listRequester, common.getNextDateStr(root.currentDate));
             }
         }
     }
