@@ -33,7 +33,7 @@ Container {
             lvContainer.lastIsMove = false;
         }else if(event.isCancel()) {
             // 如果时间间隔小于 * 值，而且没有移动。则为点击，发出信号
-            if(+new Date() - lvContainer.lastClickTime <= 300 && !lvContainer.lastIsMove) {
+            if(!lvContainer.lastIsMove && +new Date() - lvContainer.lastClickTime <= 600) {
                 click(lvContainer.index);
             }
         }else if(event.isMove()) {
