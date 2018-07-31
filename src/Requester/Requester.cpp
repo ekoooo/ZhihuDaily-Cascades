@@ -117,7 +117,7 @@ void Requester::send(QUrl url) {
 //    sslConfig.setProtocol(QSsl::AnyProtocol);
 //    request.setSslConfiguration(sslConfig);
 
-    QNetworkReply *reply;
+    QNetworkReply *reply = NULL;
 
     if(this->mMethod == Get) {
         reply = qNetworkAccessManager->get(request);
