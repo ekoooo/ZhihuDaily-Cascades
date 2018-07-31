@@ -108,19 +108,22 @@ Page {
             id: newsRequester
             onBeforeSend: {
                 root.loading = true;
+                timer.start();
             }
             onFinished: {
                 try {
                     root.newsData = JSON.parse(data);
                     containerDelegate.active = true;
                 }catch(e) {
-                    _misc.showToast(qsTr("文章数据格式转换失败"));
                     root.loading = false;
+                    timer.stop();
+                    _misc.showToast(qsTr("文章数据格式转换失败"));
                 }
             }
             onError: {
                 _misc.showToast(error);
                 root.loading = false;
+                timer.stop();
             }
         },
         DisplayInfo {
@@ -227,6 +230,7 @@ Page {
                             // 继续设置（防止上面未执行成功）
                             webView.eyeProtectionModel && webView.evaluateJavaScript('setNightMode(true)');
                             root.loading = false;
+                            timer.stop();
                         }
                     }
                     onMessageReceived: {
@@ -248,6 +252,16 @@ Page {
         ComponentDefinition {
             id: commentsPage
             source: "asset:///pages/comments.qml"
+        },
+        QTimer {
+            id: timer
+            interval: 4000
+            onTimeout: {
+                if(root.loading) {
+                    root.loading = false;
+                }
+                timer.stop();
+            }
         }
     ]
     

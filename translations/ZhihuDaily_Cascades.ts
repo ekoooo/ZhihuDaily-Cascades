@@ -337,7 +337,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="117"/>
+        <location filename="../assets/pages/news.qml" line="118"/>
         <source>文章数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -383,58 +383,53 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="106"/>
+        <location filename="../assets/pages/settings.qml" line="105"/>
         <source>重新进入文章页面生效，如需调整全局字体大小，请前往系统 设置/显示屏/字体大小 处进行设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="120"/>
+        <location filename="../assets/pages/settings.qml" line="119"/>
         <source>返回按钮</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="128"/>
+        <location filename="../assets/pages/settings.qml" line="127"/>
         <source>是否显示返回按钮</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="149"/>
-        <source>xx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/settings.qml" line="171"/>
+        <location filename="../assets/pages/settings.qml" line="159"/>
         <source>图片缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="189"/>
+        <location filename="../assets/pages/settings.qml" line="177"/>
         <source>数据缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="202"/>
+        <location filename="../assets/pages/settings.qml" line="190"/>
         <source>图片最大缓存：100MB。数据最大缓存：100MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="216"/>
+        <location filename="../assets/pages/settings.qml" line="204"/>
         <source>清空缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="234"/>
-        <location filename="../assets/pages/settings.qml" line="252"/>
+        <location filename="../assets/pages/settings.qml" line="222"/>
+        <location filename="../assets/pages/settings.qml" line="240"/>
         <source>重置应用</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="238"/>
+        <location filename="../assets/pages/settings.qml" line="226"/>
         <source>重置应用将恢复默认设置，以及清空缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="163"/>
+        <location filename="../assets/pages/settings.qml" line="151"/>
         <source>应用缓存</source>
         <translation type="unfinished"></translation>
     </message>
@@ -442,37 +437,37 @@
 <context>
     <name>sponsor</name>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="17"/>
+        <location filename="../assets/pages/sponsor.qml" line="16"/>
         <source>致谢</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="18"/>
+        <location filename="../assets/pages/sponsor.qml" line="17"/>
         <source>我要赞助 &gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="51"/>
+        <location filename="../assets/pages/sponsor.qml" line="78"/>
         <source>暂无赞助莓友</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="100"/>
+        <location filename="../assets/pages/sponsor.qml" line="104"/>
         <source>姓名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="131"/>
+        <location filename="../assets/pages/sponsor.qml" line="135"/>
         <source>金额</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="146"/>
+        <location filename="../assets/pages/sponsor.qml" line="150"/>
         <source>日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="191"/>
+        <location filename="../assets/pages/sponsor.qml" line="197"/>
         <source>赞助名单正在更新，马上就好</source>
         <translation type="unfinished"></translation>
     </message>
@@ -490,12 +485,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsorInfo.qml" line="34"/>
+        <location filename="../assets/pages/sponsorInfo.qml" line="35"/>
         <source>微信赞助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsorInfo.qml" line="45"/>
+        <location filename="../assets/pages/sponsorInfo.qml" line="46"/>
         <source>支付宝赞助</source>
         <translation type="unfinished"></translation>
     </message>
