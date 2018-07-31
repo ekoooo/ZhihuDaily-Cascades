@@ -23,7 +23,7 @@ Page {
                 ItemContainer {
                     Label {
                         text: qsTr('开发：<a href="https://github.com/ekoooo">ekoo</a>。<br/>' + 
-                        '开源：<a href="https://github.com/ekoooo/l-blog/ZhihuDaily-Cascades">ZhihuDaily-Cascades</a>。<br/>' + 
+                        '开源：<a href="https://github.com/ekoooo/ZhihuDaily-Cascades">ZhihuDaily-Cascades</a>。<br/>' + 
                         '建议：希望添加的功能或发现的问题可以通过 <a href="https://github.com/ekoooo/ZhihuDaily-Cascades/issues">Issue(推荐)</a> 或 <a href="mailto: ' + common.developerEmail + '">邮件</a> 告知。')
                         textStyle {
                             base: SystemDefaults.TextStyles.SubtitleText
