@@ -19,14 +19,14 @@ Page {
     property bool isEnd: false // 是否全部数据已加载
     property bool isRefresh: false // 是否为刷新动作
     property bool isChangeDate: false
+    property bool expanded: false
     
     titleBar: TitleBar {
         scrollBehavior: TitleBarScrollBehavior.Sticky
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
-            id: kindProperties
-            
             expandableArea.indicatorVisibility: TitleBarExpandableAreaIndicatorVisibility.Visible
+            
             Container {
                 layout: StackLayout {
                     orientation: LayoutOrientation.LeftToRight
@@ -40,7 +40,6 @@ Page {
                 }
             }
             expandableArea {
-                expanded: false
                 toggleArea: TitleBarExpandableAreaToggleArea.EntireTitleBar
                 
                 content: Container {
@@ -54,7 +53,7 @@ Page {
                     
                     DateTimePicker {
                         id: dateTimePicker
-                        expanded: true
+                        expanded: root.expanded
                         
                         verticalAlignment: VerticalAlignment.Center
                         title: qsTr("请选择日期")
@@ -67,13 +66,17 @@ Page {
                         }
                     }
                 }
+                
+                onExpandedChanged: {
+                    root.expanded = expanded;
+                }
             }
         }
     }
     
     Container {
         ListView {
-            visible: !kindProperties.expandableArea.expanded
+            visible: !root.expanded
             
             property variant root_: root
             property variant crtDate: root.currentDate

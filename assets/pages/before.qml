@@ -11,13 +11,14 @@ Page {
     property variant currentDate: Qt.formatDate(dateTimePicker.value, "yyyy/MM/dd")
     property variant maximumDate: new Date()
     property variant minimumDate: new Date('2013/05/20')
+    property bool expanded: false
     
     titleBar: TitleBar {
         scrollBehavior: TitleBarScrollBehavior.Sticky
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
-            id: kindProperties
             expandableArea.indicatorVisibility: TitleBarExpandableAreaIndicatorVisibility.Visible
+            
             Container {
                 layout: StackLayout {
                     orientation: LayoutOrientation.LeftToRight
@@ -45,17 +46,21 @@ Page {
                     
                     DateTimePicker {
                         id: dateTimePicker
+                        expanded: root.expanded
                         verticalAlignment: VerticalAlignment.Center
                         title: qsTr("请选择日期")
                         mode: DateTimePickerMode.Date
                         value: { new Date() }
                         maximum: { maximumDate }
                         minimum: { minimumDate }
-                        expanded: true
                         onValueChanged: {
                             root.currentDate = Qt.formatDate(dateTimePicker.value, "yyyy/MM/dd");
                         }
                     }
+                }
+                
+                onExpandedChanged: {
+                    root.expanded = expanded;
                 }
             }
         }
@@ -90,7 +95,7 @@ Page {
     
     Container {
         ListView {
-            visible: !kindProperties.expandableArea.expanded
+            visible: !root.expanded
             
             property variant root_: root
             property variant crtDate: root.currentDate
@@ -121,10 +126,6 @@ Page {
                     }
                 }
             ]
-            onCreationCompleted: {
-                // 应该+1天才是获取当前天的日报
-                common.apiNewsBefore(listRequester, common.getNextDateStr(root.currentDate));
-            }
             onCrtDateChanged: {
                 // 应该+1天才是获取当前天的日报
                 common.apiNewsBefore(listRequester, common.getNextDateStr(root.currentDate));

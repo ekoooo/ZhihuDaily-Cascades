@@ -231,12 +231,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="127"/>
+        <location filename="../assets/pages/index.qml" line="128"/>
         <source>加载失败，请重新加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="142"/>
+        <location filename="../assets/pages/index.qml" line="143"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
