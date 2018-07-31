@@ -19,7 +19,10 @@ import "asset:///common"
 import "asset:///pages" as Page
 
 TabbedPane {
+    id: tabbedPane
+    objectName: "tabbedPane"
     property variant nav: activeTab.tabNav // 所以页面可用导航
+    property bool backButtonVisiable: _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1" // 是否显示返回按钮
 
     showTabsOnActionBar: false
     activeTab: indexTab // 默认 activeTab 为 主页
@@ -125,6 +128,7 @@ TabbedPane {
                 Page.index {}
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
             }
         },
         // 今日热门
@@ -139,6 +143,7 @@ TabbedPane {
                 Page.hot {}
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
             }
         },
         // 栏目分类
@@ -153,6 +158,7 @@ TabbedPane {
                 Page.sections {}
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
             }
         },
         // 主题日报
@@ -167,6 +173,7 @@ TabbedPane {
                 Page.themes {}
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
             }
         },
         // 过往文章
@@ -181,6 +188,7 @@ TabbedPane {
                 Page.before {}
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
             }
         }
     ]

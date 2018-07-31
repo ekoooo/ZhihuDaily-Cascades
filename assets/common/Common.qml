@@ -13,7 +13,9 @@ QtObject {
         // 文章大字体
         "newsLargeFont": "newsLargeFont",
         // 文章护眼模式
-        "newsEyeProtectionModel":"newsEyeProtectionModel"
+        "newsEyeProtectionModel":"newsEyeProtectionModel",
+        // 是否显示返回按钮
+        "backButtonVisiable": "backButtonVisiable"
     }
     
     // 快捷键

@@ -7,18 +7,23 @@ Page {
     
     actionBarVisibility: ChromeVisibility.Compact
     
-    property bool isLargeFont: false;
-    property variant imageCacheSize: "calcing";
-    property variant requestCacheSize: "calcing";
+    property bool isLargeFont: false
+    property bool backButtonVisiable: true
+    property variant imageCacheSize: "calcing"
+    property variant requestCacheSize: "calcing"
     
     onCreationCompleted: {
-        calcInfo(true);
+        calcInfo(true, true);
     }
     
-    function calcInfo(updateLargeFont) {
+    function calcInfo(updateLargeFont, updateBackButtonVisiable) {
         if(updateLargeFont) {
             isLargeFont = _misc.getConfig(common.settingsKey.newsLargeFont, "0") === "1";
             newsLargeFontToggleButton.checked = isLargeFont;
+        }
+        if(updateBackButtonVisiable) {
+            backButtonVisiable = _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1";
+            backButtonVisiableToggleButton.checked = backButtonVisiable;
         }
         
         imageCacheSize = _misc.webImageViewCacheSize();
@@ -86,7 +91,6 @@ Page {
                     ToggleButton {
                         id: newsLargeFontToggleButton
                         verticalAlignment: VerticalAlignment.Center
-                        checked: isLargeFont
                         onCheckedChanged: {
                             if(checked) {
                                 _misc.setConfig(common.settingsKey.newsLargeFont, "1");
@@ -104,6 +108,38 @@ Page {
                             color: Color.Gray
                         }
                         multiline: true
+                    }
+                }
+                Divider {}
+            }
+            
+            // 是否显示返回按钮
+            Container {
+                Header {
+                    title: qsTr("返回按钮")
+                }
+                ItemContainer {
+                    Label {
+                        verticalAlignment: VerticalAlignment.Center
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
+                        }
+                        text: qsTr("是否显示返回按钮")
+                    }
+                    
+                    ToggleButton {
+                        id: backButtonVisiableToggleButton
+                        verticalAlignment: VerticalAlignment.Center
+                        onCheckedChanged: {
+                            if(checked) {
+                                _misc.setConfig(common.settingsKey.backButtonVisiable, "1");
+                            }else {
+                                _misc.setConfig(common.settingsKey.backButtonVisiable, "0");
+                            }
+                            
+                            // 更新主页信息
+                            tabbedPane.backButtonVisiable = checked;
+                        }
                     }
                 }
                 Divider {}
@@ -206,7 +242,7 @@ Page {
                         onClicked: {
                             try {
                                 _misc.reset();
-                                calcInfo(true);
+                                calcInfo(true, true);
                             }catch(e) {
                                 _misc.showToast(e);
                             }
