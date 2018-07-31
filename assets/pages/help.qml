@@ -8,6 +8,8 @@ Page {
     actionBarVisibility: ChromeVisibility.Compact
     
     ScrollView {
+        scrollRole: ScrollRole.Main
+        
         Container {
             bottomPadding: ui.du(14)
             Header {

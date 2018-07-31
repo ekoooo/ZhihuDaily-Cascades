@@ -31,6 +31,8 @@ Page {
     }
     
     ScrollView {
+        scrollRole: ScrollRole.Main
+        
         Container {
             bottomPadding: ui.du(14)
             // 视觉设置

@@ -17,7 +17,9 @@ Page {
             rightPadding: ui.du(2)
             topPadding: ui.du(2)
             bottomPadding: ui.du(14)
+            
             scrollRole: ScrollRole.Main
+            bufferedScrollingEnabled: true
             
             layout: GridListLayout {
                 

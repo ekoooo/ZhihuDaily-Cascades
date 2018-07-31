@@ -15,6 +15,8 @@ ListView {
     property bool commentsLoadEnd: false // 是否全部加载完毕
     property bool commentsLoading: false
     
+    bufferedScrollingEnabled: true
+    
     dataModel: ArrayDataModel {
         id: dm
     }

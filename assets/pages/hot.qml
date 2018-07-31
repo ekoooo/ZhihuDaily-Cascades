@@ -19,6 +19,7 @@ Page {
             property variant root_: root
             
             scrollRole: ScrollRole.Main
+            bufferedScrollingEnabled: true
             
             leadingVisual: RefreshHeader {
                 id: refreshHeader

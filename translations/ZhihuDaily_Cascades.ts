@@ -4,7 +4,7 @@
 <context>
     <name>CommentList</name>
     <message>
-        <location filename="../assets/pages/child/CommentList.qml" line="169"/>
+        <location filename="../assets/pages/child/CommentList.qml" line="171"/>
         <source>评论数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -60,37 +60,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="38"/>
+        <location filename="../assets/pages/about.qml" line="40"/>
         <source>初衷</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="42"/>
+        <location filename="../assets/pages/about.qml" line="44"/>
         <source>　　最原始版功能相对简单，本人之前开发的 Html5 版性能不足，存在发热情况，故开发此版本。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="48"/>
+        <location filename="../assets/pages/about.qml" line="50"/>
         <source>评价</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="52"/>
+        <location filename="../assets/pages/about.qml" line="54"/>
         <source>　　莓友的评价是我继续开发的动力，希望使用的莓友可以对本软件进行评价。如果可以，下一个项目将会是《喜马拉雅FM》。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="62"/>
+        <location filename="../assets/pages/about.qml" line="64"/>
         <source>立即评价</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="71"/>
+        <location filename="../assets/pages/about.qml" line="73"/>
         <source>声明</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/about.qml" line="75"/>
+        <location filename="../assets/pages/about.qml" line="77"/>
         <source>　　本项目文字图片等稿件内容均由 &lt;a href=&quot;http://daily.zhihu.com/&quot;&gt;知乎&lt;/a&gt; 提供。若被告知需停止共享与使用，本人会及时删除整个项目。请您了解相关情况，并遵守知乎协议。</source>
         <translation type="unfinished"></translation>
     </message>
@@ -123,7 +123,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="111"/>
+        <location filename="../assets/pages/before.qml" line="112"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
@@ -154,57 +154,57 @@
 <context>
     <name>help</name>
     <message>
-        <location filename="../assets/pages/help.qml" line="14"/>
+        <location filename="../assets/pages/help.qml" line="16"/>
         <source>模块</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="21"/>
+        <location filename="../assets/pages/help.qml" line="23"/>
         <source>主页、今日热门、栏目分类、主题日报、过往文章。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="25"/>
+        <location filename="../assets/pages/help.qml" line="27"/>
         <source>文章阅读、评论查看。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="29"/>
+        <location filename="../assets/pages/help.qml" line="31"/>
         <source>帮助、赞助、关于、设置。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="35"/>
+        <location filename="../assets/pages/help.qml" line="37"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="42"/>
+        <location filename="../assets/pages/help.qml" line="44"/>
         <source>一、文章图片可点击预览，可保持到本地。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="46"/>
+        <location filename="../assets/pages/help.qml" line="48"/>
         <source>二、被回复长评默认显示两行，点击可显示全部。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="50"/>
+        <location filename="../assets/pages/help.qml" line="52"/>
         <source>三、部分列表可下拉刷新。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="54"/>
+        <location filename="../assets/pages/help.qml" line="56"/>
         <source>四、帮助、赞助、关于、设置 被禁止打开菜单。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="60"/>
+        <location filename="../assets/pages/help.qml" line="62"/>
         <source>快捷键</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="84"/>
+        <location filename="../assets/pages/help.qml" line="86"/>
         <source>为保证不与系统快自带捷键冲突，有的快捷键是根据拼音首字母指定的。</source>
         <translation type="unfinished"></translation>
     </message>
@@ -217,7 +217,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/hot.qml" line="81"/>
+        <location filename="../assets/pages/hot.qml" line="82"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -225,18 +225,18 @@
 <context>
     <name>index</name>
     <message>
-        <location filename="../assets/pages/index.qml" line="58"/>
-        <location filename="../assets/pages/index.qml" line="76"/>
+        <location filename="../assets/pages/index.qml" line="59"/>
+        <location filename="../assets/pages/index.qml" line="77"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="127"/>
+        <location filename="../assets/pages/index.qml" line="128"/>
         <source>加载失败，请重新加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="142"/>
+        <location filename="../assets/pages/index.qml" line="143"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -337,7 +337,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="118"/>
+        <location filename="../assets/pages/news.qml" line="120"/>
         <source>文章数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -350,7 +350,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sectionList.qml" line="159"/>
+        <location filename="../assets/pages/sectionList.qml" line="160"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -358,78 +358,78 @@
 <context>
     <name>settings</name>
     <message>
-        <location filename="../assets/pages/settings.qml" line="39"/>
+        <location filename="../assets/pages/settings.qml" line="41"/>
         <source>视觉设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="47"/>
+        <location filename="../assets/pages/settings.qml" line="49"/>
         <source>应用暗色主题</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="66"/>
+        <location filename="../assets/pages/settings.qml" line="68"/>
         <source>与文章护眼模式相互独立，护眼模式直接在文章页中可设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="80"/>
+        <location filename="../assets/pages/settings.qml" line="82"/>
         <source>文章字体</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="88"/>
+        <location filename="../assets/pages/settings.qml" line="90"/>
         <source>大字体模式</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="105"/>
+        <location filename="../assets/pages/settings.qml" line="107"/>
         <source>重新进入文章页面生效，如需调整全局字体大小，请前往系统 设置/显示屏/字体大小 处进行设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="119"/>
+        <location filename="../assets/pages/settings.qml" line="121"/>
         <source>返回按钮</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="127"/>
+        <location filename="../assets/pages/settings.qml" line="129"/>
         <source>是否显示返回按钮</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="159"/>
+        <location filename="../assets/pages/settings.qml" line="161"/>
         <source>图片缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="177"/>
+        <location filename="../assets/pages/settings.qml" line="179"/>
         <source>数据缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="190"/>
+        <location filename="../assets/pages/settings.qml" line="192"/>
         <source>图片最大缓存：100MB。数据最大缓存：100MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="204"/>
+        <location filename="../assets/pages/settings.qml" line="206"/>
         <source>清空缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="222"/>
-        <location filename="../assets/pages/settings.qml" line="240"/>
+        <location filename="../assets/pages/settings.qml" line="224"/>
+        <location filename="../assets/pages/settings.qml" line="242"/>
         <source>重置应用</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="226"/>
+        <location filename="../assets/pages/settings.qml" line="228"/>
         <source>重置应用将恢复默认设置，以及清空缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="151"/>
+        <location filename="../assets/pages/settings.qml" line="153"/>
         <source>应用缓存</source>
         <translation type="unfinished"></translation>
     </message>
@@ -447,27 +447,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="78"/>
+        <location filename="../assets/pages/sponsor.qml" line="81"/>
         <source>暂无赞助莓友</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="104"/>
+        <location filename="../assets/pages/sponsor.qml" line="107"/>
         <source>姓名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="135"/>
+        <location filename="../assets/pages/sponsor.qml" line="138"/>
         <source>金额</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="150"/>
+        <location filename="../assets/pages/sponsor.qml" line="153"/>
         <source>日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="197"/>
+        <location filename="../assets/pages/sponsor.qml" line="200"/>
         <source>赞助名单正在更新，马上就好</source>
         <translation type="unfinished"></translation>
     </message>
@@ -480,17 +480,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsorInfo.qml" line="18"/>
+        <location filename="../assets/pages/sponsorInfo.qml" line="20"/>
         <source>已赞助，发送记录</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsorInfo.qml" line="35"/>
+        <location filename="../assets/pages/sponsorInfo.qml" line="37"/>
         <source>微信赞助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsorInfo.qml" line="46"/>
+        <location filename="../assets/pages/sponsorInfo.qml" line="48"/>
         <source>支付宝赞助</source>
         <translation type="unfinished"></translation>
     </message>
@@ -498,7 +498,7 @@
 <context>
     <name>themeList</name>
     <message>
-        <location filename="../assets/pages/themeList.qml" line="214"/>
+        <location filename="../assets/pages/themeList.qml" line="215"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>

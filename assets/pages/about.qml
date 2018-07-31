@@ -18,6 +18,8 @@ Page {
             title: qsTr("关于") + ' v' + applicationInfo.version.split('.').slice(0, 3).join('.')
         }
         ScrollView {
+            scrollRole: ScrollRole.Main
+            
             Container {
                 bottomPadding: ui.du(14)
                 ItemContainer {
