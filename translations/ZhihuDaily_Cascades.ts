@@ -98,32 +98,32 @@
 <context>
     <name>before</name>
     <message>
-        <location filename="../assets/pages/before.qml" line="49"/>
+        <location filename="../assets/pages/before.qml" line="51"/>
         <source>请选择日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="66"/>
+        <location filename="../assets/pages/before.qml" line="71"/>
         <source>上一天</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="71"/>
+        <location filename="../assets/pages/before.qml" line="76"/>
         <source>上一天没有文章了</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="78"/>
+        <location filename="../assets/pages/before.qml" line="83"/>
         <source>下一天</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="83"/>
+        <location filename="../assets/pages/before.qml" line="88"/>
         <source>下一天没有文章了</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="111"/>
+        <location filename="../assets/pages/before.qml" line="116"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
@@ -345,12 +345,12 @@
 <context>
     <name>sectionList</name>
     <message>
-        <location filename="../assets/pages/sectionList.qml" line="60"/>
+        <location filename="../assets/pages/sectionList.qml" line="59"/>
         <source>请选择日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sectionList.qml" line="159"/>
+        <location filename="../assets/pages/sectionList.qml" line="162"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
