@@ -122,6 +122,7 @@ Page {
                 var date = rtData['date']; // 日报日期
                 var stories = rtData['stories']; // 日报列表
                 var topStories = rtData['top_stories']; // 轮播图内容
+                var isEmptyTopStories = topStories && topStories.length;
                 
                 if(!stories) {
                     _misc.showToast(qsTr("加载失败，请重新加载"));
@@ -135,7 +136,7 @@ Page {
                 });
                 
                 // 顶部放入轮播图数据
-                if (topStories && topStories.length) {
+                if(isEmptyTopStories) {
                     if(dm.size()) {
                         dm.clear();
                         refreshHeader.endRefresh();
@@ -150,8 +151,13 @@ Page {
                 }
                 dm.append(stories);
                 
-                // 保存
+                // 保存最后一页的日期
                 root.currentDate = date;
+
+                // 如果小于10条，多加载一页
+                if(isEmptyTopStories && stories.length < 10) {
+                    common.apiNewsBefore(listRequester, root.currentDate);
+                }
             }
             onError: {
                 _misc.showToast(error);

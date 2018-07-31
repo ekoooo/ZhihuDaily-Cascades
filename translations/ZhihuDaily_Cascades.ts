@@ -4,7 +4,7 @@
 <context>
     <name>CommentList</name>
     <message>
-        <location filename="../assets/pages/child/CommentList.qml" line="171"/>
+        <location filename="../assets/pages/child/CommentList.qml" line="169"/>
         <source>评论数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -123,7 +123,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/before.qml" line="112"/>
+        <location filename="../assets/pages/before.qml" line="111"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
@@ -217,7 +217,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/hot.qml" line="82"/>
+        <location filename="../assets/pages/hot.qml" line="81"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -225,18 +225,18 @@
 <context>
     <name>index</name>
     <message>
-        <location filename="../assets/pages/index.qml" line="59"/>
-        <location filename="../assets/pages/index.qml" line="77"/>
+        <location filename="../assets/pages/index.qml" line="58"/>
+        <location filename="../assets/pages/index.qml" line="76"/>
         <source>未知文章类型</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="128"/>
+        <location filename="../assets/pages/index.qml" line="127"/>
         <source>加载失败，请重新加载</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="143"/>
+        <location filename="../assets/pages/index.qml" line="142"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -350,7 +350,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sectionList.qml" line="160"/>
+        <location filename="../assets/pages/sectionList.qml" line="159"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -447,27 +447,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="81"/>
+        <location filename="../assets/pages/sponsor.qml" line="80"/>
         <source>暂无赞助莓友</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="107"/>
+        <location filename="../assets/pages/sponsor.qml" line="106"/>
         <source>姓名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="138"/>
+        <location filename="../assets/pages/sponsor.qml" line="137"/>
         <source>金额</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="153"/>
+        <location filename="../assets/pages/sponsor.qml" line="152"/>
         <source>日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="200"/>
+        <location filename="../assets/pages/sponsor.qml" line="199"/>
         <source>赞助名单正在更新，马上就好</source>
         <translation type="unfinished"></translation>
     </message>
@@ -498,7 +498,7 @@
 <context>
     <name>themeList</name>
     <message>
-        <location filename="../assets/pages/themeList.qml" line="215"/>
+        <location filename="../assets/pages/themeList.qml" line="214"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
