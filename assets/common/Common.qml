@@ -139,6 +139,14 @@ QtObject {
         return formaTtimestamp(+new Date(currentDateStr) - 86400000, 3);
     }
     
+    /**
+     * 返回上一天日期字符串
+     * 2018/07/26 => 20180727
+     */
+    function getNextDateStr(currentDateStr) {
+        return formaTtimestamp(+new Date(currentDateStr) + 86400000, 3);
+    }
+    
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();
