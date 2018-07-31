@@ -10,6 +10,8 @@ Page {
     }
     
     ScrollView {
+        scrollRole: ScrollRole.Main
+        
         Container {
             bottomPadding: ui.du(14)
             topPadding: ui.du(2)
@@ -19,15 +21,15 @@ Page {
                 horizontalAlignment: HorizontalAlignment.Center
                 onClicked: {
                     var bodyArr = [
-                        '　　带 * 为必填项，凭证可截图或流水号等，可备注是否在 APP 赞助人列表中不显示赞助金额。\n\n ',
-                        '赞助人*：\n\n',
-                        '凭证*：\n\n',
-                        '金额*：\n\n',
-                        '网址：\n\n',
-                        '备注：\n\n'
+                        '　　带 * 为必填项，凭证可截图或流水号等，可备注是否在 APP 赞助人列表中不显示赞助金额。',
+                        '赞助人*：',
+                        '凭证*：',
+                        '金额*：',
+                        '网址：',
+                        '备注：'
                     ];
                     
-                    _misc.invokeMail(common.developerEmail, '《知乎日报》赞助支持', bodyArr.join(''));
+                    _misc.invokeMail(common.developerEmail, '《知乎日报》赞助支持', bodyArr.join('\n\n'));
                 }
             }
             Divider {}
