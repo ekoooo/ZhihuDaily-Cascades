@@ -79,7 +79,6 @@ Page {
             property variant crtDate: root.currentDate
             
             scrollRole: ScrollRole.Main
-            bufferedScrollingEnabled: true
             
             attachedObjects: [
                 ListScrollStateHandler {
