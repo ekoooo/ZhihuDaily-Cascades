@@ -14,7 +14,7 @@ Page {
     Container {
         Header {
             title: qsTr("致谢") + version
-            subtitle: qsTr("我要赞助 >")
+            subtitle: qsTr("我要赞助 ➤")
             mode: HeaderMode.Plain
             onTouch: {
                 if(event.isUp()) {
@@ -70,6 +70,7 @@ Page {
                             Container {
                                 horizontalAlignment: HorizontalAlignment.Center
                                 topPadding: ui.du(10)
+                                bottomPadding: ui.du(10)
                                 
                                 WebImageView {
                                     url: "asset:///images/comment_empty.png"
