@@ -12,6 +12,7 @@
 #include <bb/system/SystemUiPosition>
 #include <bb/system/SystemToast>
 #include <bb/system/InvokeManager>
+#include <bb/system/SystemDialog>
 
 using namespace bb::system;
 
@@ -29,6 +30,7 @@ class Misc : public QObject {
         Q_INVOKABLE static void clearCache();
         Q_INVOKABLE static void showToast(QString msg);
         Q_INVOKABLE static void showToast(QString msg, SystemUiPosition::Type pos);
+        Q_INVOKABLE void openDialog(const QString &confirmLabel, const QString &cancelLabel, const QString &title, const QString &body);
 
         Q_INVOKABLE static qint64 dirSize(QString dirPath);
         Q_INVOKABLE static QString formatSize(qint64 size);
@@ -44,6 +46,9 @@ class Misc : public QObject {
     private:
         static SystemToast *toast;
         InvokeManager *invokeManager;
+        SystemDialog *dialog;
+    private slots:
+        void onDialogFinished(bb::system::SystemUiResult::Type type);
 };
 
 #endif /* MISC_HPP_ */

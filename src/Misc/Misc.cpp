@@ -18,6 +18,7 @@
 #include <bb/system/InvokeManager>
 #include <bb/system/SystemToast>
 #include <bb/system/SystemUiPosition>
+#include <bb/system/SystemDialog>
 
 #include <bb/cascades/Application>
 #include <bb/cascades/ThemeSupport>
@@ -184,4 +185,18 @@ QString Misc::webImageViewCacheSize() {
 
 QString Misc::requesterCacheSize() {
     return Misc::formatSize(Misc::dirSize(Requester::CACHE_DIR));
+}
+
+void Misc::openDialog(const QString &confirmLabel, const QString &cancelLabel, const QString &title, const QString &body) {
+    dialog = new SystemDialog(confirmLabel, cancelLabel);
+    dialog->setTitle(title);
+    dialog->setBody(body);
+    dialog->show();
+
+    QObject::connect(dialog, SIGNAL(finished(bb::system::SystemUiResult::Type)), this, SLOT(onDialogFinished(bb::system::SystemUiResult::Type)));
+}
+
+void Misc::onDialogFinished(bb::system::SystemUiResult::Type type) {
+    Q_UNUSED(type);
+    dialog->deleteLater();
 }
