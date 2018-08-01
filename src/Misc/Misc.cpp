@@ -33,6 +33,7 @@ SystemToast *Misc::toast = new SystemToast();
 
 Misc::Misc(): QObject() {
     this->invokeManager = new InvokeManager(this);
+    this->dialog = NULL;
 }
 
 void Misc::invokeViewIamge(QString path) {
