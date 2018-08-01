@@ -179,7 +179,14 @@ Page {
             onFinished: {
                 root.isLoading = false;
                 
-                var rs = JSON.parse(data);
+                var obj = JSON.parse(data);
+                
+                if(obj.code !== 200) {
+                    _misc.showToast(obj.message);
+                    return;
+                }
+                
+                var rs = obj['info'];
                 var list = rs['list'];
                 
                 list.unshift({

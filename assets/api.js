@@ -41,5 +41,7 @@ var Api = {
      * http://news-at.zhihu.com/api/4/story/7809160/short-comments/before/26354994
      */
     // 赞助
-    "sponsor": "http://file.lwl.tech/sponsor.json?t=%1",
+    "sponsor": "http://lwl.tech/app/zhihudaily/sponsor",
+    // 开发者发送的最新消息
+    "message": "http://lwl.tech/app/zhihudaily/message"
 };
