@@ -12,43 +12,53 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../assets/common/Common.qml" line="26"/>
+        <location filename="../assets/common/Common.qml" line="28"/>
         <source>返回</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="28"/>
+        <location filename="../assets/common/Common.qml" line="30"/>
         <source>主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="30"/>
+        <location filename="../assets/common/Common.qml" line="32"/>
         <source>今日热门</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="32"/>
+        <location filename="../assets/common/Common.qml" line="34"/>
         <source>栏目分类</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="34"/>
+        <location filename="../assets/common/Common.qml" line="36"/>
         <source>主题日报</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="36"/>
+        <location filename="../assets/common/Common.qml" line="38"/>
         <source>过往文章</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="38"/>
+        <location filename="../assets/common/Common.qml" line="40"/>
         <source>进入评论页面</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="40"/>
+        <location filename="../assets/common/Common.qml" line="42"/>
         <source>切换长短评</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/Common.qml" line="154"/>
+        <source>确定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/Common.qml" line="154"/>
+        <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -244,72 +254,72 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="84"/>
+        <location filename="../assets/main.qml" line="85"/>
         <source>帮助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="90"/>
+        <location filename="../assets/main.qml" line="91"/>
         <source>设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="97"/>
+        <location filename="../assets/main.qml" line="98"/>
         <source>赞助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="104"/>
+        <location filename="../assets/main.qml" line="105"/>
         <source>评价</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="111"/>
+        <location filename="../assets/main.qml" line="112"/>
         <source>关于</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="124"/>
+        <location filename="../assets/main.qml" line="125"/>
         <source>主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="138"/>
+        <location filename="../assets/main.qml" line="139"/>
         <source>今日热门</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="139"/>
+        <location filename="../assets/main.qml" line="140"/>
         <source>每天更新的热门文章</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="153"/>
+        <location filename="../assets/main.qml" line="154"/>
         <source>栏目分类</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="154"/>
+        <location filename="../assets/main.qml" line="155"/>
         <source>一次性过瘾《瞎扯》等系列</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="168"/>
+        <location filename="../assets/main.qml" line="169"/>
         <source>主题日报</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="169"/>
+        <location filename="../assets/main.qml" line="170"/>
         <source>萝卜青菜各有所爱</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="183"/>
+        <location filename="../assets/main.qml" line="184"/>
         <source>过往文章</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="184"/>
+        <location filename="../assets/main.qml" line="185"/>
         <source>按日期搜索文章</source>
         <translation type="unfinished"></translation>
     </message>
@@ -467,7 +477,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="199"/>
+        <location filename="../assets/pages/sponsor.qml" line="206"/>
         <source>赞助名单正在更新，马上就好</source>
         <translation type="unfinished"></translation>
     </message>

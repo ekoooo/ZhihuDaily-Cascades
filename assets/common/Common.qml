@@ -15,7 +15,9 @@ QtObject {
         // 文章护眼模式
         "newsEyeProtectionModel":"newsEyeProtectionModel",
         // 是否显示返回按钮
-        "backButtonVisiable": "backButtonVisiable"
+        "backButtonVisiable": "backButtonVisiable",
+        // 开发者消息版本
+        "developerMessageVersion": "developerMessageVersion"
     }
     
     // 快捷键
@@ -147,6 +149,11 @@ QtObject {
         return formaTtimestamp(+new Date(currentDateStr) + 86400000, 3);
     }
     
+    // 打开对话框
+    function openDialog(title, body) {
+        _misc.openDialog(qsTr("确定"), qsTr("取消"), title, body);
+    }
+    
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();
@@ -221,6 +228,10 @@ QtObject {
     // 赞助
     function apiSponsor(requester) {
         requester.send(qsTr(api.sponsor).arg((+new Date()).toString()));
+    }
+    // 开发者消息
+    function apiMessage(requester) {
+        requester.send(api.message);
     }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {

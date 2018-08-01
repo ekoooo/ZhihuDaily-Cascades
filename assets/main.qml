@@ -15,6 +15,7 @@
  */
 
 import bb.cascades 1.4
+import tech.lwl 1.0
 import "asset:///common"
 import "asset:///pages" as Page
 
@@ -197,6 +198,30 @@ TabbedPane {
         Common {
             id: common
         },
+        QTimer {
+            id: messageTimer
+            interval: 4000
+            onTimeout: {
+                common.apiMessage(messageRequester);
+                messageTimer.stop();
+            }
+        },
+        Requester {
+            id: messageRequester
+            onFinished: {
+                messageTimer.stop();
+                
+                var rs = JSON.parse(data);
+                var info = rs.info;
+                
+                if(rs.code === 200 && _misc.getConfig(common.settingsKey.developerMessageVersion, "0") != info['version']) {
+                    // 弹出消息
+                    common.openDialog(info['title'], info['body'] + '' + info['date']);
+                    // 存储最新的消息版本，只提示一次
+                    _misc.setConfig(common.settingsKey.developerMessageVersion, info['version']);
+                }
+            }
+        },
         ComponentDefinition {
             id: settingsPage
             source: "asset:///pages/settings.qml"
@@ -216,6 +241,9 @@ TabbedPane {
     ]
     
     onCreationCompleted: {
-         _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
+        // 设置主题
+        _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
+        // 读取消息
+        messageTimer.start();
     }
 }
