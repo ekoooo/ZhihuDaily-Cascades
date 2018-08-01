@@ -453,31 +453,31 @@
     </message>
     <message>
         <location filename="../assets/pages/sponsor.qml" line="17"/>
-        <source>我要赞助 &gt;</source>
+        <source>我要赞助 ➤</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="80"/>
+        <location filename="../assets/pages/sponsor.qml" line="81"/>
         <source>暂无赞助莓友</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="106"/>
+        <location filename="../assets/pages/sponsor.qml" line="107"/>
         <source>姓名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="137"/>
+        <location filename="../assets/pages/sponsor.qml" line="138"/>
         <source>金额</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="152"/>
+        <location filename="../assets/pages/sponsor.qml" line="153"/>
         <source>日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="206"/>
+        <location filename="../assets/pages/sponsor.qml" line="207"/>
         <source>赞助名单正在更新，马上就好</source>
         <translation type="unfinished"></translation>
     </message>
