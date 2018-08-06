@@ -52,13 +52,21 @@ Page {
                     ListItemComponent {
                         type: "message"
                         Container {
+                            layout: DockLayout {}
                             ItemContainer {
                                 Label {
                                     text: "　　" + ListItemData['message']
                                     multiline: true
                                 }
+                                horizontalAlignment: HorizontalAlignment.Fill
+                                verticalAlignment: VerticalAlignment.Center
                             }
-                            Divider {}
+                            Divider {
+                                verticalAlignment: VerticalAlignment.Top
+                            }
+                            Divider {
+                                verticalAlignment: VerticalAlignment.Bottom
+                            }
                         }
                     },
                     ListItemComponent {
