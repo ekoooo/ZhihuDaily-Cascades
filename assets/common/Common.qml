@@ -245,13 +245,9 @@ QtObject {
     }
     // ============ api end ============
     function getHardwareInfo() {
-        return JSON.stringify({
-            version: version,
-            modelName: hardwareInfo.modelName,
-            modelNumber: hardwareInfo.modelNumber,
-            hardwareId: hardwareInfo.hardwareId,
-            pin: hardwareInfo.pin
-        });
+        var info = hardwareInfo;
+        info.version = version;
+        return JSON.stringify(info);
     }
     
     function httpGetAsync(theUrl, callback) {
