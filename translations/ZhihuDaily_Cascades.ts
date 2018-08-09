@@ -418,18 +418,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="135"/>
-        <source>刷新页面生效，文章图片可点击加载</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../assets/pages/settings.qml" line="149"/>
         <source>文章自动加载 gif 图片</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../assets/pages/settings.qml" line="135"/>
+        <source>刷新页面生效，无法刷新的页面需重启生效，文章图片可点击加载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../assets/pages/settings.qml" line="166"/>
-        <source>如果开启无图模式，开启自动加载将无效</source>
+        <source>如果开启无图模式，开启自动加载将无效。注意：是 gif 格式，不一定是动图。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

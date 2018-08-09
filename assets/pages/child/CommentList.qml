@@ -189,7 +189,7 @@ ListView {
         }
     }
     onIsActiveChanged: {
-        // lv.scrollRole = isActive ? ScrollRole.Main : ScrollRole.None
+        lv.scrollRole = isActive ? ScrollRole.Main : ScrollRole.None
         lv.visible = isActive;
     }
 }
