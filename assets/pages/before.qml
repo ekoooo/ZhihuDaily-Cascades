@@ -78,6 +78,11 @@ Page {
                 }
                 root.changeDate(-1);
             }
+            shortcuts: [
+                Shortcut {
+                    key: common.shortCutKey.beforeNewPreDay
+                }
+            ]
         },
         ActionItem {
             title: qsTr("下一天")
@@ -90,6 +95,11 @@ Page {
                 }
                 root.changeDate(1);
             }
+            shortcuts: [
+                Shortcut {
+                    key: common.shortCutKey.beforeNewNextDay
+                }
+            ]
         }
     ]
     

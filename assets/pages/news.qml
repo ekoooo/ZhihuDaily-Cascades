@@ -19,16 +19,6 @@ Page {
     actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
     actionBarVisibility: ChromeVisibility.Overlay
     
-    
-    shortcuts: [
-        Shortcut {
-            key: common.shortCutKey.commonPage
-            onTriggered: {
-                root.goCommentsPage();
-            }
-        }
-    ]
-    
     actions: [
         ActionItem {
             title: qsTr("评论")
@@ -38,6 +28,12 @@ Page {
             onTriggered: {
                 root.goCommentsPage();
             }
+            
+            shortcuts: [
+                Shortcut {
+                    key: common.shortCutKey.commonPage
+                }
+            ]
         },
         ActionItem {
             title: qsTr("护眼")
@@ -52,6 +48,12 @@ Page {
                     isNewsEyeProtectionModel = true;
                 }
             }
+            
+            shortcuts: [
+                Shortcut {
+                    key: common.shortCutKey.switchEyeProtectionModel
+                }
+            ]
         },
         InvokeActionItem {
             title: qsTr("分享")

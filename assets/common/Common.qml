@@ -24,8 +24,10 @@ QtObject {
     
     // 快捷键
     property variant shortCutKey: {
-        "shortCutList": ['back', 'indexPage', 'hotPage', 'sectionsPage', 'themesPage', 'beforePage', 'commonPage', 'switchCommonType'],
-                
+        "shortCutList": ['back', 'indexPage', 'hotPage', 'sectionsPage', 
+        'themesPage', 'beforePage', 'commonPage', 'switchCommonType', 'switchEyeProtectionModel', 
+        'beforeNewPreDay', 'beforeNewNextDay'],
+         
          "back": "f",
          "backLabel": qsTr("返回"),
          "indexPage": "h",
@@ -41,7 +43,13 @@ QtObject {
          "commonPage": "c",
          "commonPageLabel": qsTr("进入评论页面"),
          "switchCommonType": "c",
-         "switchCommonTypeLabel": qsTr("切换长短评")
+         "switchCommonTypeLabel": qsTr("切换长短评"),
+         "switchEyeProtectionModel": "e",
+         "switchEyeProtectionModelLabel": qsTr("切换护眼模式"),
+         "beforeNewPreDay": "s",
+         "beforeNewPreDayLabel": qsTr("过往文章上一天"),
+         "beforeNewNextDay": "x",
+         "beforeNewNextDayLabel": qsTr("过往文章下一天")
     }
     
     /**
