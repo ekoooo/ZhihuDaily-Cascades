@@ -457,27 +457,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="81"/>
+        <location filename="../assets/pages/sponsor.qml" line="89"/>
         <source>暂无赞助莓友</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="107"/>
+        <location filename="../assets/pages/sponsor.qml" line="115"/>
         <source>姓名</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="138"/>
+        <location filename="../assets/pages/sponsor.qml" line="146"/>
         <source>金额</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="153"/>
+        <location filename="../assets/pages/sponsor.qml" line="161"/>
         <source>日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sponsor.qml" line="207"/>
+        <location filename="../assets/pages/sponsor.qml" line="215"/>
         <source>赞助名单正在更新，马上就好</source>
         <translation type="unfinished"></translation>
     </message>
