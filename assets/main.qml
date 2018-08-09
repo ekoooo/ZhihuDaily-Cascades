@@ -200,7 +200,7 @@ TabbedPane {
         },
         QTimer {
             id: messageTimer
-            interval: 4000
+            interval: 2000
             onTimeout: {
                 messageTimer.stop();
                 common.apiMessage(messageRequester);

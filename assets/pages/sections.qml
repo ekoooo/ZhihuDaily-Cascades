@@ -51,9 +51,12 @@ Page {
             id: listRequester
             onFinished: {
                 var rs = JSON.parse(data);
-                var themes = rs['data'];
+                var sections = rs['data'];
+                
+                common.formatFastImageUrl(sections, 'thumbnail', false);
+                
                 dm.clear();
-                dm.insert(0, themes);
+                dm.insert(0, sections);
             }
             onError: {
                 _misc.showToast(error)

@@ -52,6 +52,9 @@ Page {
             onFinished: {
                 var rs = JSON.parse(data);
                 var themes = rs['others'];
+                
+                common.formatFastImageUrl(themes, 'thumbnail', false);
+                
                 dm.clear();
                 dm.insert(0, themes);
             }

@@ -73,8 +73,12 @@ Page {
             onFinished: {
                 var rs = JSON.parse(data);
                 var recent = rs['recent'];
+                
+                common.formatFastImageUrl(recent, 'thumbnail', false, true);
+                
                 dm.clear();
                 dm.insert(0, recent);
+                
                 if(isRefresh) {
                     isRefresh = false;
                     refreshHeader.endRefresh();

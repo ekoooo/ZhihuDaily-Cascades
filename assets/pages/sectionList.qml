@@ -155,7 +155,9 @@ Page {
                 root.dataLoading = false;
                 var rt = JSON.parse(data);
                 var stories = rt['stories'];
-                var isEnd = !stories.length
+                var isEnd = !stories.length;
+                
+                common.formatFastImageUrl(stories, 'images', true, true);
                 
                 if(root.isRefresh || root.isChangeDate) {
                     if(root.isRefresh) {

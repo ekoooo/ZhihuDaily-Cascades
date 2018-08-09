@@ -15,17 +15,21 @@ QtObject {
         // 文章大字体
         "newsLargeFont": "newsLargeFont",
         // 文章护眼模式
-        "newsEyeProtectionModel":"newsEyeProtectionModel",
+        "newsEyeProtectionMode":"newsEyeProtectionMode",
         // 是否显示返回按钮
         "backButtonVisiable": "backButtonVisiable",
         // 开发者消息版本
-        "developerMessageVersion": "developerMessageVersion"
+        "developerMessageVersion": "developerMessageVersion",
+        // 无图模式
+        "fastMode": "fastMode",
+        // 文章自动加载gif
+        "newsAutoLoadGif": "newsAutoLoadGif"
     }
     
     // 快捷键
     property variant shortCutKey: {
         "shortCutList": ['back', 'indexPage', 'hotPage', 'sectionsPage', 
-        'themesPage', 'beforePage', 'commonPage', 'switchCommonType', 'switchEyeProtectionModel', 
+        'themesPage', 'beforePage', 'commonPage', 'switchCommonType', 'switchEyeProtectionMode', 
         'beforeNewPreDay', 'beforeNewNextDay'],
          
          "back": "f",
@@ -44,8 +48,8 @@ QtObject {
          "commonPageLabel": qsTr("进入评论页面"),
          "switchCommonType": "c",
          "switchCommonTypeLabel": qsTr("切换长短评"),
-         "switchEyeProtectionModel": "e",
-         "switchEyeProtectionModelLabel": qsTr("切换护眼模式"),
+         "switchEyeProtectionMode": "e",
+         "switchEyeProtectionModeLabel": qsTr("切换护眼模式"),
          "beforeNewPreDay": "s",
          "beforeNewPreDayLabel": qsTr("过往文章上一天"),
          "beforeNewNextDay": "x",
@@ -162,6 +166,26 @@ QtObject {
     // 打开对话框
     function openDialog(title, body) {
         _misc.openDialog(qsTr("确定"), qsTr("取消"), title, body);
+    }
+    
+    // 替换图片为无图模式图片
+    function formatFastImageUrl(list, key, isArray, isSmallLogo) {
+        if(list && list.length && _misc.getConfig(common.settingsKey.fastMode, "0") === "1") {
+            var defaultUrl = isSmallLogo ? "asset:///images/image_small_default.png" : "asset:///images/image_top_default.png";
+            
+            var i, j;
+            for(i = 0; i < list.length; i++) { // 轮播图
+                if(isArray) {
+                    if(list[i][key] && list[i][key].length) {
+                        for(j = 0; j < list[i][key].length; j++) {
+                            list[i][key][j] = defaultUrl;
+                        }
+                    }
+                }else {
+                    list[i][key] = defaultUrl;
+                }
+            }
+        }
     }
     
     // ============ nav start ============

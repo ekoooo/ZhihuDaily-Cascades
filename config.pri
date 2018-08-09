@@ -73,6 +73,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
         $$quote($$BASEDIR/assets/images/comment_empty.png) \
         $$quote($$BASEDIR/assets/images/comment_vote.png) \
+        $$quote($$BASEDIR/assets/images/default_pic_content_image_download_dark.png) \
         $$quote($$BASEDIR/assets/images/image_small_default.png) \
         $$quote($$BASEDIR/assets/images/image_top_default.png) \
         $$quote($$BASEDIR/assets/images/qr_alipay.png) \

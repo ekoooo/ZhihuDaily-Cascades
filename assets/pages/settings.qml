@@ -7,23 +7,20 @@ Page {
     
     actionBarVisibility: ChromeVisibility.Compact
     
-    property bool isLargeFont: false
-    property bool backButtonVisiable: true
     property variant imageCacheSize: "calcing"
     property variant requestCacheSize: "calcing"
     
     onCreationCompleted: {
-        calcInfo(true, true);
+        calcInfo(true);
     }
     
-    function calcInfo(updateLargeFont, updateBackButtonVisiable) {
-        if(updateLargeFont) {
-            isLargeFont = _misc.getConfig(common.settingsKey.newsLargeFont, "0") === "1";
-            newsLargeFontToggleButton.checked = isLargeFont;
-        }
-        if(updateBackButtonVisiable) {
-            backButtonVisiable = _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1";
-            backButtonVisiableToggleButton.checked = backButtonVisiable;
+    function calcInfo(init) {
+        if(init) {
+            newsLargeFontToggleButton.checked = _misc.getConfig(common.settingsKey.newsLargeFont, "0") === "1";
+            backButtonVisiableToggleButton.checked = _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1";
+            fastModeToggleButton.checked = _misc.getConfig(common.settingsKey.fastMode, "0") === "1";
+            newsAutoLoadGifToggleButton.checked = _misc.getConfig(common.settingsKey.newsAutoLoadGif, "0") === "1";
+            themeToggleButton.checked = _misc.getConfig(common.settingsKey.theme, "Light") === "Dark";
         }
         
         imageCacheSize = _misc.webImageViewCacheSize();
@@ -50,8 +47,8 @@ Page {
                     }
                     
                     ToggleButton {
+                        id: themeToggleButton
                         verticalAlignment: VerticalAlignment.Center
-                        checked: Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark
                         onCheckedChanged: {
                             if(checked) {
                                 _misc.setConfig(common.settingsKey.theme, "Dark");
@@ -76,10 +73,10 @@ Page {
                 Divider {}
             }
             
-            // 字体
+            // 阅读
             Container {
                 Header {
-                    title: qsTr("文章字体")
+                    title: qsTr("阅读")
                 }
                 ItemContainer {
                     Label {
@@ -87,7 +84,7 @@ Page {
                         layoutProperties: StackLayoutProperties {
                             spaceQuota: 1
                         }
-                        text: qsTr("大字体模式")
+                        text: qsTr("文章大字体模式")
                     }
                     
                     ToggleButton {
@@ -105,6 +102,68 @@ Page {
                 ItemContainer {
                     Label {
                         text: qsTr("重新进入文章页面生效，如需调整全局字体大小，请前往系统 设置/显示屏/字体大小 处进行设置")
+                        textStyle {
+                            base: SystemDefaults.TextStyles.SubtitleText
+                            color: Color.Gray
+                        }
+                        multiline: true
+                    }
+                }
+                ItemContainer {
+                    Label {
+                        verticalAlignment: VerticalAlignment.Center
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
+                        }
+                        text: qsTr("无图模式")
+                    }
+                    
+                    ToggleButton {
+                        id: fastModeToggleButton
+                        verticalAlignment: VerticalAlignment.Center
+                        onCheckedChanged: {
+                            if(checked) {
+                                _misc.setConfig(common.settingsKey.fastMode, "1");
+                            }else {
+                                _misc.setConfig(common.settingsKey.fastMode, "0");
+                            }
+                        }
+                    }
+                }
+                ItemContainer {
+                    Label {
+                        text: qsTr("刷新页面生效，文章图片可点击加载")
+                        textStyle {
+                            base: SystemDefaults.TextStyles.SubtitleText
+                            color: Color.Gray
+                        }
+                        multiline: true
+                    }
+                }
+                ItemContainer {
+                    Label {
+                        verticalAlignment: VerticalAlignment.Center
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
+                        }
+                        text: qsTr("文章自动加载 gif 图片")
+                    }
+                    
+                    ToggleButton {
+                        id: newsAutoLoadGifToggleButton
+                        verticalAlignment: VerticalAlignment.Center
+                        onCheckedChanged: {
+                            if(checked) {
+                                _misc.setConfig(common.settingsKey.newsAutoLoadGif, "1");
+                            }else {
+                                _misc.setConfig(common.settingsKey.newsAutoLoadGif, "0");
+                            }
+                        }
+                    }
+                }
+                ItemContainer {
+                    Label {
+                        text: qsTr("如果开启无图模式，开启自动加载将无效")
                         textStyle {
                             base: SystemDefaults.TextStyles.SubtitleText
                             color: Color.Gray
@@ -244,7 +303,7 @@ Page {
                         onClicked: {
                             try {
                                 _misc.reset();
-                                calcInfo(true, true);
+                                calcInfo(true);
                             }catch(e) {
                                 _misc.showToast(e);
                             }

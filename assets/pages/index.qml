@@ -129,6 +129,9 @@ Page {
                     return;
                 }
                 
+                common.formatFastImageUrl(topStories, 'image');
+                common.formatFastImageUrl(stories, 'images', true, true);
+                
                 // 重新封装数据
                 stories.unshift({
                     "__type": "date",

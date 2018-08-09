@@ -13,8 +13,10 @@ Page {
     property variant dH: displayInfo.pixelSize.height
     property variant imageHeight: dH / 3 
     property bool loading: false
-    property bool isNewsEyeProtectionModel: _misc.getConfig(common.settingsKey.newsEyeProtectionModel, "0") == "1"
+    property bool isNewsEyeProtectionMode: _misc.getConfig(common.settingsKey.newsEyeProtectionMode, "0") == "1"
     property bool isNewsLargeFont: _misc.getConfig(common.settingsKey.newsLargeFont, "0") == "1"
+    property bool isFastMode: _misc.getConfig(common.settingsKey.fastMode, "0") === "1"
+    property bool isAutoLoadGif: _misc.getConfig(common.settingsKey.newsAutoLoadGif, "0") === "1"
     
     actionBarAutoHideBehavior: ActionBarAutoHideBehavior.HideOnScroll
     actionBarVisibility: ChromeVisibility.Overlay
@@ -38,20 +40,20 @@ Page {
         ActionItem {
             title: qsTr("护眼")
             ActionBar.placement: ActionBarPlacement.OnBar
-            imageSource: isNewsEyeProtectionModel ? "asset:///images/bb10/ic_enable.png" : "asset:///images/bb10/ic_disable.png"
+            imageSource: isNewsEyeProtectionMode ? "asset:///images/bb10/ic_enable.png" : "asset:///images/bb10/ic_disable.png"
             onTriggered: {
-                if(isNewsEyeProtectionModel) {
-                    _misc.setConfig(common.settingsKey.newsEyeProtectionModel, "0");
-                    isNewsEyeProtectionModel = false;
+                if(isNewsEyeProtectionMode) {
+                    _misc.setConfig(common.settingsKey.newsEyeProtectionMode, "0");
+                    isNewsEyeProtectionMode = false;
                 }else {
-                    _misc.setConfig(common.settingsKey.newsEyeProtectionModel, "1");
-                    isNewsEyeProtectionModel = true;
+                    _misc.setConfig(common.settingsKey.newsEyeProtectionMode, "1");
+                    isNewsEyeProtectionMode = true;
                 }
             }
             
             shortcuts: [
                 Shortcut {
-                    key: common.shortCutKey.switchEyeProtectionModel
+                    key: common.shortCutKey.switchEyeProtectionMode
                 }
             ]
         },
@@ -153,7 +155,10 @@ Page {
                     preferredHeight: imageHeight
 
                     WebImageView {
-                        url: newsData.image || "asset:///images/image_top_default.png"
+                        property variant defaultImg: "asset:///images/image_top_default.png"
+                        property variant newImg: (newsData.image || defaultImg)
+                        
+                        url: isFastMode ? defaultImg : newImg
                         scalingMethod: ScalingMethod.AspectFill
                         verticalAlignment: VerticalAlignment.Fill
                         horizontalAlignment: HorizontalAlignment.Fill
@@ -162,6 +167,11 @@ Page {
                         failImageSource: "asset:///images/image_top_default.png"
                         onTouch: {
                             if(event.isUp()) {
+                                if(isFastMode && url == defaultImg) {
+                                    url = newImg;
+                                    return;
+                                }
+                                
                                 invokeViewImage();
                             }
                         }
@@ -208,7 +218,8 @@ Page {
                 
                 WebView {
                     id: webView
-                    property variant eyeProtectionModel: root.isNewsEyeProtectionModel
+                    property variant eyeProtectionMode: root.isNewsEyeProtectionMode
+                    
                     property variant templateHtml: '<html>
                         <head id="head">
                             <meta charset="utf-8">
@@ -216,7 +227,7 @@ Page {
                             <link href="local:///assets/source/news_qa.min.css" rel="stylesheet">
                             <script src="local:///assets/source/zepto.min.js"></script>
                         </head>
-                        <body id="body" class="%2">
+                        <body id="body" class="%2 %3 %4">
                             %1
                             <script src="local:///assets/source/newsInjector.js"></script>
                         </body>
@@ -225,12 +236,15 @@ Page {
                     html: qsTr(templateHtml)
                             .arg(root.newsData['body'])
                             .arg(isNewsLargeFont ? 'large' : '')
+                            .arg(isAutoLoadGif ? 'auto_load_gif' : '')
+                            .arg(isFastMode ? 'fast_mode' : '');
+                    
                     onLoadingChanged: {
                         if(loadRequest.status === WebLoadStatus.Started) {
-                            webView.eyeProtectionModel && webView.evaluateJavaScript('setNightMode(true)');
+                            webView.eyeProtectionMode && webView.evaluateJavaScript('setNightMode(true)');
                         }else if(loadRequest.status === WebLoadStatus.Succeeded) {
                             // 继续设置（防止上面未执行成功）
-                            webView.eyeProtectionModel && webView.evaluateJavaScript('setNightMode(true)');
+                            webView.eyeProtectionMode && webView.evaluateJavaScript('setNightMode(true)');
                             root.loading = false;
                             timer.stop();
                         }
@@ -244,9 +258,9 @@ Page {
                             _misc.invokeBrowser(msg.url);
                         }
                     }
-                    onEyeProtectionModelChanged: {
+                    onEyeProtectionModeChanged: {
                         // 切换护眼模式
-                        webView.evaluateJavaScript(webView.eyeProtectionModel ? 'setNightMode(true)' : 'setNightMode(false)');
+                        webView.evaluateJavaScript(webView.eyeProtectionMode ? 'setNightMode(true)' : 'setNightMode(false)');
                     }
                 }
             }

@@ -13,11 +13,14 @@ Page {
     property variant dH: displayInfo.pixelSize.height
     property variant imageHeight: dH / 3
     
+    property bool isFastMode: _misc.getConfig(common.settingsKey.fastMode, "0") === "1"
+    
     actionBarVisibility: ChromeVisibility.Compact
     
     Container {
         ListView {
             property variant root_: root
+            property bool isFastMode_: isFastMode
             
             scrollRole: ScrollRole.Main
 
@@ -61,6 +64,7 @@ Page {
                     type: "banner"
                     
                     Container {
+                        id: bannerSubContainer
                         Divider { opacity: 0 }
                         layout: DockLayout {
                         
@@ -69,13 +73,26 @@ Page {
                         preferredHeight: ListItem.view.root_.imageHeight
                         
                         WebImageView {
-                            url: ListItemData['info']['image']
+                            property variant defaultImg: "asset:///images/image_top_default.png"
+                            property variant newImg: (ListItemData['info']['image'] || defaultImg)
+                            
+                            url: bannerSubContainer.ListItem.view.isFastMode_ ? defaultImg : newImg
                             scalingMethod: ScalingMethod.AspectFill
                             verticalAlignment: VerticalAlignment.Fill
                             horizontalAlignment: HorizontalAlignment.Fill
                             implicitLayoutAnimationsEnabled: false
                             loadingImageSource: "asset:///images/image_top_default.png"
                             failImageSource: "asset:///images/image_top_default.png"
+                            onTouch: {
+                                if(event.isUp()) {
+                                    if(bannerSubContainer.ListItem.view.isFastMode_ && url == defaultImg) {
+                                        url = newImg;
+                                        return;
+                                    }
+                                    
+                                    invokeViewImage();
+                                }
+                            }
                         }
                         Container {
                             horizontalAlignment: HorizontalAlignment.Center
@@ -204,6 +221,8 @@ Page {
                 var rtData = JSON.parse(data);
                 var isAppend = !rtData['name'];
                 var stories = rtData['stories']; // 日报列表
+                
+                common.formatFastImageUrl(stories, 'images', true, true);
                 
                 if(isAppend) {
                     dm.append(stories);

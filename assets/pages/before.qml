@@ -152,6 +152,9 @@ Page {
             onFinished: {
                 var rs = JSON.parse(data);
                 var recent = rs['stories'];
+                
+                common.formatFastImageUrl(recent, 'images', true, true);
+                
                 dm.clear();
                 dm.insert(0, recent);
             }
