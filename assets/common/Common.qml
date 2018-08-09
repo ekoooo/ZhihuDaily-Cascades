@@ -5,6 +5,8 @@ QtObject {
     property variant api: Api.Api
     property variant bbwAddr: "appworld://content/60017887"
     property variant developerEmail: "954408050@qq.com"
+    property variant version:  Application.applicationVersion
+    property variant hardwareInfo: _misc.getHardwareInfo()
     
     // 设置 key
     property variant settingsKey: {
@@ -227,13 +229,31 @@ QtObject {
     }
     // 赞助
     function apiSponsor(requester) {
-        requester.send(qsTr(api.sponsor).arg((+new Date()).toString()));
+        requester.setHeaders({
+            "appinfo": getHardwareInfo()
+        });
+    
+        requester.send(api.sponsor);
     }
     // 开发者消息
     function apiMessage(requester) {
+        requester.setHeaders({
+            "appinfo": getHardwareInfo()
+        });
+        
         requester.send(api.message);
     }
     // ============ api end ============
+    function getHardwareInfo() {
+        return JSON.stringify({
+            version: version,
+            modelName: hardwareInfo.modelName,
+            modelNumber: hardwareInfo.modelNumber,
+            hardwareId: hardwareInfo.hardwareId,
+            pin: hardwareInfo.pin
+        });
+    }
+    
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() { 
