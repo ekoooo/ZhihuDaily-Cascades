@@ -132,7 +132,7 @@ Page {
                 }
                 ItemContainer {
                     Label {
-                        text: qsTr("刷新页面生效，文章图片可点击加载")
+                        text: qsTr("刷新页面生效，无法刷新的页面需重启生效，文章图片可点击加载")
                         textStyle {
                             base: SystemDefaults.TextStyles.SubtitleText
                             color: Color.Gray
@@ -163,7 +163,7 @@ Page {
                 }
                 ItemContainer {
                     Label {
-                        text: qsTr("如果开启无图模式，开启自动加载将无效")
+                        text: qsTr("如果开启无图模式，开启自动加载将无效。注意：是 gif 格式，不一定是动图。")
                         textStyle {
                             base: SystemDefaults.TextStyles.SubtitleText
                             color: Color.Gray
