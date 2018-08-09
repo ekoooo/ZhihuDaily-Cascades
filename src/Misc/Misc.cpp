@@ -26,8 +26,11 @@
 #include <bb/cascades/Theme>
 #include <bb/cascades/ColorTheme>
 
+#include <bb/device/HardwareInfo>
+
 using namespace bb::system;
 using namespace bb::cascades;
+using namespace bb::device;
 
 SystemToast *Misc::toast = new SystemToast();
 
@@ -200,4 +203,25 @@ void Misc::openDialog(const QString &confirmLabel, const QString &cancelLabel, c
 void Misc::onDialogFinished(bb::system::SystemUiResult::Type type) {
     Q_UNUSED(type);
     dialog->deleteLater();
+}
+
+QVariantMap Misc::getHardwareInfo() {
+    HardwareInfo info;
+    QVariantMap map;
+
+    map.insert("deviceName", info.deviceName());
+    map.insert("hardwareId", info.hardwareId());
+    map.insert("hasPhysicalBackButton", info.hasPhysicalBackButton());
+    map.insert("hasPhysicalMenuButton", info.hasPhysicalMenuButton());
+    map.insert("hasPhysicalPhoneKeys", info.hasPhysicalPhoneKeys());
+    map.insert("imei", info.imei());
+    map.insert("isPhysicalKeyboardDevice", info.isPhysicalKeyboardDevice());
+    map.insert("isTrackpadDevice", info.isTrackpadDevice());
+    map.insert("meid", info.meid());
+    map.insert("modelName", info.modelName());
+    map.insert("modelNumber", info.modelNumber());
+    map.insert("pin", info.pin());
+    map.insert("serialNumber", info.serialNumber());
+
+    return map;
 }
