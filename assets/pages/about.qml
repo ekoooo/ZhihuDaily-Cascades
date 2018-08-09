@@ -1,21 +1,13 @@
 import bb.cascades 1.4
-import bb 1.3
 import "asset:///pages/child"
 
 Page {
     objectName: "aboutPage"
-    
     actionBarVisibility: ChromeVisibility.Compact
-    
-    attachedObjects: [
-        ApplicationInfo {
-            id: applicationInfo
-        }
-    ]
     
     Container {
         Header {
-            title: qsTr("关于") + ' v' + applicationInfo.version.split('.').slice(0, 3).join('.')
+            title: qsTr("关于") + ' v' + common.version
         }
         ScrollView {
             scrollRole: ScrollRole.Main
