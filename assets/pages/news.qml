@@ -257,10 +257,10 @@ Page {
             id: timer
             interval: 4000
             onTimeout: {
+                timer.stop();
                 if(root.loading) {
                     root.loading = false;
                 }
-                timer.stop();
             }
         }
     ]

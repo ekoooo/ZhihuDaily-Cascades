@@ -202,8 +202,8 @@ TabbedPane {
             id: messageTimer
             interval: 4000
             onTimeout: {
-                common.apiMessage(messageRequester);
                 messageTimer.stop();
+                common.apiMessage(messageRequester);
             }
         },
         Requester {
