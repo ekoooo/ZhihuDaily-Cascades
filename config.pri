@@ -117,6 +117,11 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/applicationui.hpp)
 }
 
+INCLUDEPATH += $$quote($$BASEDIR/src/Requester) \
+    $$quote($$BASEDIR/src/WebImageView) \
+    $$quote($$BASEDIR/src) \
+    $$quote($$BASEDIR/src/Misc)
+
 CONFIG += precompile_header
 
 PRECOMPILED_HEADER = $$quote($$BASEDIR/precompiled.h)
@@ -170,9 +175,6 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/pages/child/*.qml) \
         $$quote($$BASEDIR/../assets/pages/child/*.js) \
         $$quote($$BASEDIR/../assets/pages/child/*.qs) \
-        $$quote($$BASEDIR/../assets/sheets/*.qml) \
-        $$quote($$BASEDIR/../assets/sheets/*.js) \
-        $$quote($$BASEDIR/../assets/sheets/*.qs) \
         $$quote($$BASEDIR/../assets/source/*.qml) \
         $$quote($$BASEDIR/../assets/source/*.js) \
         $$quote($$BASEDIR/../assets/source/*.qs)

@@ -180,12 +180,20 @@ ListView {
                      common.apiCommentsMore(commentsRequester, commentsBeforeApi, newsId, lastCommentId);
                  }
              }
+        },
+        QTimer {
+            id: initTimer
+            interval: 200
+            onTimeout: {
+                initTimer.stop();
+                common.apiComments(commentsRequester, commentsApi, newsId);
+            }
         }
     ]
     onNewsIdChanged: {
         if(newsId) {
             // 初始化评论
-            common.apiComments(commentsRequester, commentsApi, newsId)
+            initTimer.start();
         }
     }
     onIsActiveChanged: {
