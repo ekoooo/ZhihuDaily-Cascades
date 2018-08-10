@@ -9,6 +9,8 @@ Page {
     property int longCommentsCount: 0
     property int shortCommentsCount: 0
     property int likesCount: 0
+    property bool initTimerRunning: true
+    property bool loading: true
     
     actionBarVisibility: ChromeVisibility.Compact
     
@@ -42,51 +44,39 @@ Page {
     ]
     
     Container {
-        layout: StackLayout {
+        layout: DockLayout {}
+        
+        // loading box
+        Container {
+            visible: initTimerRunning
+            layout: DockLayout {}
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            background: Color.create(0,0,0,0.2)
             
+            ActivityIndicator {
+                running: initTimerRunning
+                preferredWidth: 100
+                preferredHeight: 100
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
+            }
         }
         
         Container {
-            layout: DockLayout {
-                
-            }
-
-            Container {
-                visible: !selectedLong
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-                
-                CommentList {
-                    isActive: !selectedLong
-                    commentsApi: common.api.storyShortComments
-                    commentsBeforeApi: common.api.storyNextShortComments
-                    newsId: root.newsId
-                    count: root.shortCommentsCount
-                }
-            }
+            layout: DockLayout {}
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
             
-            Container {
-                visible: selectedLong
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-                
-                CommentList {
-                    isActive: selectedLong
-                    commentsApi: common.api.storyLongComments
-                    commentsBeforeApi: common.api.storyNextLongComments
-                    newsId: root.newsId
-                    count: root.longCommentsCount
-                }
-            }
-            
+            // 提示
             Container {
                 id: tip
-                visible: selectedLong ? longCommentsCount == 0 : shortCommentsCount == 0
+                visible: !loading && (selectedLong ? longCommentsCount == 0 : shortCommentsCount == 0)
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 
                 layout: StackLayout {
-                    
+                
                 }
                 WebImageView {
                     url: "asset:///images/comment_empty.png"
@@ -102,12 +92,45 @@ Page {
                     }
                 }
             }
+            
+            // 短评
+            Container {
+                visible: !selectedLong
+                horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Fill
+                
+                CommentList {
+                    isActive: !selectedLong
+                    commentsApi: common.api.storyShortComments
+                    commentsBeforeApi: common.api.storyNextShortComments
+                    newsId: root.newsId
+                    count: root.shortCommentsCount
+                }
+            }
+            
+            // 长评
+            Container {
+                visible: selectedLong
+                horizontalAlignment: HorizontalAlignment.Fill
+                verticalAlignment: VerticalAlignment.Fill
+                
+                CommentList {
+                    isActive: selectedLong
+                    commentsApi: common.api.storyLongComments
+                    commentsBeforeApi: common.api.storyNextLongComments
+                    newsId: root.newsId
+                    count: root.longCommentsCount
+                }
+            }
         }
     }
     
     attachedObjects: [
         Requester {
             id: storyExtraRequester
+            onBeforeSend: {
+                root.loading = true;
+            }
             onFinished: {
                 var rs = JSON.parse(data);
                 var count = rs.count;
@@ -115,14 +138,26 @@ Page {
                 root.longCommentsCount = count['long_comments'];
                 root.shortCommentsCount = count['short_comments'];
                 root.likesCount = count['likes'];
+                
+                root.loading = false;
             }
             onError: {
+                root.loading = false;
                 _misc.showToast(error);
+            }
+        },
+        QTimer {
+            id: initTimer
+            interval: 200
+            onTimeout: {
+                initTimer.stop();
+                root.initTimerRunning = false;
+                common.apiStoryExtra(storyExtraRequester, storyExtraRequester, newsId);
             }
         }
     ]
     
     onNewsIdChanged: {
-        common.apiStoryExtra(storyExtraRequester, storyExtraRequester, newsId);
+        initTimer.start();
     }
 }

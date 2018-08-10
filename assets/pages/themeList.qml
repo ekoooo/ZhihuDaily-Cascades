@@ -9,6 +9,7 @@ Page {
     property variant themeId // 主题ID（传入）
     property variant lastNewsId // 最后一条主题 ID
     property bool dataLoading: false // 是否正在加载数据
+    property bool initTimerRunning: true
     
     property variant dH: displayInfo.pixelSize.height
     property variant imageHeight: dH / 3
@@ -18,11 +19,32 @@ Page {
     actionBarVisibility: ChromeVisibility.Compact
     
     Container {
+        layout: DockLayout {}
+        
+        // loading box
+        Container {
+            visible: initTimerRunning
+            layout: DockLayout {}
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            background: Color.create(0,0,0,0.2)
+            
+            ActivityIndicator {
+                running: initTimerRunning
+                preferredWidth: 100
+                preferredHeight: 100
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
+            }
+        }
+        
         ListView {
             property variant root_: root
             property bool isFastMode_: isFastMode
             
             scrollRole: ScrollRole.Main
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
 
             attachedObjects: [
                 ListScrollStateHandler {
@@ -71,7 +93,6 @@ Page {
                         }
                         horizontalAlignment: HorizontalAlignment.Fill
                         preferredHeight: ListItem.view.root_.imageHeight
-                        
                         WebImageView {
                             property variant defaultImg: "asset:///images/image_top_default.png"
                             property variant newImg: (ListItemData['info']['image'] || defaultImg)
@@ -206,10 +227,19 @@ Page {
     }
     
     onThemeIdChanged: {
-        common.apiThemeList(listRequester, themeId);
+        initTimer.start();
     }
     
     attachedObjects: [
+        QTimer {
+            id: initTimer
+            interval: 200
+            onTimeout: {
+                initTimer.stop();
+                root.initTimerRunning = false;
+                common.apiThemeList(listRequester, themeId);
+            }
+        },
         Requester {
             id: listRequester
             onBeforeSend: {

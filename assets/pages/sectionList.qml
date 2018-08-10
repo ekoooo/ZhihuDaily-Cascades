@@ -15,6 +15,7 @@ Page {
     property variant maximumDate: new Date()
     property variant minimumDate: new Date('2013/05/20')
     property bool dataLoading: false // 是否正在加载数据
+    property bool initTimerRunning: true
     property variant lastDate // 用于加载数据参数
     property bool isEnd: false // 是否全部数据已加载
     property bool isRefresh: false // 是否为刷新动作
@@ -75,6 +76,25 @@ Page {
     }
     
     Container {
+        layout: DockLayout {}
+        
+        // loading box
+        Container {
+            visible: initTimerRunning
+            layout: DockLayout {}
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            background: Color.create(0,0,0,0.2)
+            
+            ActivityIndicator {
+                running: initTimerRunning
+                preferredWidth: 100
+                preferredHeight: 100
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
+            }
+        }
+        
         ListView {
             visible: !root.expanded
             
@@ -82,6 +102,8 @@ Page {
             property variant crtDate: root.currentDate
             
             scrollRole: ScrollRole.Main
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
             
             attachedObjects: [
                 ListScrollStateHandler {
@@ -142,10 +164,19 @@ Page {
     }
     
     onSectionIdChanged: {
-        common.apiSectionMore(listRequester, sectionId, root.currentDate);
+        initTimer.start();
     }
     
     attachedObjects: [
+        QTimer {
+            id: initTimer
+            interval: 200
+            onTimeout: {
+                initTimer.stop();
+                root.initTimerRunning = false;
+                common.apiSectionMore(listRequester, sectionId, root.currentDate);
+            }
+        },
         Requester {
             id: listRequester
             onBeforeSend: {

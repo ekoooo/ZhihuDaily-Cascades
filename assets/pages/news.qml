@@ -12,7 +12,8 @@ Page {
     
     property variant dH: displayInfo.pixelSize.height
     property variant imageHeight: dH / 3 
-    property bool loading: false
+    property bool loading: true
+    property bool initTimerRunning: true
     property bool isNewsEyeProtectionMode: _misc.getConfig(common.settingsKey.newsEyeProtectionMode, "0") == "1"
     property bool isNewsLargeFont: _misc.getConfig(common.settingsKey.newsLargeFont, "0") == "1"
     property bool isFastMode: _misc.getConfig(common.settingsKey.fastMode, "0") === "1"
@@ -98,7 +99,7 @@ Page {
             background: Color.create(0, 0, 0, 0.2)
             
             ActivityIndicator {
-                running: true
+                running: loading
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 preferredHeight: ui.du(10)
@@ -278,12 +279,21 @@ Page {
                     root.loading = false;
                 }
             }
+        },
+        QTimer {
+            id: initTimer
+            interval: 200
+            onTimeout: {
+                initTimer.stop();
+                root.initTimerRunning = false;
+                common.apiNews(newsRequester, newsId);
+            }
         }
     ]
     
     // 拉取文章信息
     onNewsIdChanged: {
-        common.apiNews(newsRequester, newsId);
+        initTimer.start();
     }
     
     function goCommentsPage() {
