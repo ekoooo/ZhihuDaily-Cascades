@@ -156,22 +156,22 @@
 <context>
     <name>comments</name>
     <message>
-        <location filename="../assets/pages/comments.qml" line="21"/>
+        <location filename="../assets/pages/comments.qml" line="23"/>
         <source>长评</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/comments.qml" line="25"/>
+        <location filename="../assets/pages/comments.qml" line="27"/>
         <source>短评</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/comments.qml" line="97"/>
+        <location filename="../assets/pages/comments.qml" line="87"/>
         <source>深度长评虚位以待</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/comments.qml" line="97"/>
+        <location filename="../assets/pages/comments.qml" line="87"/>
         <source>短评虚位以待</source>
         <translation type="unfinished"></translation>
     </message>
@@ -342,27 +342,27 @@
 <context>
     <name>news</name>
     <message>
-        <location filename="../assets/pages/news.qml" line="26"/>
+        <location filename="../assets/pages/news.qml" line="27"/>
         <source>评论</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="41"/>
+        <location filename="../assets/pages/news.qml" line="42"/>
         <source>护眼</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="61"/>
+        <location filename="../assets/pages/news.qml" line="62"/>
         <source>分享</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="68"/>
+        <location filename="../assets/pages/news.qml" line="69"/>
         <source>%1（分享自 @知乎日报）%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/news.qml" line="124"/>
+        <location filename="../assets/pages/news.qml" line="125"/>
         <source>文章数据格式转换失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -370,12 +370,12 @@
 <context>
     <name>sectionList</name>
     <message>
-        <location filename="../assets/pages/sectionList.qml" line="59"/>
+        <location filename="../assets/pages/sectionList.qml" line="60"/>
         <source>请选择日期</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/sectionList.qml" line="164"/>
+        <location filename="../assets/pages/sectionList.qml" line="195"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
@@ -543,7 +543,7 @@
 <context>
     <name>themeList</name>
     <message>
-        <location filename="../assets/pages/themeList.qml" line="233"/>
+        <location filename="../assets/pages/themeList.qml" line="263"/>
         <source>刷新成功</source>
         <translation type="unfinished"></translation>
     </message>
