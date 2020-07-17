@@ -145,8 +145,12 @@ void Requester::replyFinished() {
         QTextCodec *codec = QTextCodec::codecForLocale();
         QString data = codec->toUnicode(reply->readAll());
 
+//        qDebug() << "Http Data:" << data;
+
         emit finished(data);
     }else {
+//        qDebug() << "Http Error:" << reply->errorString();
+
         emit error(reply->errorString());
     }
 
