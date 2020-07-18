@@ -193,9 +193,9 @@ QtObject {
         page.destroy();
         
         if(page.objectName === 'sponsorInfoPage') {
-            Application.menuEnabled = false;
+           Application.menuEnabled = false;
         }else {
-            Application.menuEnabled = true;
+           Application.menuEnabled = true;
         }
     }
     
