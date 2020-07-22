@@ -20,7 +20,7 @@ Page {
             backButtonVisiableToggleButton.checked = _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1";
             fastModeToggleButton.checked = _misc.getConfig(common.settingsKey.fastMode, "0") === "1";
             newsAutoLoadGifToggleButton.checked = _misc.getConfig(common.settingsKey.newsAutoLoadGif, "0") === "1";
-            themeToggleButton.checked = _misc.getConfig(common.settingsKey.theme, "Light") === "Dark";
+            themeToggleButton.checked = _misc.getConfig(common.settingsKey.theme, "Bright") === "Dark";
         }
         
         imageCacheSize = _misc.webImageViewCacheSize();
